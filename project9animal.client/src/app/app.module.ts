@@ -9,6 +9,9 @@ import { NavBarComponent } from './home/nav-bar/nav-bar.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { AbuotComponent } from './home/abuot/abuot.component';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './home/login/login.component';
+import { RegisterComponent } from './home/register/register.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,35 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     NavBarComponent,
     FooterComponent,
-    AbuotComponent
+    AbuotComponent,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
+      //Ueser
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "abuot", component: AbuotComponent },
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+
+
+
+
+
+
+      //AdminDashboard
+      {
+        path: "dashboard", component: DashboardComponent, children: [
+          {
+             path: "register", component: RegisterComponent ,
+          }]
+
+      },
+
 
 
     ])

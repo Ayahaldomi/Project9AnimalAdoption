@@ -13,6 +13,8 @@ public partial class Reply
 
     public string? Comment { get; set; }
 
+    public DateTime? CommentDate { get; set; }
+
     public virtual Comment? CommentNavigation { get; set; }
 
     public virtual User? User { get; set; }

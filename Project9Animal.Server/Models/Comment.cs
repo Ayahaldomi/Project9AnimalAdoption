@@ -13,6 +13,8 @@ public partial class Comment
 
     public string? Comment1 { get; set; }
 
+    public DateTime? CommentDate { get; set; }
+
     public virtual ICollection<Reply> Replies { get; set; } = new List<Reply>();
 
     public virtual SuccessStory? Story { get; set; }
