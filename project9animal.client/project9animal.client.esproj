@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\home\" />
+    <Folder Include="src\app\Admin\" />
     <Folder Include="src\assets\" />
   </ItemGroup>
 </Project>

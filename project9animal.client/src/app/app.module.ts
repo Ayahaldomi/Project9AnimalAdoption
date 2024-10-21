@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-animal-category.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
     AbuotComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddAnimalCategoryComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
