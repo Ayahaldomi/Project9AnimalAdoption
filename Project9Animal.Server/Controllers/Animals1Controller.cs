@@ -50,7 +50,6 @@ namespace Project9Animal.Server.Controllers
             }
             existAnimal.Name = animal.Name;
             existAnimal.Age = animal.Age;
-            existAnimal.Species = animal.Species;
             existAnimal.Breed = animal.Breed;
             existAnimal.Size = animal.Size;
             existAnimal.Temperament = animal.Temperament;
@@ -74,7 +73,6 @@ namespace Project9Animal.Server.Controllers
                 Name = animal.Name,
 
                 Age = animal.Age,
-                Species = animal.Species,
                 Breed = animal.Breed,
                 Size = animal.Size,
                 Temperament = animal.Temperament,
