@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.DTOs;
 using Project9Animal.Server.Models;
+using System.Net;
 
 namespace Project9Animal.Server.Controllers
 {
@@ -17,40 +19,47 @@ namespace Project9Animal.Server.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
+        [HttpGet("GetAllUser")]
         public IActionResult GetUsers()
-        {
-            return Ok(_context.Users.ToList());
+        { 
+            var users = _context.Users.ToList();
+            return Ok(users);
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
-        public IActionResult GetUser(int id)
+        [HttpGet("GetUserById{id}")]
+        public IActionResult GetUser(int id )
         {
-            var user = _context.Users.Find(id);
+            var user = _context.Users.FirstOrDefault(c=>c.UserId==id);
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound(user);
             }
 
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult PutUser(int id, UpdateuserDTO user)
+        [HttpPut("UpdeteUser{id}")]
+        public IActionResult PutUser(int id,[FromForm] UpdateuserDTO user)
         {
-            var existUser = _context.Users.Find(id);
+            var existUser = _context.Users.FirstOrDefault(c=>c.UserId==id);
 
             if (existUser == null)
             {
                 return BadRequest();
             }
+          
             existUser.FullName = user.FullName;
+            existUser.Password = user.Password;
             existUser.Email = user.Email;
-            existUser.IsAdmin = user.IsAdmin;
-            existUser.FullName = user.Username;
-            existUser.Password = user.PasswordHash;
+            existUser.Address = user.Address;
+            existUser.MedicalStatus = user.MedicalStatus;
+            existUser.FlatType=user.FlatType;
+            existUser.FinaincalStatus = user.FinaincalStatus;
+            existUser.HaveKids = existUser.HaveKids;
+            existUser.MoreDetails = existUser.MoreDetails;
+
 
 
             _context.Users.Update(existUser);
@@ -59,15 +68,20 @@ namespace Project9Animal.Server.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult PostUser(AddUserDTO user)
+        [HttpPost("AddUser")]
+        public IActionResult PostUser([FromForm] AddUserDTO user)
         {
             var newUser = new User
             {
-                FullName = user.Username,
+                FullName = user.FullName,
+                Password = user.Password,
                 Email = user.Email,
-                IsAdmin = user.IsAdmin,
-                Password = user.PasswordHash,
+                Address = user.Address,
+                MedicalStatus = user.MedicalStatus,
+                FlatType = user.FlatType,
+                FinaincalStatus = user.FinaincalStatus,
+                HaveKids = user.HaveKids,
+                MoreDetails = user.MoreDetails,
             };
             _context.Users.Add(newUser);
             _context.SaveChanges();
@@ -77,7 +91,7 @@ namespace Project9Animal.Server.Controllers
         }
 
         // DELETE: api/Users/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteUser{id}")]
         public IActionResult DeleteUser(int id)
         {
             var user = _context.Users.Find(id);
