@@ -35,8 +35,6 @@ public partial class User
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
-    public virtual ICollection<ContactU> ContactUs { get; set; } = new List<ContactU>();
-
     public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
 
     public virtual ICollection<Reply> Replies { get; set; } = new List<Reply>();

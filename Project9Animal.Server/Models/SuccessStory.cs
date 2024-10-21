@@ -15,6 +15,8 @@ public partial class SuccessStory
 
     public string? StoryText { get; set; }
 
+    public string? Status { get; set; }
+
     public DateTime? StoryDate { get; set; }
 
     public string? PhotoUrl1 { get; set; }
