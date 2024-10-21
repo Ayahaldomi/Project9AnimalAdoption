@@ -33,7 +33,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
     RegisterComponent,
     DashboardComponent,
     AddAnimalCategoryComponent,
-    OurCommunityDetailsComponent
+    OurCommunityDetailsComponent,
     DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
