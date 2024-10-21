@@ -37,8 +37,6 @@ namespace Project9Animal.Server.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public IActionResult PutUser(int id, UpdateuserDTO user)
         {
@@ -60,8 +58,7 @@ namespace Project9Animal.Server.Controllers
             return Ok(existUser);
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public IActionResult PostUser(AddUserDTO user)
         {
