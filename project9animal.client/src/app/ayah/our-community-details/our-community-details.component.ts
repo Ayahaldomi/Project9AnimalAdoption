@@ -9,10 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OurCommunityDetailsComponent {
   parameter: any;
-  story:any
+  story: any;
+  like: any;
+  commentcount: any;
+  comment: any;
   ngOnInit() {
     this.parameter = this._route.snapshot.paramMap.get("id");
     this.SeccessStoryByID(this.parameter)
+    this.likes(this.parameter)
+    this.comments(this.parameter)
+    this.commentCount(this.parameter)
   }
 
   constructor(private _ser: AyahURLService, private _route: ActivatedRoute) { }
@@ -24,4 +30,28 @@ export class OurCommunityDetailsComponent {
     })
   }
 
+  likes(id: any) {
+    this._ser.getLikes(id).subscribe((data) => {
+      this.like = data
+    })
+  }
+  commentCount(id: any) {
+    this._ser.getCommentCount(id).subscribe((data) => {
+      this.commentcount = data
+    })
+  }
+
+  comments(id: any) {
+    this._ser.getComments(id).subscribe((data) => {
+      this.comment = data
+    })
+  }
+  likePOST = {
+    "userId": 4,
+    "storyId": 0
+  }
+  addLike() {
+    this.likePOST.storyId = this.parameter
+    this._ser.postLike(this.likePOST).subscribe();
+  }
 }

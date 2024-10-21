@@ -29,52 +29,49 @@
             </div>
             <div class="lower-content">
               <div class="title-box">
-                <div class="date-box">25 <span>Feb</span></div>
-                <h3>{{story.title}}</h3>
+                <div class="date-box">
+                  {{ story.storyDate | date: 'dd' }} <span>{{ story.storyDate | date: 'MMM' }}</span>
+                </div>
+                <h3>{{ story.title }}</h3>
                 <ul class="post-meta">
-                  <li>Pet Care</li>
-                  <li>20 Comments</li>
-                  <li><span class="icon fa fa-heart"></span> 196</li>
+                  <li><button class="btn btn-outline-primary" (click)="addLike()">Like</button></li>
+                  <li>{{commentcount}} Comments</li>
+                  <li><span class="icon fa fa-heart"></span> {{like}}</li>
                 </ul>
               </div>
               <div class="text">
-                <p>
+                
+                <div class="story-text">
                   {{story.storyText}}
-                </p>
-                <p>
-                  Reproachful lugubrious dry gazelle far lobster deftly shoddy and far checkedr
-                  more wow much darn far grudgingly yet speechlessly gosh where less away and
-                  adequate before upon by until respectful found a like authentically much
-                  after clapped impolite goodness showy witlessly the rhinoceros he the beaver
-                  the hello far excluding opossum gibber closed jeepers scowled crud more.
-                </p>
-                <div class="row clearfix">
-                  <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="image">
-                      <img src="assets/images/resource/news-11.jpg" alt="" />
+                  </div>
+                  
+                  <div class="row clearfix">
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                      <div class="image">
+                        <img src="assets/images/resource/news-11.jpg" alt="" />
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12">
+                      <p>
+                        Dry gazelle far lobster deftly shoddy and chek sar more wow much darn
+                        far grudgingly is sad speechlesy gosh where less away and adequat
+                        before upon until respectful found like authen tically much after.
+                      </p>
+                      <p>
+                        Clapped impolite goodness showy witlesly the rhinoceros the beaver
+                        the hello far excluding opossum gibbered closed jeper scowled cruds
+                        more away gazel petulantly crud lighthearted darn redid more ouch a
+                        banally.
+                      </p>
                     </div>
                   </div>
-                  <div class="col-md-5 col-sm-5 col-xs-12">
-                    <p>
-                      Dry gazelle far lobster deftly shoddy and chek sar more wow much darn
-                      far grudgingly is sad speechlesy gosh where less away and adequat
-                      before upon until respectful found like authen tically much after.
-                    </p>
-                    <p>
-                      Clapped impolite goodness showy witlesly the rhinoceros the beaver
-                      the hello far excluding opossum gibbered closed jeper scowled cruds
-                      more away gazel petulantly crud lighthearted darn redid more ouch a
-                      banally.
-                    </p>
-                  </div>
+                  <p>
+                    Acute yellow re-laid less or affirmatively elephant the forbade this gaudy
+                    thus for but but yawned that alas before less thus and serenely versus
+                    cannily the on because blind a cuckoo jeepers told blew held far hello far
+                    as the while private much lantern and less cockatoo returned disbanded into.
+                  </p>
                 </div>
-                <p>
-                  Acute yellow re-laid less or affirmatively elephant the forbade this gaudy
-                  thus for but but yawned that alas before less thus and serenely versus
-                  cannily the on because blind a cuckoo jeepers told blew held far hello far
-                  as the while private much lantern and less cockatoo returned disbanded into.
-                </p>
-              </div>
               <!--post-share-options-->
               <div class="post-share-options clearfix">
                 <div class="pull-left tags">
@@ -97,41 +94,25 @@
             <h2>Comments</h2>
           </div>
           <!--Comment Box-->
-          <div class="comment-box">
+          <div class="comment-box" *ngFor="let item of comment">
             <div class="comment">
               <div class="author-thumb"><img src="assets/images/resource/author-2.jpg" alt=""></div>
               <div class="comment-inner">
-                <div class="comment-info clearfix">
-                  <strong>Cindy Cambell</strong>
-                  <div class="comment-time">march 31, 2021</div>
+                <div class="comment-info clearfix" style="text-align: left;">
+                  <strong>{{item.user.fullName}}</strong>
+                  <div class="comment-time">
+                    {{ story.storyDate | date: 'MMMM d, yyyy' }}
+                  </div>
                 </div>
-                <div class="text">
-                  And one into considering ahead yet tepid far oriole pointed
-                  wildebeest jeepers contrary circa hello rolled alas goldfinch less apt
-                  wherever suitably.
+                <div class="text" style="text-align: left;">
+                  {{item.comment1}}
                 </div>
                 <a class="comment-reply" href="#">Reply</a>
               </div>
             </div>
           </div>
           <!--Comment Box-->
-          <div class="comment-box reply-comment">
-            <div class="comment">
-              <div class="author-thumb"><img src="assets/images/resource/author-3.jpg" alt=""></div>
-              <div class="comment-inner">
-                <div class="comment-info clearfix">
-                  <strong>Sandy Astral</strong>
-                  <div class="comment-time">march 31, 2021</div>
-                </div>
-                <div class="text">
-                  Well gaudy hound hired inset flailed luxuriant much followed
-                  orio less this maternal oh well unavoidable crudely aloof in more save
-                  groomed.
-                </div>
-                <a class="comment-reply" href="#">Reply</a>
-              </div>
-            </div>
-          </div>
+         
         </div>
         <!--End Comments Area-->
         <!-- Comment Form -->
