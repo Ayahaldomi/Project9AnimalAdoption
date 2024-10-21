@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.DTOs;
 using Project9Animal.Server.Models;
 
@@ -24,7 +25,7 @@ namespace Project9Animal.Server.Controllers
         }
 
         // GET: api/Animals1/5
-        [HttpGet("{id}")]
+        [HttpGet("Animals1{id}")]
         public IActionResult GetAnimal(int id)
         {
             var animal = _context.Animals.Find(id);
@@ -107,6 +108,53 @@ namespace Project9Animal.Server.Controllers
         {
             return _context.Animals.Any(e => e.AnimalId == id);
         }
+
+
+
+
+
+        [HttpGet("GetAnimals")]
+        public async Task<IActionResult> GetAllAnimals()
+        {
+            var animals = await _context.Animals
+      .Join(_context.Shelters,
+            animal => animal.ShelterId,
+            shelter => shelter.ShelterId,
+            (animal, shelter) => new
+            {
+                animal.AnimalId,
+                animal.Name,
+                animal.Breed,
+                animal.Age,
+                animal.Image1,
+                animal.AdoptionStatus,
+                ShelterName = shelter.ShelterName
+            })
+      .ToListAsync();
+
+
+            return Ok(animals);
+        }
+
+
+
+
+        [HttpGet("getImages/{ImageName}")]
+
+        public IActionResult getImage(string ImageName)
+        {
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "images", ImageName);
+
+            if (System.IO.File.Exists(pathImage))
+            {
+                return PhysicalFile(pathImage, "image/jpeg");
+
+            }
+            return NotFound();
+
+
+        }
+
     }
 }
 

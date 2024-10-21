@@ -11,13 +11,28 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
+//????? ????
+builder.Services.AddCors(option =>
+     option.AddPolicy("Develpoment", builder
+     =>
+     {
+         // ??? ??? ??? ????? ???????? ???? ??? ????? 
+         //builder.WithOrigins("http://localhost:5501");
+         builder.AllowAnyOrigin();
+         builder.AllowAnyMethod();
+         builder.AllowAnyHeader();
 
+
+
+     }
+
+     ));
 
 var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
-
+app.UseCors("Develpoment");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

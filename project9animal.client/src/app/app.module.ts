@@ -12,6 +12,13 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { ShowAnimalsComponent } from './show-animals/show-animals.component';
+import { AddAnimalsComponent } from './Admin/add-animals/add-animals.component';
+import { EditAnimalsComponent } from './Admin/edit-animals/edit-animals.component';
+
+import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
+import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +29,14 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
     AbuotComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShowAnimalsComponent,
+    AddAnimalsComponent,
+    EditAnimalsComponent,
+
+    AddShelterComponent,
+    EditShelterComponent,
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -33,10 +47,10 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+      { path: "ShowAnimals", component: ShowAnimalsComponent }
 
 
-
-
+      ,
 
 
       //AdminDashboard
