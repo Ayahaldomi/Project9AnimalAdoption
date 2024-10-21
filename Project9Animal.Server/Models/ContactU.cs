@@ -7,8 +7,6 @@ public partial class ContactU
 {
     public int Id { get; set; }
 
-    public int? UsersId { get; set; }
-
     public string? Message { get; set; }
 
     public string? Name { get; set; }
@@ -22,6 +20,4 @@ public partial class ContactU
     public string? ReplyMessage { get; set; }
 
     public DateTime? CreatedAt { get; set; }
-
-    public virtual User? Users { get; set; }
 }
