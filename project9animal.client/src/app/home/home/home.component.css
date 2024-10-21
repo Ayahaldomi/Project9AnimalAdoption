@@ -1,0 +1,21 @@
+
+.image-box {
+  width: 100%; /* Make sure the container takes up the full width */
+  height: 200px; /* Set a fixed height for the image container */
+  overflow: hidden; /* Prevent overflow of the image */
+  border-radius: 15px; /* Rounded corners */
+  margin-bottom: 20px; /* Space below the image */
+  position: relative;
+}
+
+.category-image {
+  width: 100%; /* Ensure the image fills the width of the container */
+  height: 100%; /* Ensure the image fills the height of the container */
+  object-fit: cover; /* Ensures the image covers the entire container without distortion */
+  border-radius: 15px; /* Match the rounded corners of the container */
+  transition: transform 0.3s ease; /* Animation for hover effect */
+}
+
+.image-box:hover .category-image {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
