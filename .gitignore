@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Project9Animal.Server/appsettings.json
 /Project9Animal.Server/Models/MyDbContext.cs
+/Project9Animal.Server/Models/MyDbContext .cs
+/Project9Animal.Server/appsettings .json
