@@ -24,7 +24,10 @@
       <div *ngFor="let story of successStories" class="news-block-two col-md-6 col-sm-12 col-xs-12">
         <div class="inner-box">
           <div class="image">
-            <a href="blog-single.html"><img src="https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg" alt="" /></a>
+            <a href="blog-single.html">
+              <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="Story Image" />
+            </a>
+
             <div class="post-date">{{ story.storyDate | date: 'dd' }} <span>{{ story.storyDate | date: 'MMM' }}</span></div>
           </div>
           <div class="lower-content">

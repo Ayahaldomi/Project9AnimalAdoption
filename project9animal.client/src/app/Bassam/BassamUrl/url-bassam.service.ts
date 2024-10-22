@@ -15,4 +15,9 @@ export class UrlBassamService {
   getSuccessStories(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}`);
   }
+  getImage(imageName: string): Observable<Blob> {
+    debugger;
+    const url = `${this.apiUrl}/getImage/${imageName}`;
+    return this.http.get(url, { responseType: 'blob' });
+  }
 }
