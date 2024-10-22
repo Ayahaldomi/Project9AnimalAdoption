@@ -13,7 +13,7 @@ namespace Project9Animal.Server.Controllers
     public class UsersController : ControllerBase
     {
         private readonly MyDbContext _context;
-
+        
         public UsersController(MyDbContext context)
         {
             _context = context;
@@ -72,6 +72,18 @@ namespace Project9Animal.Server.Controllers
         [HttpPost("AddUser")]
         public IActionResult PostUser([FromForm] AddUserDTO user)
         {
+            if (user.Password != user.confirmPassword)
+            {
+                return BadRequest("Passwords do not match");
+            }
+            var existingUser = _context.Users.FirstOrDefault(u => u.Email == user.Email);
+            if (existingUser != null)
+            {
+                return BadRequest("Email already exists");
+            }
+            //byte[] passwordHash;
+            //byte[] passwordSalt;
+            passwordHasherMethod.CreatePasswordHash(user.Password, out byte[] passwordHash, out byte[] passwordSalt);
             var newUser = new User
             {
                 FullName = user.FullName,
@@ -83,6 +95,9 @@ namespace Project9Animal.Server.Controllers
                 FinaincalStatus = user.FinaincalStatus,
                 HaveKids = user.HaveKids,
                 MoreDetails = user.MoreDetails,
+                HashPassword = passwordHash,
+                SaltPassword = passwordSalt
+
             };
             _context.Users.Add(newUser);
             _context.SaveChanges();
@@ -111,20 +126,25 @@ namespace Project9Animal.Server.Controllers
         public IActionResult login([FromForm] loginDTO userdto)
         {
             
-            var user = _context.Users.FirstOrDefault(x => x.Email == userdto.Email && x.Password==userdto.Password);
+            var user = _context.Users.FirstOrDefault(x => x.Email == userdto.Email );
 
             if (user == null )
             {
+                return BadRequest("user doesn't exist. please register first");
+            }
+            if (user == null || !passwordHasherMethod.VerifyPassword(userdto.Password, user.HashPassword, user.SaltPassword))
+            {
                 return Unauthorized("Invalid username or password.");
             }
-          
 
             return Ok(user);
+
 
         }
 
 
-            private bool UserExists(int id)
+
+        private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.UserId == id);
         }

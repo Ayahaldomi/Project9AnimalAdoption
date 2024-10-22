@@ -46,7 +46,19 @@ namespace Project9Animal.Server.Controllers
             return Ok(comments);
         }
 
-
+        [HttpPost("isItLiked")]
+        public IActionResult isItLiked([FromBody] LikePOST like)
+        {
+            var isExist = _context.Likes.FirstOrDefault(x => x.UserId == like.UserId && x.StoryId == like.StoryId);
+            if (isExist == null)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
+        }
         [HttpPost("addLike")]
         public IActionResult addLike([FromBody] LikePOST like) 
         {

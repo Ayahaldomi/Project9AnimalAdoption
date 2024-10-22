@@ -49,25 +49,23 @@ namespace Project9Animal.Server.Controllers
 
             return Ok(animals.ToList()); 
         }
-
-        [HttpGet("FilertName")]
-        public IActionResult GetAnimalsFilertName(string name)
-        {
-            return Ok(_context.Animals.Where(i => i.Name == name).ToList());
-        }
-        // GET: api/Animals1/5
-        [HttpGet("Animals1{id}")]
+        [HttpGet("Animals1/{id}")]
         public IActionResult GetAnimal(int id)
         {
-            var animal = _context.Animals.Find(id);
+            var animal = _context.Animals
+                .Include(a => a.Category) // تضمين الفئة
+                .Include(a => a.Shelter) // تضمين الملجأ
+                .FirstOrDefault(a => a.AnimalId == id); // العثور على الحيوان
 
             if (animal == null)
             {
                 return NotFound();
             }
 
+            // إرجاع كائن الحيوان مباشرة
             return Ok(animal);
         }
+
 
         // PUT: api/Animals1/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -238,71 +236,44 @@ namespace Project9Animal.Server.Controllers
 
         /////////////////
         ///
-        [HttpPut("UpdateAnimal1/{id}")]
+        [HttpPut("UpdateAnimal/{id}")]
         public async Task<IActionResult> UpdateAnimal(int id, [FromForm] AnimalDTO updatedAnimalDto)
         {
-   
-            var animal = await _context.Animals.FindAsync(id);
+            var animal = await _context.Animals
+                .Include(a => a.Shelter)
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(a => a.AnimalId == id);
+
             if (animal == null)
             {
                 return NotFound();
             }
 
-            
-            animal.Name = updatedAnimalDto.Name;
-            animal.CategoryId = updatedAnimalDto.CategoryId;
-            animal.ShelterId = updatedAnimalDto.ShelterId;
-            animal.Breed = updatedAnimalDto.Breed;
-            animal.Age = updatedAnimalDto.Age;
-            animal.Size = updatedAnimalDto.Size;
-            animal.Temperament = updatedAnimalDto.Temperament;
-            animal.SpecialNeeds = updatedAnimalDto.SpecialNeeds;
-            animal.Description = updatedAnimalDto.Description;
-            animal.AdoptionStatus = updatedAnimalDto.AdoptionStatus;
+   
+            animal.Name = string.IsNullOrWhiteSpace(updatedAnimalDto.Name) ? animal.Name : updatedAnimalDto.Name;
+            animal.CategoryId = updatedAnimalDto.CategoryId != 0 ? updatedAnimalDto.CategoryId : animal.CategoryId;
 
-    
+          
+            if (updatedAnimalDto.ShelterId != 0)
+            {
+                animal.ShelterId = updatedAnimalDto.ShelterId;
+            }
+
+            animal.Breed = string.IsNullOrWhiteSpace(updatedAnimalDto.Breed) ? animal.Breed : updatedAnimalDto.Breed;
+            animal.Age = updatedAnimalDto.Age != 0 ? updatedAnimalDto.Age : animal.Age;
+            animal.Size = string.IsNullOrWhiteSpace(updatedAnimalDto.Size) ? animal.Size : updatedAnimalDto.Size;
+            animal.Temperament = string.IsNullOrWhiteSpace(updatedAnimalDto.Temperament) ? animal.Temperament : updatedAnimalDto.Temperament;
+            animal.SpecialNeeds = string.IsNullOrWhiteSpace(updatedAnimalDto.SpecialNeeds) ? animal.SpecialNeeds : updatedAnimalDto.SpecialNeeds;
+            animal.Description = string.IsNullOrWhiteSpace(updatedAnimalDto.Description) ? animal.Description : updatedAnimalDto.Description;
+            animal.AdoptionStatus = string.IsNullOrWhiteSpace(updatedAnimalDto.AdoptionStatus) ? animal.AdoptionStatus : updatedAnimalDto.AdoptionStatus;
+
             var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-            if (updatedAnimalDto.Image1 != null)
-            {
-                var image1Path = Path.Combine(folder, updatedAnimalDto.Image1.FileName);
-                using (var stream = new FileStream(image1Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image1.CopyToAsync(stream);
-                }
-                animal.Image1 = updatedAnimalDto.Image1.FileName;
-            }
-
-            if (updatedAnimalDto.Image2 != null)
-            {
-                var image2Path = Path.Combine(folder, updatedAnimalDto.Image2.FileName);
-                using (var stream = new FileStream(image2Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image2.CopyToAsync(stream);
-                }
-                animal.Image2 = updatedAnimalDto.Image2.FileName;
-            }
-
-            if (updatedAnimalDto.Image3 != null)
-            {
-                var image3Path = Path.Combine(folder, updatedAnimalDto.Image3.FileName);
-                using (var stream = new FileStream(image3Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image3.CopyToAsync(stream);
-                }
-                animal.Image3 = updatedAnimalDto.Image3.FileName;
-            }
-
-            if (updatedAnimalDto.Image4 != null)
-            {
-                var image4Path = Path.Combine(folder, updatedAnimalDto.Image4.FileName);
-                using (var stream = new FileStream(image4Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image4.CopyToAsync(stream);
-                }
-                animal.Image4 = updatedAnimalDto.Image4.FileName;
-            }
+            await SaveImage(updatedAnimalDto.Image1, folder, animal, (img) => animal.Image1 = img);
+            await SaveImage(updatedAnimalDto.Image2, folder, animal, (img) => animal.Image2 = img);
+            await SaveImage(updatedAnimalDto.Image3, folder, animal, (img) => animal.Image3 = img);
+            await SaveImage(updatedAnimalDto.Image4, folder, animal, (img) => animal.Image4 = img);
 
             try
             {
@@ -314,19 +285,36 @@ namespace Project9Animal.Server.Controllers
                 else throw;
             }
 
-            return NoContent();
+            return Ok(new
+            {
+                animal,
+                ShelterName = animal.Shelter?.ShelterName,
+                CategoryName = animal.Category?.Name
+            });
         }
 
+
+        private async Task SaveImage(IFormFile imageFile, string folder, Animal animal, Action<string> setImage)
+        {
+            if (imageFile != null)
+            {
+                var imagePath = Path.Combine(folder, imageFile.FileName);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                setImage(imageFile.FileName);
+            }
+        }
 
         private bool DoesAnimalExist(int id)
         {
             return _context.Animals.Any(e => e.AnimalId == id);
         }
-        //////////////////////
-       [HttpPost("AddAnimal")]
+
+        [HttpPost("AddAnimal")]
         public async Task<IActionResult> AddAnimal([FromForm] AnimalDTO newAnimalDto)
         {
-        
             var animal = new Animal
             {
                 Name = newAnimalDto.Name,
@@ -341,7 +329,7 @@ namespace Project9Animal.Server.Controllers
                 AdoptionStatus = newAnimalDto.AdoptionStatus
             };
 
-        
+            // حفظ الصور
             var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
@@ -385,7 +373,7 @@ namespace Project9Animal.Server.Controllers
                 animal.Image4 = newAnimalDto.Image4.FileName;
             }
 
-          
+            // إضافة الحيوان إلى قاعدة البيانات
             _context.Animals.Add(animal);
 
             try
@@ -397,7 +385,8 @@ namespace Project9Animal.Server.Controllers
                 return StatusCode(500, $"Error saving animal: {ex.Message}");
             }
 
-            return CreatedAtAction("GetAnimalById", new { id = animal.AnimalId }, animal);
+            // إرجاع استجابة نجاح مع تفاصيل الحيوان المضاف
+            return Ok();
         }
 
 

@@ -27,6 +27,10 @@ export class AyahURLService {
     return this.http.get<any>(`${this.staticData}/commentsCount/${id}`)
   }
 
+  LikeIsIt(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/isItLiked`, data)
+  }
+
   postLike(data: any): Observable<any> {
     return this.http.post<any>(`${this.staticData}/addLike`, data)
   }

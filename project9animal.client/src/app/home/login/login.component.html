@@ -1,4 +1,4 @@
-<!--<div class="main-wrapper pet login">
+<div class="main-wrapper pet login">
 
 
 
@@ -21,18 +21,18 @@
               </h3>
             </div>
             <div class="faq wow fadeInRight mt-4">
-              <form  #addUser="ngForm" (ngSubmit)="addNewUser(addUser.value)">
+              <form  #login="ngForm" (ngSubmit)="loginUser(login.value)">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group">
                       <input type="email" name="email" id="email" placeholder="Email"
-                             class="form-control" required>
+                             class="form-control" required ngModel> 
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group">
-                      <input type="password" id="password" class="form-control"
-                             placeholder="Password" required>
+                      <input type="password" name="password" id="password" class="form-control"
+                             placeholder="Password" required ngModel>
                     </div>
                   </div>
                   <div class="link text-center">
@@ -90,4 +90,4 @@
   </div>
 
 
-</div>-->
+</div>
