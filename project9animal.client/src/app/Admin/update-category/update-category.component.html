@@ -20,6 +20,8 @@
 <form #UpdateCategory="ngForm" (ngSubmit)="updateCategory(UpdateCategory.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
   <!-- CSRF Token (if needed) -->
   <input type="hidden" name="__RequestVerificationToken" value="TOKEN_VALUE">
+  <input type="hidden" name="catId" ngModel [value]="categoryData?.id">
+
 
   <h2 style="text-align: center; margin-bottom: 20px;">Add Category</h2>
 
@@ -27,14 +29,14 @@
     <!-- Title Field -->
     <div class="form-group" style="margin-bottom: 15px;">
       <label for="Title" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Category Name</label>
-      <input type="text" id="Title" name="Name" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+      <input type="text" id="Title" name="Name" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel [value]="categoryData?.name">
       <span class="text-danger" id="Title-error" style="color: red; font-size: 0.875em;"></span>
     </div>
 
 
     <div class="form-group" style="margin-bottom: 15px;">
       <label for="Title" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Description</label>
-      <input type="text" id="Title" name="Description" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+      <input type="text" id="Title" name="Description" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel [value]="categoryData?.description">
       <span class="text-danger" id="Title-error" style="color: red; font-size: 0.875em;"></span>
     </div>
 
@@ -44,7 +46,10 @@
       <input type="file" id="Image" name="Image" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel (change)="changeImageEvent($event)">
       <span class="text-danger" id="Image-error" style="color: red; font-size: 0.875em;"></span>
     </div>
-
+    <!--<img *ngIf="categoryData.image"
+         [src]="'https://localhost:44376/api/AnimalCategory/getImage/' + categoryData.image"
+         alt="Category Image"
+         width="150" />-->
     <!-- Submit Button -->
     <div class="form-group" style="text-align: center;">
       <button type="submit" class="btn btn-primary" style="padding: 10px 20px; background-color: #007bff; border: none; border-radius: 5px; color: white; font-size: 1em; cursor: pointer;">Submit</button>

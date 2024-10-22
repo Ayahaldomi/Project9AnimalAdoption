@@ -34,4 +34,8 @@ export class UrlService {
   UpdateCategory(id: number, data: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/AnimalCategory/UpdateCategory/${id}`, data);
   }
+  getCategoryById(id: number): Observable<any> {
+    
+    return this.http.get<any>(`${this.baseUrl}/AnimalCategory/GetCategoryById/${id}`);
+  }
 }

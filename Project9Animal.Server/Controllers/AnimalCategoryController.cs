@@ -152,6 +152,21 @@ namespace Project9Animal.Server.Controllers
             var categories = _context.Categories.ToList();
             return Ok(categories);
         }
+        [HttpGet("GetCategoryById/{id}")]
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            // Find the category by ID
+            var category = await _context.Categories.FindAsync(id);
+
+            if (category == null)
+            {
+                return NotFound(new { message = "Category not found." });
+            }
+
+            // Return the category details
+            return Ok(category);
+        }
+
         [HttpGet("getImage/{imageName}")]
         public IActionResult getImage(string imageName)
         {

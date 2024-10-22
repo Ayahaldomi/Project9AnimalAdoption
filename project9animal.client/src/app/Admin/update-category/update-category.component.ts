@@ -22,23 +22,23 @@ export class UpdateCategoryComponent {
 
   ngOnInit() {
     if (this.param) {
-    //  this.loadCategoryData(); // Load the category data if ID is present
+      this.loadCategoryData(); // Load the category data if ID is present
     } else {
       alert('Category ID not found.');
     }
   }
 
   //// Load the current category data for the form
-  //loadCategoryData() {
-  //  this._ser.getCategoryById(this.param!).subscribe(
-  //    (data) => {
-  //      this.categoryData = data; // Populate form with the existing data
-  //    },
-  //    (error) => {
-  //      alert('Error loading category data: ' + error.message);
-  //    }
-  //  );
-  //}
+  loadCategoryData() {
+    this._ser.getCategoryById(this.param!).subscribe(
+      (data) => {
+        this.categoryData = data; // Populate form with the existing data
+      },
+      (error) => {
+        alert('Error loading category data: ' + error.message);
+      }
+    );
+  }
 
   // When the user selects a new image
   changeImageEvent(event: any) {
