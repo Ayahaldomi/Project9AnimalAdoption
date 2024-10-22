@@ -53,21 +53,21 @@
               <div class="overlay-inner">
                 <div class="content">
                   <ul>
-                    <li><a (click)="viewDetails(animal.animalId)">view profile</a></li>
-                    <li class="share"><a (click)="viewDetails(animal.animalId)"><span class="fa fa-share-alt"></span></a></li>
+                    <li><a routerLink="/AnimalsDetails/{{animal.animalId}}">view profile</a></li>
+                    <li class="share"><a routerLink="/AnimalsDetails/{{animal.animalId}}"><span class="fa fa-share-alt"></span></a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="lower-content">
-            <h3><a (click)="viewDetails(animal.animalId)">{{animal.name}}</a></h3>
+            <h3><a routerLink="/AnimalsDetails/{{animal.animalId}}">{{animal.name}}</a></h3>
             <ul>
               <li>{{animal.age}}</li>
               <li>{{animal.breed}}</li>
               <li>{{animal.adoptionStatus}}</li>
             </ul>
-            <a (click)="viewDetails(animal.id)" class="theme-btn btn-style-eight">adopt me</a>
+            <a routerLink="/AnimalsDetails/{{animal.animalId}}" class="theme-btn btn-style-eight">adopt me</a>
           </div>
         </div>
       </div>

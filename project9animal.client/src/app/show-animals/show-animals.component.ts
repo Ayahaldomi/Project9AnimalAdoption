@@ -116,9 +116,4 @@ export class ShowAnimalsComponent implements OnInit {
 
 
 
-  viewDetails(animalId: number): void {
-    this.rawaahService.getAnimalByID(animalId).subscribe(data => {
-      console.log(data);  
-    });
-  }
 }

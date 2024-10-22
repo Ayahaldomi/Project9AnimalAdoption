@@ -68,11 +68,10 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
 
 
       { path: "ShowAnimals", component: ShowAnimalsComponent },
-      { path: "AnimalsDetails", component: AnimalsDetailsComponent }
+      { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent }
 
 
       ,
-
 
 
       //AdminDashboard
@@ -83,11 +82,12 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
           {
              path: "register", component: RegisterComponent ,
           },
-          { path:"getAllCategory", component: GetAllCategoryComponent }]
 
-      },
+          { path:"getAllCategory", component: GetAllCategoryComponent }
 
-            path: "register",
+      ,
+
+          { path: "register",
             component: RegisterComponent
           },
           {
