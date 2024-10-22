@@ -78,7 +78,7 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
       {
         path: "dashboard",
         component: DashboardComponent,
-        children: [
+     children: [
           {
             path: "register", component: RegisterComponent,
           },
@@ -86,18 +86,25 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
           { path: "getAllCategory", component: GetAllCategoryComponent }
 
           ,
-      ,
+      
           {
             path: "dashboard", component: DashboardComponent, children: [
 
-          {
-            path: "register",
+              {
+                path: "register",
+              },
 
-              { path: "getAllCategory", component: GetAllCategoryComponent }
+              { path: "getAllCategory", component: GetAllCategoryComponent },
+              { path: "addAnimalCategory", component: AddAnimalCategoryComponent },
+              {
+                path: "getAnimalsAdmin",
+                component: GetAnimalsAdminComponent
+              },
+              { path: "EditAnimals/:id", component: EditAnimalsComponent }
 
             ]
           },
-
+     
           { path: "register",
             component: RegisterComponent
           },
@@ -111,6 +118,8 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
         ]
 
       },
+
+
 
 
     ])
