@@ -90,12 +90,15 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
           { path: "register",
             component: RegisterComponent
           },
+          { path: "getAllCategory", component: GetAllCategoryComponent },
+          { path: "addAnimalCategory", component: AddAnimalCategoryComponent },
           {
             path: "getAnimalsAdmin",
             component: GetAnimalsAdminComponent
           }
         ]
-      }
+
+      },
 
 
     ])
