@@ -19,14 +19,14 @@ export class LoginComponent {
     for (let k in data) {
       form.append(k, data[k])
     }
-
+    debugger
 
     this._ser.login(form).subscribe((newData) => {
       alert("logged in successfully")
       //console.log(data)
 
-      //localStorage.setItem("userId", newData.userId)
-      //debugger
+      localStorage.setItem("userId", newData.userId)
+      debugger
       //this._ser['userId'].next(newData.userId)
 
       //debugger
