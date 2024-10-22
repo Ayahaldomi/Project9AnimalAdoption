@@ -68,6 +68,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
+      { path: "AdoptionForm", component: AdoptionFormComponent },
 
 
       //AdminDashboard
