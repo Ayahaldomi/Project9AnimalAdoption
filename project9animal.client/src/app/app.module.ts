@@ -23,6 +23,7 @@ import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
 import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
+import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
 
 
@@ -50,6 +51,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
     EditShelterComponent,
     AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
+    BlogComponent,
     AdoptionFormComponent,
 
   ],
@@ -68,6 +70,10 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
+      { path: "AdoptionForm", component: AdoptionFormComponent },
+
+
+      { path: "app-blog", component: BlogComponent },
 
 
       //AdminDashboard
