@@ -9,7 +9,9 @@ import { Location } from '@angular/common';
   templateUrl: './our-community-details.component.html',
   styleUrl: './our-community-details.component.css'
 })
+
 export class OurCommunityDetailsComponent {
+
   parameter: any;
   story: any;
   like: any;
@@ -82,4 +84,48 @@ export class OurCommunityDetailsComponent {
    
 
   }
+
+  openTwitterShare(event: MouseEvent) {
+    event.preventDefault(); // Prevent the default action of opening the link in a new tab
+    const width = 600;
+    const height = 400;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+
+    const twitterUrl = `https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url=${this.pageUrl}`;
+
+    window.open(
+      twitterUrl,
+      'Share on Twitter',
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  }
+
+  openFacebookShare(event: MouseEvent) {
+    event.preventDefault(); // Prevent default anchor behavior
+    const width = 600;
+    const height = 400;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+
+    // Replace with the URL you want to share
+    //const facebookUrl = `https://www.facebook.com/sharer/sharer.php?&quote=${encodeURIComponent(`Check out this awesome content! ${this.pageUrl}`)}`;
+    //const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.pageUrl)}&quote=${encodeURIComponent('Check out this awesome content!')}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+
+    window.open(
+      facebookUrl,
+      'Share on Facebook',
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  }
+
+  shareOnFacebook() {
+    const url = 'https://yourwebsite.com/page';  // Page URL with OG meta tags
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+
+
 }
