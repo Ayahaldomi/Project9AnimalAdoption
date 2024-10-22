@@ -55,15 +55,15 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
     FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
-    FormsModule  
-,
+    FormsModule
+    ,
     RouterModule.forRoot([
       //Ueser
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-     
+
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
 
 
@@ -80,20 +80,15 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
         component: DashboardComponent,
         children: [
           {
-             path: "register", component: RegisterComponent ,
+            path: "register", component: RegisterComponent,
           },
-
-          { path:"getAllCategory", component: GetAllCategoryComponent }
-
-      ,
-        path: "dashboard", component: DashboardComponent, children: [
-
 
           { path: "getAllCategory", component: GetAllCategoryComponent }
 
-        ]
+          ,
 
-          { path: "register",
+          {
+            path: "register",
             component: RegisterComponent
           },
           { path: "getAllCategory", component: GetAllCategoryComponent },
@@ -101,7 +96,8 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
           {
             path: "getAnimalsAdmin",
             component: GetAnimalsAdminComponent
-          }
+          },
+          { path: "EditAnimals/:id", component: EditAnimalsComponent }
         ]
 
       },
@@ -111,7 +107,7 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
   ],
   providers: [],
   bootstrap: [AppComponent],
-   
- 
+
+
 })
 export class AppModule { }
