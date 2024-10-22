@@ -25,6 +25,7 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+    GitShelterComponent,
 
   ],
   imports: [

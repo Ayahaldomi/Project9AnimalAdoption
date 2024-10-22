@@ -68,6 +68,10 @@ export class RawaahServicesService {
   getShelters(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/Shelters`);
   }
+  
+  deleteAnimals(animalId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/Animals1/${animalId}`);
+  }
 
 
 }
