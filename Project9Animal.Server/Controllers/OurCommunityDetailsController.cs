@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
 using Project9Animal.Server.Models;
+using System.Xml.Linq;
 
 namespace Project9Animal.Server.Controllers
 {
@@ -41,6 +42,7 @@ namespace Project9Animal.Server.Controllers
             var comments = _context.Comments
                 .Where(c => c.StoryId == id)
                 .Include(c => c.User)
+                .Include(c => c.Replies)
                 .ToList();
             
             return Ok(comments);
@@ -82,5 +84,24 @@ namespace Project9Animal.Server.Controllers
             }
             
         }
+
+
+        [HttpPost("commentPOST")]
+        public IActionResult commentPOST([FromBody] commentPostDTO comment)
+        {
+            var newcomment = new Comment
+            {
+                StoryId = comment.StoryId,
+                UserId = comment.UserId,
+                Comment1 = comment.Comment1,
+                CommentDate = DateTime.Now,
+            };
+            _context.Comments.Add(newcomment);
+            _context.SaveChanges();
+            return Ok(newcomment);
+        }
+
     }
+
+
 }
