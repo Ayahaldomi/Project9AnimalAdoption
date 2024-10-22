@@ -62,36 +62,8 @@ namespace Project9Animal.Server.Controllers
                 return NotFound();
             }
 
-            // إرجاع جميع البيانات المطلوبة
-            return Ok(new
-            {
-                animalId = animal.AnimalId,
-                name = animal.Name,
-              
-                breed = animal.Breed,
-                age = animal.Age,
-                size = animal.Size,
-                temperament = animal.Temperament,
-                specialNeeds = animal.SpecialNeeds,
-                description = animal.Description,
-                adoptionStatus = animal.AdoptionStatus,
-                image1 = animal.Image1,
-                image2 = animal.Image2,
-                image3 = animal.Image3,
-                image4 = animal.Image4,
-                adoptionApplications = animal.AdoptionApplications,
-                category = new
-                {
-                    id = animal.Category.Id,
-                    name = animal.Category.Name 
-                },
-                shelter = new
-                {
-                    id = animal.Shelter.ShelterId, 
-                    name = animal.Shelter.ShelterName 
-                },
-                successStories = animal.SuccessStories
-            });
+            // إرجاع كائن الحيوان مباشرة
+            return Ok(animal);
         }
 
 
@@ -267,17 +239,26 @@ namespace Project9Animal.Server.Controllers
         [HttpPut("UpdateAnimal/{id}")]
         public async Task<IActionResult> UpdateAnimal(int id, [FromForm] AnimalDTO updatedAnimalDto)
         {
-     
-            var animal = await _context.Animals.FindAsync(id);
+            var animal = await _context.Animals
+                .Include(a => a.Shelter)
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(a => a.AnimalId == id);
+
             if (animal == null)
             {
                 return NotFound();
             }
 
-    
+   
             animal.Name = string.IsNullOrWhiteSpace(updatedAnimalDto.Name) ? animal.Name : updatedAnimalDto.Name;
             animal.CategoryId = updatedAnimalDto.CategoryId != 0 ? updatedAnimalDto.CategoryId : animal.CategoryId;
-            animal.ShelterId = updatedAnimalDto.ShelterId != 0 ? updatedAnimalDto.ShelterId : animal.ShelterId;
+
+          
+            if (updatedAnimalDto.ShelterId != 0)
+            {
+                animal.ShelterId = updatedAnimalDto.ShelterId;
+            }
+
             animal.Breed = string.IsNullOrWhiteSpace(updatedAnimalDto.Breed) ? animal.Breed : updatedAnimalDto.Breed;
             animal.Age = updatedAnimalDto.Age != 0 ? updatedAnimalDto.Age : animal.Age;
             animal.Size = string.IsNullOrWhiteSpace(updatedAnimalDto.Size) ? animal.Size : updatedAnimalDto.Size;
@@ -286,49 +267,13 @@ namespace Project9Animal.Server.Controllers
             animal.Description = string.IsNullOrWhiteSpace(updatedAnimalDto.Description) ? animal.Description : updatedAnimalDto.Description;
             animal.AdoptionStatus = string.IsNullOrWhiteSpace(updatedAnimalDto.AdoptionStatus) ? animal.AdoptionStatus : updatedAnimalDto.AdoptionStatus;
 
-    
             var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-            if (updatedAnimalDto.Image1 != null)
-            {
-                var image1Path = Path.Combine(folder, updatedAnimalDto.Image1.FileName);
-                using (var stream = new FileStream(image1Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image1.CopyToAsync(stream);
-                }
-                animal.Image1 = updatedAnimalDto.Image1.FileName;
-            }
-
-            if (updatedAnimalDto.Image2 != null)
-            {
-                var image2Path = Path.Combine(folder, updatedAnimalDto.Image2.FileName);
-                using (var stream = new FileStream(image2Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image2.CopyToAsync(stream);
-                }
-                animal.Image2 = updatedAnimalDto.Image2.FileName;
-            }
-
-            if (updatedAnimalDto.Image3 != null)
-            {
-                var image3Path = Path.Combine(folder, updatedAnimalDto.Image3.FileName);
-                using (var stream = new FileStream(image3Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image3.CopyToAsync(stream);
-                }
-                animal.Image3 = updatedAnimalDto.Image3.FileName;
-            }
-
-            if (updatedAnimalDto.Image4 != null)
-            {
-                var image4Path = Path.Combine(folder, updatedAnimalDto.Image4.FileName);
-                using (var stream = new FileStream(image4Path, FileMode.Create))
-                {
-                    await updatedAnimalDto.Image4.CopyToAsync(stream);
-                }
-                animal.Image4 = updatedAnimalDto.Image4.FileName;
-            }
+            await SaveImage(updatedAnimalDto.Image1, folder, animal, (img) => animal.Image1 = img);
+            await SaveImage(updatedAnimalDto.Image2, folder, animal, (img) => animal.Image2 = img);
+            await SaveImage(updatedAnimalDto.Image3, folder, animal, (img) => animal.Image3 = img);
+            await SaveImage(updatedAnimalDto.Image4, folder, animal, (img) => animal.Image4 = img);
 
             try
             {
@@ -340,7 +285,26 @@ namespace Project9Animal.Server.Controllers
                 else throw;
             }
 
-            return NoContent();
+            return Ok(new
+            {
+                animal,
+                ShelterName = animal.Shelter?.ShelterName,
+                CategoryName = animal.Category?.Name
+            });
+        }
+
+
+        private async Task SaveImage(IFormFile imageFile, string folder, Animal animal, Action<string> setImage)
+        {
+            if (imageFile != null)
+            {
+                var imagePath = Path.Combine(folder, imageFile.FileName);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                setImage(imageFile.FileName);
+            }
         }
 
         private bool DoesAnimalExist(int id)
