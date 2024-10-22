@@ -34,7 +34,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
     RegisterComponent,
     DashboardComponent,
     AddAnimalCategoryComponent,
-    GetAllCategoryComponent
+    GetAllCategoryComponent,
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     DashboardComponent,
@@ -72,7 +72,9 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
           {
              path: "register", component: RegisterComponent ,
           },
-          { path:"getAllCategory", component: GetAllCategoryComponent }]
+          { path: "getAllCategory", component: GetAllCategoryComponent },
+          { path: "addAnimalCategory", component: AddAnimalCategoryComponent }
+        ]
 
       },
 
