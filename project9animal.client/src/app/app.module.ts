@@ -72,10 +72,11 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
       //AdminDashboard
       {
         path: "dashboard", component: DashboardComponent, children: [
-          {
-             path: "register", component: RegisterComponent ,
-          },
-          { path:"getAllCategory", component: GetAllCategoryComponent }]
+
+
+          { path: "getAllCategory", component: GetAllCategoryComponent }
+
+        ]
 
       },
 
