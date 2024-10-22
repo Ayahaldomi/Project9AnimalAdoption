@@ -21,4 +21,16 @@ export class GetAnimalsAdminComponent {
     })
   }
 
+  deleteAnimals(id: number) {
+    if (confirm("Are you sure you want to delete this instructor?")) {
+      this._ser.deleteAnimals(id).subscribe(
+        (response) => {
+          this.getAllAnimalsAdmin(); // Refresh the instructor list after deletion
+        },
+        (error) => {
+          console.error('Error deleting instructor:', error);
+        }
+      );
+    }
+  }
 }
