@@ -1,7 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    // Prevent circular references in JSON serialization
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+
+   
+});
 
 // Add services to the container.
 

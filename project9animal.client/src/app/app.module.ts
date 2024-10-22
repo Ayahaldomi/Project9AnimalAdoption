@@ -13,6 +13,7 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-animal-category.component';
+import { GetAllCategoryComponent } from './Admin/get-all-category/get-all-category.component';
 import { OurCommunityDetailsComponent } from './ayah/our-community-details/our-community-details.component';
 import { ShowAnimalsComponent } from './show-animals/show-animals.component';
 import { AddAnimalsComponent } from './Admin/add-animals/add-animals.component';
@@ -20,6 +21,7 @@ import { EditAnimalsComponent } from './Admin/edit-animals/edit-animals.componen
 import { FormsModule } from '@angular/forms';
 import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
+import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 
 
@@ -34,6 +36,9 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
     RegisterComponent,
     DashboardComponent,
     AddAnimalCategoryComponent,
+    GetAllCategoryComponent,
+    AddAnimalCategoryComponent,
+    OurCommunityDetailsComponent,
     OurCommunityDetailsComponent,
     DashboardComponent,
     ShowAnimalsComponent,
@@ -42,6 +47,7 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
 
     AddShelterComponent,
     EditShelterComponent,
+    AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
 
   ],
@@ -57,13 +63,16 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+     
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
 
 
-      { path: "ShowAnimals", component: ShowAnimalsComponent }
+      { path: "ShowAnimals", component: ShowAnimalsComponent },
+      { path: "AnimalsDetails", component: AnimalsDetailsComponent }
 
 
       ,
+
 
 
       //AdminDashboard
@@ -72,6 +81,12 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
         component: DashboardComponent,
         children: [
           {
+             path: "register", component: RegisterComponent ,
+          },
+          { path:"getAllCategory", component: GetAllCategoryComponent }]
+
+      },
+
             path: "register",
             component: RegisterComponent
           },
