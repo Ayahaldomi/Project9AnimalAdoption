@@ -90,6 +90,8 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
           { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
+          { path: "GitShelter", component: GitShelterComponent },
+          { path: "AddShelter", component: AddShelterComponent},
 
         ]
 

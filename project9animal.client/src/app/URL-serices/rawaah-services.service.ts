@@ -61,6 +61,9 @@ export class RawaahServicesService {
     return this.http.post<any>(`${this.baseUrl}/Animals1/AddAnimal`, data);
   }
 
+  addShelters(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Shelters`, data);
+  }
   getCategories(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/AnimalCategory/GetAllCategories`);
   }
@@ -73,6 +76,9 @@ export class RawaahServicesService {
     return this.http.delete<any>(`${this.baseUrl}/Animals1/${animalId}`);
   }
 
+  deleteShelters(animalId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/Animals1/${animalId}`);
+  }
 
 }
 
