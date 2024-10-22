@@ -23,6 +23,7 @@ import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
 import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
+import { BlogComponent } from './Bassam/blog/blog.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
     EditShelterComponent,
     AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
+    BlogComponent,
 
   ],
   imports: [
@@ -66,6 +68,9 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
+
+
+      { path: "app-blog", component: BlogComponent },
 
 
       //AdminDashboard
