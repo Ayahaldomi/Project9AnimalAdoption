@@ -13,6 +13,7 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-animal-category.component';
+import { GetAllCategoryComponent } from './Admin/get-all-category/get-all-category.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-anim
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    AddAnimalCategoryComponent
+    AddAnimalCategoryComponent,
+    GetAllCategoryComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -35,6 +37,7 @@ import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-anim
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+     
 
 
 
@@ -46,7 +49,8 @@ import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-anim
         path: "dashboard", component: DashboardComponent, children: [
           {
              path: "register", component: RegisterComponent ,
-          }]
+          },
+          { path:"getAllCategory", component: GetAllCategoryComponent }]
 
       },
 

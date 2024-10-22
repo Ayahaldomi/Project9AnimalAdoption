@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
 using Project9Animal.Server.Models;
 
@@ -16,7 +17,7 @@ namespace Project9Animal.Server.Controllers
         {
             _context = context;
         }
-        [HttpPost]
+        [HttpPost("AddCategory")]
         public async Task<IActionResult> AddCategory([FromForm] CategoryCreateDto categoryDto)
         {
             // Validate request data
@@ -65,6 +66,12 @@ namespace Project9Animal.Server.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(category);
+        }
+        [HttpGet("GetAllCategories")]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var categories = await _context.Categories.ToListAsync();
+            return Ok(categories);
         }
 
     }
