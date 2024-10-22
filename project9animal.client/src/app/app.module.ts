@@ -58,63 +58,27 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
     FormsModule
     ,
     RouterModule.forRoot([
-      //Ueser
+      //User
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
-
-
       { path: "ShowAnimals", component: ShowAnimalsComponent },
-      { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent }
-
-
-      ,
+      { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
 
 
       //AdminDashboard
       {
         path: "dashboard",
         component: DashboardComponent,
-     children: [
-          {
-            path: "register", component: RegisterComponent,
-          },
-
-          { path: "getAllCategory", component: GetAllCategoryComponent }
-
-          ,
-      
-          {
-            path: "dashboard", component: DashboardComponent, children: [
-
-              {
-                path: "register",
-              },
-
-              { path: "getAllCategory", component: GetAllCategoryComponent },
-              { path: "addAnimalCategory", component: AddAnimalCategoryComponent },
-              {
-                path: "getAnimalsAdmin",
-                component: GetAnimalsAdminComponent
-              },
-              { path: "EditAnimals/:id", component: EditAnimalsComponent }
-
-            ]
-          },
-     
-          { path: "register",
-            component: RegisterComponent
-          },
+        children: [
           { path: "getAllCategory", component: GetAllCategoryComponent },
           { path: "addAnimalCategory", component: AddAnimalCategoryComponent },
-          {
-            path: "getAnimalsAdmin",
-            component: GetAnimalsAdminComponent
-          },
-          { path: "EditAnimals/:id", component: EditAnimalsComponent }
+          { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
+          { path: "EditAnimals/:id", component: EditAnimalsComponent },
+          { path: "addAnimal", component: AddAnimalsComponent },
+
         ]
 
       },
