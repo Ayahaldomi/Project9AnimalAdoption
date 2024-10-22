@@ -21,37 +21,42 @@
                 </h3>
               </div>
               <div class="faq wow fadeInRight mt-4">
-                <form method="POST">
+                <form #addUser="ngForm" (ngSubmit)="addNewUser(addUser.value)">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group">
                         <input type="text" name="fullName" id="fullName" placeholder="Full Name"
-                               class="form-control" required>
+                               class="form-control" required ngModel>
                       </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group">
                         <input type="email" name="email" id="email" placeholder="Email"
-                               class="form-control" required>
+                               class="form-control" required ngModel>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control"
+                               placeholder="Password" required ngModel>
                       </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group">
                         <input type="password" id="password" class="form-control"
-                               placeholder="Password" required>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="form-group">
-                        <input type="password" id="password" class="form-control"
-                               placeholder="Confirm Password" required>
+                               placeholder="Confirm Password" required ngModel>
                       </div>
                     </div>
 
+                    <div class="link text-center">
+                       have an account?
+                      <a routerLink="/login" class="d-inline-block" title="Register">Login</a>
 
+                    </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group text-center mt-4">
-                        <button type="submit" class="btn form-control">Signup</button>
+                        <button  type="submit"><a  routerLink="/login" class="btn form-control">Signup</a></button>
+                       
                       </div>
                     </div>
                   </div>

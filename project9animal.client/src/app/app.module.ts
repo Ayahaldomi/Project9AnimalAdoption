@@ -60,22 +60,14 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
     FormsModule
     ,
     RouterModule.forRoot([
-      //Ueser
+      //User
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
-
-
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
-      { path: "AdoptionForm" , component: AdoptionFormComponent}
-
-
-
-      ,
 
 
       //AdminDashboard
@@ -83,23 +75,12 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
         path: "dashboard",
         component: DashboardComponent,
         children: [
-          {
-             path: "register", component: RegisterComponent ,
-          },
-
-          { path:"getAllCategory", component: GetAllCategoryComponent }
-
-      ,
-
-          { path: "register",
-            component: RegisterComponent
-          },
           { path: "getAllCategory", component: GetAllCategoryComponent },
           { path: "addAnimalCategory", component: AddAnimalCategoryComponent },
-          {
-            path: "getAnimalsAdmin",
-            component: GetAnimalsAdminComponent
-          }
+          { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
+          { path: "EditAnimals/:id", component: EditAnimalsComponent },
+          { path: "addAnimal", component: AddAnimalsComponent },
+
         ]
 
       },
@@ -109,7 +90,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
   ],
   providers: [],
   bootstrap: [AppComponent],
-   
- 
+
+
 })
 export class AppModule { }
