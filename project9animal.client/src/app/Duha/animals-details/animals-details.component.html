@@ -23,16 +23,16 @@
                 <div class="item">
                   <div class="testimon">
                     <div class="image">
-                      <img src="#" alt="image of pet" title="pet"
-                           class="img-fluid customer">
+                      <img src="https://localhost:7269/api/Animals1/getImages/{{animalDetails.image1}}" alt="{{animalDetails.name}}" class="img-fluid customer" />
+                          
                     </div>
                   </div>
                 </div>
                 <div class="item">
                   <div class="testimon">
                     <div class="image">
-                      <img src="#" alt="image of pet" title="pet"
-                           class="img-fluid customer">
+                      <img src="https://localhost:7269/api/Animals1/getImages/{{animalDetails.image2}}" alt="{{animalDetails.name}}" class="img-fluid customer" />
+                     
                     </div>
                   </div>
                 </div>
@@ -43,7 +43,7 @@
           <div class="col-lg-5 col-md-12 col-sm-12">
             <div class="spec">
               <div class="name">
-                <h3>Name: <span> {{ animalDetails.name}} </span></h3>
+                <h3>Name: <span> {{animalDetails.name}} </span></h3>
               </div>
               <ul>
                 <li><i class="fas fa-paw yellow me-2"></i> Age: {{animalDetails.age}}</li>
@@ -58,8 +58,8 @@
                 <li><i class="fas fa-paw yellow me-2"></i> Shelter phone: {{animalDetails.shelter.phone}}</li>
               </ul>
               <div class="button">
-                <a href="#" class="btn main" title="Buy Now">
-                  Buy Now <i class="fas fa-paw"></i>
+                <a routerLink="/AdoptionForm" class="btn main" title="Adopte">
+                  Adopte <i class="fas fa-paw"></i>
                 </a>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
 import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
+import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { BlogComponent } from './Bassam/blog/blog.component';
     AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
     BlogComponent,
+    AdoptionFormComponent,
 
   ],
   imports: [
@@ -68,6 +70,7 @@ import { BlogComponent } from './Bassam/blog/blog.component';
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
+      { path: "AdoptionForm", component: AdoptionFormComponent },
 
 
       { path: "app-blog", component: BlogComponent },

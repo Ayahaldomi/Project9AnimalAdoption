@@ -7,7 +7,7 @@ import { RawaahServicesService } from '../../URL-serices/rawaah-services.service
   styleUrl: './get-animals-admin.component.css'
 })
 export class GetAnimalsAdminComponent {
-  
+
   ngOnInit() {
     this.getAllAnimalsAdmin()
   }
@@ -22,5 +22,3 @@ export class GetAnimalsAdminComponent {
   }
 
 }
-
-
