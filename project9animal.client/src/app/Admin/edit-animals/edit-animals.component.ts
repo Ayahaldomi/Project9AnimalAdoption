@@ -10,14 +10,23 @@ import { RawaahServicesService } from '../../URL-serices/rawaah-services.service
 export class EditAnimalsComponent implements OnInit {
   param: any;
   imageFile: any;
+  animalData: any; 
 
   constructor(private _ser: RawaahServicesService, private _active: ActivatedRoute) {
-    // الحصول على id من الـ URL
+
     this.param = this._active.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-    // يمكن إضافة منطق لتحميل بيانات الحيوان باستخدام هذا المعرف هنا
+ 
+    this.loadAnimalData();
+  }
+
+  loadAnimalData() {
+    this._ser.getAnimalById(this.param).subscribe((data) => {
+      this.animalData = data;
+      this.imageFile = data.ServiceImage;
+    });
   }
 
   changeImageEvent(event: any) {
@@ -27,19 +36,19 @@ export class EditAnimalsComponent implements OnInit {
   UpdateAnimalsAdmin(data: any) {
     const form = new FormData();
 
-    // إضافة جميع بيانات الحيوان إلى النموذج
+
     for (let key in data) {
       if (data.hasOwnProperty(key)) {
         form.append(key, data[key]);
       }
     }
 
-    // إضافة صورة الحيوان إذا كانت موجودة
+
     if (this.imageFile) {
       form.append("ServiceImage", this.imageFile);
     }
 
-    // استدعاء خدمة تحديث الحيوان
+
     this._ser.UpdateAnimalsAdmin(this.param, form).subscribe({
       next: (response) => {
         alert("Animal Updated Successfully");
