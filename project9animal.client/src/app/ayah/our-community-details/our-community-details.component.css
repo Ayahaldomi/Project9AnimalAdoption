@@ -5,3 +5,16 @@
   line-height: 1.6; /* Adjusts the line height for readability */
   text-align:justify;
 }
+
+.btn-outline-primary {
+  color: #e7470c;
+  border-color: #e7470c;
+}
+  .btn-outline-primary:hover {
+    background-color: #e7470c;
+    color: white;
+  }
+
+.btn {
+  padding: .15rem 0.75rem;
+}
