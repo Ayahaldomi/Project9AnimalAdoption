@@ -32,9 +32,11 @@ export class UrlService {
     return this.http.delete<void>(`${this.baseUrl}/AnimalCategory/DeleteCategory${id}`);
   }
   UpdateCategory(id: number, data: any): Observable<any> {
+    debugger
     return this.http.put(`${this.baseUrl}/AnimalCategory/UpdateCategory/${id}`, data);
   }
   getCategoryById(id: number): Observable<any> {
+    debugger
     
     return this.http.get<any>(`${this.baseUrl}/AnimalCategory/GetCategoryById/${id}`);
   }

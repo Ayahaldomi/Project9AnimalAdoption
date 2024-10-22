@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../RamaURL/url.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-category',
@@ -15,7 +15,8 @@ export class UpdateCategoryComponent {
 
   constructor(
     private _ser: UrlService,
-    private _active: ActivatedRoute
+    private _active: ActivatedRoute,
+    private _router: Router
   ) {
     this.param = this._active.snapshot.paramMap.get('id'); // Get ID from the route
   }
@@ -44,32 +45,60 @@ export class UpdateCategoryComponent {
   changeImageEvent(event: any) {
     this.imageFile = event.target.files[0];
   }
+  updateCategory(formData: any) {
+    const updatedData = new FormData();
 
-  // Update the category
-  updateCategory(data: any) {
-    debugger
-    const formData = new FormData(); // Create a FormData object
+    // Ensure the updated data contains the original values if unchanged
+    updatedData.append('Name', formData.Name || this.categoryData.name);
+    updatedData.append('Description', formData.Description || this.categoryData.description);
 
-    // Append form fields
-    for (let key in data) {
-      if (data.hasOwnProperty(key)) {
-        formData.append(key, data[key]);
-      }
-    }
-    debugger
-    // Append image file if selected
+    // Check if an image was uploaded
     if (this.imageFile) {
-      formData.append('Image', this.imageFile); // 'Image' matches the DTO field
+      updatedData.append('Image', this.imageFile);
+    } else {
+      updatedData.append('Image', this.categoryData.image);  // Keep the old image if no new one is uploaded
     }
 
-    // Call the service to update the category
-    this._ser.UpdateCategory(this.param!, formData).subscribe(
+    this._ser.UpdateCategory(this.param, updatedData).subscribe(
       (response) => {
         alert('Category updated successfully!');
+        formData.reset();
+
+        // Redirect to "All Categories" page
+        this._router.navigate(['/getAllCategory']);  
       },
       (error) => {
         alert('Error updating category: ' + error.message);
       }
     );
   }
+  // Update the category
+//  updateCategory(data: any) {
+//    debugger
+//    const formData = new FormData(); // Create a FormData object
+
+//    // Append form fields
+//    for (let key in data) {
+//      if (data.hasOwnProperty(key)) {
+//        formData.append(key, data[key]);
+//      }
+//    }
+//    debugger
+//    // Append image file if selected
+//    if (this.imageFile) {
+//      formData.append('Image', this.imageFile); // 'Image' matches the DTO field
+//    }
+
+
+
+//    // Call the service to update the category
+//    this._ser.UpdateCategory(this.param!, formData).subscribe(
+//      (response) => {
+//        alert('Category updated successfully!');
+//      },
+//      (error) => {
+//        alert('Error updating category: ' + error.message);
+//      }
+//    );
+//  }
 }

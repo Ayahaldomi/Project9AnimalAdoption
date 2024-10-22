@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
 using Project9Animal.Server.Models;
+using System.ComponentModel.Design;
 using System.Xml.Linq;
 
 namespace Project9Animal.Server.Controllers
@@ -99,6 +100,21 @@ namespace Project9Animal.Server.Controllers
             _context.Comments.Add(newcomment);
             _context.SaveChanges();
             return Ok(newcomment);
+        }
+
+        [HttpPost("replyPost")]
+        public IActionResult replyPost([FromBody] replyPostDTO reply)
+        {
+            var newReply = new Reply
+            {
+                CommentId = reply.CommentId,
+                UserId = reply.UserId,
+                Comment = reply.Comment,
+                CommentDate = DateTime.Now
+            };
+            _context.Replies.Add(newReply);
+            _context.SaveChanges();
+            return Ok(newReply);
         }
 
     }
