@@ -17,6 +17,85 @@ namespace Project9Animal.Server.Controllers
         {
             _context = context;
         }
+
+        [HttpDelete("DeleteCategory{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            // Fetch the category including its related animals
+            var category = await _context.Categories
+                                         .Include(c => c.Animals)
+                                         .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            // If there are related animals, remove them first
+            if (category.Animals.Any())
+            {
+                _context.Animals.RemoveRange(category.Animals);
+            }
+
+            // Remove the category
+            _context.Categories.Remove(category);
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+        [HttpPut("UpdateCategory/{id}")]
+        public async Task<IActionResult> UpdateCategory(int id, [FromForm] CategoryCreateDto categoryDto)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            // Update the properties from form data
+            category.Name = categoryDto.Name;
+            category.Description = categoryDto.Description;
+
+            // If there's an image, process it
+            if (categoryDto.Image != null)
+            {
+                string imagePath = null;
+
+                // Check if the uploaded file is not null
+                if (categoryDto.Image != null && categoryDto.Image.Length > 0)
+                {
+                    // Define the path where you want to save the uploaded image
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Animal");
+
+                    var filePath = Path.Combine(uploadsFolder, categoryDto.Image.FileName);
+
+                    // Create the folder if it doesn't exist
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    // Save the uploaded file
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await categoryDto.Image.CopyToAsync(fileStream);
+                    }
+
+                    // Set the image path to be saved in the database
+                    imagePath = filePath; // Save the local file path instead of a URL
+                }
+                // You can save the image to the server or update its path in the database
+                category.Image = categoryDto.Image.FileName;
+            }
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            return NoContent();  // Return success status
+        }
+
         [HttpPost("AddCategory")]
         public async Task<IActionResult> AddCategory([FromForm] CategoryCreateDto categoryDto)
         {

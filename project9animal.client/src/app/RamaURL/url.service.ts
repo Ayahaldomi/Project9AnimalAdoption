@@ -28,4 +28,7 @@ export class UrlService {
     debugger
     return this.http.get(`${this.baseUrl}/Home/top`);
   }
+  deleteCategory(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/AnimalCategory/DeleteCategory${id}`);
+  }
 }
