@@ -34,7 +34,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
     RegisterComponent,
     DashboardComponent,
     AddAnimalCategoryComponent,
-    GetAllCategoryComponent
+    GetAllCategoryComponent,
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     DashboardComponent,
