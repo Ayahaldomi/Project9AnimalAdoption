@@ -20,6 +20,7 @@ import { EditAnimalsComponent } from './Admin/edit-animals/edit-animals.componen
 
 import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
+import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
 
     AddShelterComponent,
     EditShelterComponent,
+    AnimalsDetailsComponent,
 
   ],
   imports: [
@@ -55,7 +57,8 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
 
 
-      { path: "ShowAnimals", component: ShowAnimalsComponent }
+      { path: "ShowAnimals", component: ShowAnimalsComponent },
+      { path: "AnimalsDetails", component: AnimalsDetailsComponent }
 
 
       ,

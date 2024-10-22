@@ -922,7 +922,7 @@ img {
 .header-top {
     position: relative;
     padding: 15px 0px 28px;
-    background: #e7470c url(../images/background/layer-1.png) left bottom repeat-x;
+/*    background: #e7470c url(../images/background/layer-1.png) left bottom repeat-x;*/
 }
 
 .header-top .top-inner {
@@ -3814,7 +3814,7 @@ img {
     top: 0px;
     width: 44px;
     height: 4px;
-    background: url(../images/icons/separater-line.png) no-repeat;
+/*    background: url(../images/icons/separater-line.png) no-repeat;*/
 }
 
 .banner-section .content-column h2 span {
@@ -3858,7 +3858,7 @@ img {
     z-index: 1;
     text-align: center;
     padding-top: 50px;
-    background: url(../images/icons/price-bg.png) no-repeat;
+/*    background: url(../images/icons/price-bg.png) no-repeat;*/
 }
 
 .banner-section .image-column .inner-column .price-box .icon img {
@@ -8688,7 +8688,7 @@ ul.detail-footer-social li a i {
 }
 
 .syringe-icon {
-    background-image: url("../images/syringe.svg");
+/*    background-image: url("../images/syringe.svg");*/
     width: 35px;
     height: 35px;
     margin-left: 50px;
@@ -8796,7 +8796,7 @@ ul.detail-footer-social li a i {
 .features-sec-4 .featured-block .inner-box {
     background-color: transparent;
     box-shadow: none;
-    background-image: url("../images/resource/features-bg.png");
+/*    background-image: url("../images/resource/features-bg.png");*/
     background-repeat: no-repeat;
     background-position: top;
     width: 100%;
@@ -9767,7 +9767,7 @@ ul, p {
     top: 100%;
     width: 100%;
     height: 560px;
-    background-image: url("../images/home_5/waves-shape.png");
+/*    background-image: url("../images/home_5/waves-shape.png");*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -10996,7 +10996,7 @@ ul, p {
     left: 0px;
     width: 100%;
     height: 100%;
-    background-image: url(../images/home_5/faq_bg.png);
+/*    background-image: url(../images/home_5/faq_bg.png);*/
     background-size: auto;
     background-position: right bottom;
     background-repeat: no-repeat;
@@ -11472,15 +11472,15 @@ ul, p {
 }
 
 .pet.profile .pet.service .steps .card.s_one::before {
-    background-image: url("../images/home_5/pet-profile4.png");
+/*    background-image: url("../images/home_5/pet-profile4.png");*/
 }
 
 .pet.profile .pet.service .steps .card.s_two::before {
-    background-image: url("../images/home_5/pet-profile2.png");
+/*    background-image: url("../images/home_5/pet-profile2.png");*/
 }
 
 .pet.profile .pet.service .steps .card.s_three::before {
-    background-image: url("../images/home_5/pet-profile5.png");
+/*    background-image: url("../images/home_5/pet-profile5.png");*/
 }
 
 /* New Profile */
@@ -11495,7 +11495,7 @@ ul, p {
 
 .pet .featured_new {
     position: relative;
-    background-image: url(../images/home_5/pet_banner.jpg);
+/*    background-image: url(../images/home_5/pet_banner.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -11510,7 +11510,7 @@ ul, p {
     position: absolute;
     bottom: -33px;
     left: 0px;
-    background-image: url(../images/home_5/bottom_wave.png);
+/*    background-image: url(../images/home_5/bottom_wave.png);*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -13813,7 +13813,7 @@ ul, p {
     padding: 55px 40px;
     border-radius: 5px;
     position: relative;
-    background-image: url("../images/home_5/pattern-2.png");
+/*    background-image: url("../images/home_5/pattern-2.png");*/
     background-color: var(--pt_purple);
     background-size: cover;
     background-position: center;
@@ -14058,7 +14058,7 @@ ul, p {
     margin: 20px auto;
     padding: 55px 40px 40px;
     border: 1px solid var(--pt_pattern);
-    background: url("../images/home_5/app-bg.png");
+/*    background: url("../images/home_5/app-bg.png");*/
     background-size: cover;
     border-radius: 20px;
     overflow: hidden;
@@ -14134,7 +14134,7 @@ ul, p {
 
 .pet .new_foot::before {
     content: '';
-    background: url("../images/home_5/pattern-14(2.html).png");
+/*    background: url("../images/home_5/pattern-14(2.html).png");*/
     background-position: bottom;
     width: 100%;
     height: 100%;
