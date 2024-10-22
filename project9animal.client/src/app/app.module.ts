@@ -13,6 +13,7 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-animal-category.component';
+import { GetAllCategoryComponent } from './Admin/get-all-category/get-all-category.component';
 import { OurCommunityDetailsComponent } from './ayah/our-community-details/our-community-details.component';
 import { ShowAnimalsComponent } from './show-animals/show-animals.component';
 import { AddAnimalsComponent } from './Admin/add-animals/add-animals.component';
@@ -34,6 +35,8 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
     RegisterComponent,
     DashboardComponent,
     AddAnimalCategoryComponent,
+    GetAllCategoryComponent,
+    AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     DashboardComponent,
     ShowAnimalsComponent,
@@ -54,6 +57,7 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+     
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
 
 
@@ -64,12 +68,14 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
       ,
 
 
+
       //AdminDashboard
       {
         path: "dashboard", component: DashboardComponent, children: [
           {
              path: "register", component: RegisterComponent ,
-          }]
+          },
+          { path:"getAllCategory", component: GetAllCategoryComponent }]
 
       },
 
