@@ -25,6 +25,7 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 
@@ -44,7 +45,6 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     OurCommunityDetailsComponent,
-    DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
     EditAnimalsComponent,
@@ -55,6 +55,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+    CreateSucessStoryComponent,
     GitShelterComponent,
     UpdateCategoryComponent,
 
@@ -78,6 +79,8 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
 
 
       { path: "app-blog", component: BlogComponent },
+      { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+
 
 
       //AdminDashboard
