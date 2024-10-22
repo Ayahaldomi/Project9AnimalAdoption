@@ -1,0 +1,7 @@
+.story-text {
+  white-space: pre-wrap; /* This ensures that whitespace and line breaks are preserved */
+  font-family: inherit; /* Uses the default font of the surrounding text */
+  font-size: inherit; /* Keeps the default font size */
+  line-height: 1.6; /* Adjusts the line height for readability */
+  text-align:justify;
+}
