@@ -83,6 +83,15 @@ namespace Project9Animal.Server.Controllers
             }
             return NotFound();
         }
-
+        [HttpGet("getImageForStories/{imageName}")]
+        public IActionResult getImageForStories(string imageName)
+        {
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/SucessStory", imageName);
+            if (System.IO.File.Exists(pathImage))
+            {
+                return PhysicalFile(pathImage, "image/*");
+            }
+            return NotFound();
+        }
     }
 }
