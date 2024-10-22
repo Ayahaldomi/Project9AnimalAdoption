@@ -55,8 +55,8 @@ namespace Project9Animal.Server.Controllers
             }
 
             // Update the properties from form data
-            category.Name = categoryDto.Name;
-            category.Description = categoryDto.Description;
+            category.Name = categoryDto.Name?? category.Name;
+            category.Description = categoryDto.Description?? category.Description;
 
             // If there's an image, process it
             if (categoryDto.Image != null)
@@ -87,7 +87,7 @@ namespace Project9Animal.Server.Controllers
                     imagePath = filePath; // Save the local file path instead of a URL
                 }
                 // You can save the image to the server or update its path in the database
-                category.Image = categoryDto.Image.FileName;
+                category.Image = categoryDto.Image.FileName?? category.Image;
             }
 
             // Save changes to the database
