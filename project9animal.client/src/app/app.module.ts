@@ -90,6 +90,7 @@ import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
           { path: "addAnimal", component: AddAnimalsComponent },
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent},
+          { path: "EditShelter/:id", component:EditShelterComponent },
 
         ]
 
