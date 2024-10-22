@@ -1,0 +1,64 @@
+<section class="page-title" style="background-image:url(images/background/7.jpg)">
+  <div class="auto-container">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h1>Our News</h1>
+      </div>
+      <div class="pull-right">
+        <ul class="page-breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li>Blog</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End Page Title-->
+<!--Blog Page Section-->
+<section class="blog-page-section">
+  <div class="auto-container">
+    <div class="row clearfix">
+
+      <!-- Flex container to align button to the left -->
+      <div class="d-flex justify-content-start" style="margin-top: 20px; margin-bottom: 30px;">
+        <a href="/add-success-story" class="theme-btn btn-style-eight">Add Your Success Story</a>
+      </div>
+
+      <!--News Block-->
+      <div *ngFor="let story of successStories" class="news-block-two col-md-6 col-sm-12 col-xs-12">
+        <div class="inner-box">
+          <div class="image">
+            <a href="blog-single.html">
+              <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="Story Image" />
+            </a>
+
+            <div class="post-date">{{ story.storyDate | date: 'dd' }} <span>{{ story.storyDate | date: 'MMM' }}</span></div>
+          </div>
+          <div class="lower-content">
+            <ul class="post-meta">
+              <li>Pet Care</li>
+              <li> {{ story.likes.length }}</li>
+              <li><span class="icon fa fa-heart"></span> {{ story.likes.length }}</li>
+            </ul>
+            <h3><a href="blog-single.html">{{ story.title }}</a></h3>
+            <div class="text">
+              {{ story.storyText | slice: 0:150 }}...  <!-- Displaying a snippet -->
+            </div>
+            <a href="blog-single.html" class="theme-btn btn-style-eight">read more</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!--Styled Pagination-->
+    <ul class="styled-pagination text-center">
+      <li><a href="#" class="active">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li class="next"><a href="#">Next</a></li>
+    </ul>
+    <!--End Styled Pagination-->
+  </div>
+</section>
+<!--End Blog Page Section-->

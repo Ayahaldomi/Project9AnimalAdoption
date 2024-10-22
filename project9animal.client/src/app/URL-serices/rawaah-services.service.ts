@@ -16,7 +16,7 @@ export class RawaahServicesService {
 
 
   getAnimalById(id: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/Animals1/GetAnimal1/${id}`);
+    return this.http.get(`${this.baseUrl}/Animals1/Animals1/${id}`);
   }
 
 
@@ -53,7 +53,7 @@ export class RawaahServicesService {
     return this.http.get<any>(`${this.baseUrl}/Animals1`);
   }
   UpdateAnimalsAdmin(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/Animals1/UpdateAnimal1/${id}`, data);
+    return this.http.put(`${this.baseUrl}/Animals1/UpdateAnimal/${id}`, data);
   }
 
 
@@ -61,7 +61,17 @@ export class RawaahServicesService {
     return this.http.post<any>(`${this.baseUrl}/Animals1/AddAnimal`, data);
   }
 
-
+  getCategories(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/AnimalCategory/GetAllCategories`);
+  }
+  
+  getShelters(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/Shelters`);
+  }
+  
+  deleteAnimals(animalId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/Animals1/${animalId}`);
+  }
 
 
 }
