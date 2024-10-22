@@ -385,11 +385,68 @@ namespace Project9Animal.Server.Controllers
                 return StatusCode(500, $"Error saving animal: {ex.Message}");
             }
 
-            // إرجاع استجابة نجاح مع تفاصيل الحيوان المضاف
+            
             return Ok();
         }
+
+        //[HttpDelete("{shelterId}")]
+        //public async Task<IActionResult> DeleteShelter(int shelterId)
+        //{
+
+        //    var shelter = await _context.Shelters.Include(s => s.Animals).FirstOrDefaultAsync(s => s.ShelterId == shelterId);
+
+        //    if (shelter == null)
+        //    {
+        //        return NotFound(new { message = "The shelter does not exist." });
+        //    }
+
+
+        //    var animalCount = shelter.Animals.Count;
+
+        //    if (animalCount > 0)
+        //    {
+
+        //        return BadRequest(new { message = $"Cannot delete the shelter because it has {animalCount} animals. Please remove the animals first." });
+        //    }
+
+
+        //    _context.Shelters.Remove(shelter);
+        //    await _context.SaveChangesAsync();
+
+        //    return Ok(new { message = "The shelter has been successfully deleted." });
+        //}
+
+        [HttpDelete("{shelterId}")]
+        public async Task<IActionResult> DeleteShelter(int shelterId)
+        {
+            // Retrieve the shelter along with its associated animals
+            var shelter = await _context.Shelters.Include(s => s.Animals).FirstOrDefaultAsync(s => s.ShelterId == shelterId);
+
+            if (shelter == null)
+            {
+                return NotFound(new { message = "The shelter does not exist." });
+            }
+
+            // If there are related animals, remove them first
+            if (shelter.Animals.Any())
+            {
+                _context.Animals.RemoveRange(shelter.Animals);
+            }
+
+            // Remove the shelter
+            _context.Shelters.Remove(shelter);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "The shelter and its associated animals have been successfully deleted." });
+        }
+
+
+
+
+
 
 
     }
 }
+
 

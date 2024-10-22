@@ -26,6 +26,8 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
 import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
+import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
+import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-
     BlogComponent,
     AdoptionFormComponent,
     CreateSucessStoryComponent,
+    GitShelterComponent,
+    UpdateCategoryComponent,
 
   ],
   imports: [
@@ -89,10 +93,15 @@ import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-
           { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
+          { path: "GitShelter", component: GitShelterComponent },
+          { path: "AddShelter", component: AddShelterComponent },
+          { path: "updatecategory/:id", component: UpdateCategoryComponent }
 
         ]
 
       },
+
+
 
 
     ])

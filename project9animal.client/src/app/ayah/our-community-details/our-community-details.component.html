@@ -41,49 +41,53 @@
                 </ul>
               </div>
               <div class="text">
-                
+
                 <div class="story-text">
                   {{story.storyText}}
-                  </div>
-                  
-                  <!--<div class="row clearfix">
-                    <div class="col-md-7 col-sm-7 col-xs-12">
-                      <div class="image">
-                        <img src="assets/images/resource/news-11.jpg" alt="" />
-                      </div>
-                    </div>
-                    <div class="col-md-5 col-sm-5 col-xs-12">
-                      <p>
-                        Dry gazelle far lobster deftly shoddy and chek sar more wow much darn
-                        far grudgingly is sad speechlesy gosh where less away and adequat
-                        before upon until respectful found like authen tically much after.
-                      </p>
-                      <p>
-                        Clapped impolite goodness showy witlesly the rhinoceros the beaver
-                        the hello far excluding opossum gibbered closed jeper scowled cruds
-                        more away gazel petulantly crud lighthearted darn redid more ouch a
-                        banally.
-                      </p>
-                    </div>
-                  </div>
-                  <p>
-                    Acute yellow re-laid less or affirmatively elephant the forbade this gaudy
-                    thus for but but yawned that alas before less thus and serenely versus
-                    cannily the on because blind a cuckoo jeepers told blew held far hello far
-                    as the while private much lantern and less cockatoo returned disbanded into.
-                  </p>-->
                 </div>
+
+                <!--<div class="row clearfix">
+                  <div class="col-md-7 col-sm-7 col-xs-12">
+                    <div class="image">
+                      <img src="assets/images/resource/news-11.jpg" alt="" />
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-sm-5 col-xs-12">
+                    <p>
+                      Dry gazelle far lobster deftly shoddy and chek sar more wow much darn
+                      far grudgingly is sad speechlesy gosh where less away and adequat
+                      before upon until respectful found like authen tically much after.
+                    </p>
+                    <p>
+                      Clapped impolite goodness showy witlesly the rhinoceros the beaver
+                      the hello far excluding opossum gibbered closed jeper scowled cruds
+                      more away gazel petulantly crud lighthearted darn redid more ouch a
+                      banally.
+                    </p>
+                  </div>
+                </div>
+                <p>
+                  Acute yellow re-laid less or affirmatively elephant the forbade this gaudy
+                  thus for but but yawned that alas before less thus and serenely versus
+                  cannily the on because blind a cuckoo jeepers told blew held far hello far
+                  as the while private much lantern and less cockatoo returned disbanded into.
+                </p>-->
+              </div>
               <!--post-share-options-->
               <div class="post-share-options clearfix">
                 <div class="pull-left tags">
                   <span>Post Tags:</span><a href="#">Pets,</a> <a href="#">Grooming,</a> <a href="#"> Shelter,</a><a href="#"> Breeds</a>
+                  <button (click)="shareOnFacebook()">Share on Facebook</button>
+
                 </div>
                 <div class="pull-right social-icon-four clearfix">
                   <span class="share">Share</span>
-                  <a href="https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url=https://yourwebsite.com" target="_blank">
+                  <a href="https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url={{ pageUrl }}" (click)="openTwitterShare($event)" class="twitter-share">
                     <span class="fa fa-twitter"></span>
                   </a>
-                  <a href="#"><span class="fa fa-facebook-square"></span></a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ pageUrl }}" (click)="openFacebookShare($event)" class="facebook-share">
+                    <span class="fa fa-facebook-square"></span>
+                  </a>
                   <a href="#"><span class="fa fa-linkedin"></span></a>
                   <a href="#"><span class="fa fa-google-plus"></span></a>
                 </div>
@@ -99,23 +103,48 @@
           <!--Comment Box-->
           <div class="comment-box" *ngFor="let item of comment">
             <div class="comment">
-              <div class="author-thumb"><img src="assets/images/resource/author-2.jpg" alt=""></div>
+              <div class="author-thumb">
+                <img src="assets/images/resource/author-2.jpg" alt="author">
+              </div>
               <div class="comment-inner">
                 <div class="comment-info clearfix" style="text-align: left;">
                   <strong>{{item.user.fullName}}</strong>
                   <div class="comment-time">
-                    {{ story.storyDate | date: 'MMMM d, yyyy' }}
+                    {{ item.commentDate | date: 'MMMM d, yyyy' }}
                   </div>
                 </div>
                 <div class="text" style="text-align: left;">
                   {{item.comment1}}
                 </div>
                 <a class="comment-reply" href="#">Reply</a>
+
+                <!-- Replies Section -->
+                <div class="replies" *ngIf="item.replies?.length > 0">
+                  <div class="reply-box" *ngFor="let reply of item.replies">
+                    <div class="author-thumb">
+                      <img src="assets/images/resource/author-2.jpg" alt="reply-author">
+                    </div>
+                    <div class="reply-inner">
+                      <div class="reply-info clearfix" style="text-align: left;">
+                        <strong>{{ reply.user?.fullName }}</strong>
+                        <div class="reply-time">
+                          {{ reply.commentDate | date: 'MMMM d, yyyy' }}
+                        </div>
+                      </div>
+                      <div class="text" style="text-align: left;">
+                        {{ reply.comment }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Replies Section -->
+
               </div>
             </div>
           </div>
+
           <!--Comment Box-->
-         
+
         </div>
         <!--End Comments Area-->
         <!-- Comment Form -->
@@ -257,3 +286,4 @@
     </div>
   </div>
 </div>
+
