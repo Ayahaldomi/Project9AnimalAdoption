@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -64,7 +65,8 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     ,
     RouterModule.forRoot([
       //User
