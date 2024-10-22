@@ -31,4 +31,7 @@ export class UrlService {
   deleteCategory(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/AnimalCategory/DeleteCategory${id}`);
   }
+  UpdateCategory(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/AnimalCategory/UpdateCategory/${id}`, data);
+  }
 }
