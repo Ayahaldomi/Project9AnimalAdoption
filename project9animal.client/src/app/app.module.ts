@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,7 @@ import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
 import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
+import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
     EditShelterComponent,
     AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
+    AdoptionFormComponent,
 
   ],
   imports: [
