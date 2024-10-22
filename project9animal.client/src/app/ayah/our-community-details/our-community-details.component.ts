@@ -84,6 +84,23 @@ export class OurCommunityDetailsComponent {
    
 
   }
+  addCommentObj = {
+    "storyId": 0,
+    "userId": 1,
+    "comment1": "string"
+  }
+
+  addComment(data: any) {
+    this.addCommentObj.storyId = this.parameter;
+    this.addCommentObj.comment1 = data.comment1;
+    this._ser.CommentPost(this.addCommentObj).subscribe((data) => {
+      this.SeccessStoryByID(this.parameter)
+      this.likes(this.parameter)
+      this.comments(this.parameter)
+      this.commentCount(this.parameter)
+      this.isItLiked()
+    })
+  }
 
   openTwitterShare(event: MouseEvent) {
     event.preventDefault(); // Prevent the default action of opening the link in a new tab
@@ -120,12 +137,35 @@ export class OurCommunityDetailsComponent {
     );
   }
 
-  shareOnFacebook() {
-    const url = 'https://yourwebsite.com/page';  // Page URL with OG meta tags
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    window.open(facebookUrl, '_blank');
+ 
+
+  showReplyForm: boolean[] = [];
+
+  toggleReplyForm(index: number) {
+    this.showReplyForm[index] = !this.showReplyForm[index];
   }
 
+  addReplyObj = {
+    "commentId": 0,
+    "userId": 4,
+    "comment": "string"
+  }
 
+  addReply(commentIndex: number, replyForm: any, comentID: any) {
+    this.addReplyObj.commentId = comentID;
+    this.addReplyObj.comment = replyForm.comment;
+
+    this._ser.ReplyPost(this.addReplyObj).subscribe((data) => {
+      this.SeccessStoryByID(this.parameter)
+      this.likes(this.parameter)
+      this.comments(this.parameter)
+      this.commentCount(this.parameter)
+      this.isItLiked()
+      this.showReplyForm[commentIndex] = false;
+      replyForm.reset();
+    });
+
+    
+  }
 
 }

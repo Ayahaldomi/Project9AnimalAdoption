@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
+using Project9Animal.Server.DTOs.Bassam;
 using Project9Animal.Server.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Project9Animal.Server.Controllers
 {
@@ -73,6 +75,54 @@ namespace Project9Animal.Server.Controllers
             }
             return NotFound();
         }
+
+    [HttpPost("createPost")]
+public async Task<IActionResult> createPost([FromForm] DTOsCreatePost model)
+{
+            var animalId=_db.SuccessStories.Where(x=>x.Animal.Name==model.AnimalName).Select(x=>x.Animal.AnimalId).FirstOrDefault();
+  
+
+    var successStory = new SuccessStory
+    {
+        UserId = model.UserId,
+        AnimalId = animalId,
+        Title = model.Title,
+        StoryText = model.StoryText,
+        Status = "pending",
+        StoryDate = DateTime.Now
+    };
+
+
+
+    if (model.PhotoUrlOrVideo != null)
+    {
+
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/SucessStory");
+                var filePath = Path.Combine(uploadsFolder, model.PhotoUrlOrVideo.FileName);
+
+
+                if (!Directory.Exists(uploadsFolder))
+        {
+            Directory.CreateDirectory(uploadsFolder);
+        }
+
+
+        var fileName =model.PhotoUrlOrVideo.FileName;
+
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.PhotoUrlOrVideo.CopyToAsync(fileStream);
+                }
+                successStory.PhotoUrl1 = fileName;
+    }
+
+            _db.SuccessStories.Add(successStory);
+            await _db.SaveChangesAsync();
+
+            return Ok(new { message = "Story created successfully!" });
+}
+
 
     }
 }

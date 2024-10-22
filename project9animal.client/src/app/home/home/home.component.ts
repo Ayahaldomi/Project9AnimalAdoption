@@ -16,18 +16,18 @@ export class HomeComponent {
 
   categories: any
   getAllCategoryAnimals() {
-    debugger
+    
     this._ser.getAllCategoryAnimals().subscribe((data) => {
-      debugger
+      
       this.categories = data;
       console.log(this.categories)
     })
   }
   testmonials: any
   getAllTestmonials() {
-    debugger
+    
     this._ser.getAllTestmonials().subscribe((data) => {
-      debugger
+      
       this.testmonials = data;
       console.log(this.testmonials)
 
@@ -36,9 +36,9 @@ export class HomeComponent {
 
   stories: any
   getTopSuccessStories() {
-    debugger
+    
     this._ser.getTopSuccessStories().subscribe((data) => {
-      debugger
+      
       this.stories = data;
       console.log(this.stories)
 

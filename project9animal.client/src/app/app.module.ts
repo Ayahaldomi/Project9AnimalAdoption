@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,9 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
+import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 
 
 @NgModule({
@@ -43,7 +46,6 @@ import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     OurCommunityDetailsComponent,
-    DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
     EditAnimalsComponent,
@@ -54,14 +56,17 @@ import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+    CreateSucessStoryComponent,
     GitShelterComponent,
+    UpdateCategoryComponent,
 
   ],
   imports: [
     FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     ,
     RouterModule.forRoot([
       //User
@@ -76,6 +81,8 @@ import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 
 
       { path: "app-blog", component: BlogComponent },
+      { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+
 
 
       //AdminDashboard
@@ -89,6 +96,8 @@ import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
           { path: "GitShelter", component: GitShelterComponent },
+          { path: "AddShelter", component: AddShelterComponent },
+          { path: "updatecategory/:id", component: UpdateCategoryComponent }
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component:EditShelterComponent },
 

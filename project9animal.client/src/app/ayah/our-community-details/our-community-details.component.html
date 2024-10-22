@@ -77,7 +77,6 @@
               <div class="post-share-options clearfix">
                 <div class="pull-left tags">
                   <span>Post Tags:</span><a href="#">Pets,</a> <a href="#">Grooming,</a> <a href="#"> Shelter,</a><a href="#"> Breeds</a>
-                  <button (click)="shareOnFacebook()">Share on Facebook</button>
 
                 </div>
                 <div class="pull-right social-icon-four clearfix">
@@ -101,7 +100,7 @@
             <h2>Comments</h2>
           </div>
           <!--Comment Box-->
-          <div class="comment-box" *ngFor="let item of comment">
+          <div class="comment-box" *ngFor="let item of comment; let i = index">
             <div class="comment">
               <div class="author-thumb">
                 <img src="assets/images/resource/author-2.jpg" alt="author">
@@ -116,18 +115,18 @@
                 <div class="text" style="text-align: left;">
                   {{item.comment1}}
                 </div>
-                <a class="comment-reply" href="#">Reply</a>
+                <a class="comment-reply" (click)="toggleReplyForm(i)">Reply</a>
 
                 <!-- Replies Section -->
                 <div class="replies" *ngIf="item.replies?.length > 0">
                   <div class="reply-box" *ngFor="let reply of item.replies">
-                    <div class="author-thumb">
-                      <img src="assets/images/resource/author-2.jpg" alt="reply-author">
+                    <div>
+                      <img src="assets/images/resource/author-2.jpg" alt="reply-author" class="test">
                     </div>
                     <div class="reply-inner">
-                      <div class="reply-info clearfix" style="text-align: left;">
+                      <div class="comment-info clearfix" style="text-align: left;">
                         <strong>{{ reply.user?.fullName }}</strong>
-                        <div class="reply-time">
+                        <div class="comment-time">
                           {{ reply.commentDate | date: 'MMMM d, yyyy' }}
                         </div>
                       </div>
@@ -137,13 +136,21 @@
                     </div>
                   </div>
                 </div>
-                <!-- End of Replies Section -->
+
+                <!-- Reply Form -->
+                <div *ngIf="showReplyForm[i]" class="reply-form">
+                  <form #replyForm="ngForm" (ngSubmit)="addReply(i, replyForm.value, item.commentId)">
+                    <input type="hidden" name="commentId" value="{{item.commentId}}" />
+                    <textarea name="comment" ngModel required class="reply-form-textarea"></textarea>
+                    <button type="submit" class="theme-btn btn-style-four">Submit Reply</button>
+                  </form>
+                </div>
+                <!-- End of Reply Form -->
 
               </div>
             </div>
           </div>
 
-          <!--Comment Box-->
 
         </div>
         <!--End Comments Area-->
@@ -152,16 +159,10 @@
           <div class="group-title">
             <h2>Leave Reply</h2>
           </div>
-          <form method="post" action="https://www.shmai.com/preview/pawrex-html/contact.html">
+          <form #leaveComment="ngForm"t (ngSubmit)="addComment(leaveComment.value)">
             <div class="row clearfix">
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                <input type="text" name="username" placeholder="Name" required>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                <input type="text" name="username" placeholder="Email" required>
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                <textarea name="message" placeholder="Comments"></textarea>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group" >
+                <textarea name="comment1" placeholder="Comments" ngModel></textarea>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                 <button class="theme-btn btn-style-four" type="submit" name="submit-form">
