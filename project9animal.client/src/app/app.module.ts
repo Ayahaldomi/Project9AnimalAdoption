@@ -25,6 +25,7 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 
 
 @NgModule({
@@ -42,7 +43,6 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     OurCommunityDetailsComponent,
-    DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
     EditAnimalsComponent,
@@ -53,6 +53,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+    CreateSucessStoryComponent,
 
   ],
   imports: [
@@ -74,6 +75,8 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
 
 
       { path: "app-blog", component: BlogComponent },
+      { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+
 
 
       //AdminDashboard

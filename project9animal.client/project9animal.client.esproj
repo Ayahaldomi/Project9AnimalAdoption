@@ -9,7 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\Bassam\BassamUrl\" />
-    <Folder Include="src\app\home\" />
     <Folder Include="src\app\Admin\" />
     <Folder Include="src\app\ayah\" />
     <Folder Include="src\app\Admin\" />
