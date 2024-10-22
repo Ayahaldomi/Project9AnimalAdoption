@@ -20,7 +20,7 @@
   <div class="form-group" style="margin-bottom: 15px;">
     <label for="shelterName" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Shelter Name</label>
     <select id="shelterName" name="shelterId" class="form-control" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
-      <option *ngFor="let shelter of shelters" [value]="shelter.id">{{ shelter.shelterName }}</option>
+      <option *ngFor="let shelter of shelters" [value]="shelter.shelterId">{{ shelter.shelterName }}</option>
     </select>
   </div>
 
