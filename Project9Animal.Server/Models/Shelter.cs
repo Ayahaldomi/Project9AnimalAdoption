@@ -7,7 +7,7 @@ public partial class Shelter
 {
     public int ShelterId { get; set; }
 
-    public string ShelterName { get; set; } = null!;
+    public string ShelterName { get; set; } = null;
 
     public string? Description { get; set; }
 

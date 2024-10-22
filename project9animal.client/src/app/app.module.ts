@@ -17,9 +17,10 @@ import { OurCommunityDetailsComponent } from './ayah/our-community-details/our-c
 import { ShowAnimalsComponent } from './show-animals/show-animals.component';
 import { AddAnimalsComponent } from './Admin/add-animals/add-animals.component';
 import { EditAnimalsComponent } from './Admin/edit-animals/edit-animals.component';
-
+import { FormsModule } from '@angular/forms';
 import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
+import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
     RegisterComponent,
     DashboardComponent,
     AddAnimalCategoryComponent,
-    OurCommunityDetailsComponent
+    OurCommunityDetailsComponent,
     DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
@@ -41,11 +42,15 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
 
     AddShelterComponent,
     EditShelterComponent,
+    GetAnimalsAdminComponent,
 
   ],
   imports: [
+    FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
+    FormsModule  
+,
     RouterModule.forRoot([
       //Ueser
       { path: "", component: HomeComponent, pathMatch: "full" },
@@ -63,13 +68,19 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
 
       //AdminDashboard
       {
-        path: "dashboard", component: DashboardComponent, children: [
+        path: "dashboard",
+        component: DashboardComponent,
+        children: [
           {
-             path: "register", component: RegisterComponent ,
-          }]
-
-      },
-
+            path: "register",
+            component: RegisterComponent
+          },
+          {
+            path: "getAnimalsAdmin",
+            component: GetAnimalsAdminComponent
+          }
+        ]
+      }
 
 
     ])
