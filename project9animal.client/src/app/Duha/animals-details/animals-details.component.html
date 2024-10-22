@@ -43,17 +43,19 @@
           <div class="col-lg-5 col-md-12 col-sm-12">
             <div class="spec">
               <div class="name">
-                <h3>Name: <span> Tinko </span></h3>
+                <h3>Name: <span> {{ animalDetails.name}} </span></h3>
               </div>
               <ul>
-                <li><i class="fas fa-paw yellow me-2"></i> Age: 6</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Gender: Male</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Hollywood, FL</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Size: 5</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Weight: 6</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Color: White</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Breed: Dongu</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Location: Florida</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Age: {{animalDetails.age}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Breed:{{animalDetails.breed}} </li>
+                <li><i class="fas fa-paw yellow me-2"></i> Temperament:{{animalDetails.temperament}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Size: {{animalDetails.size}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Description: {{animalDetails.description}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Special Needs: {{animalDetails.specialNeeds}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Adoption Status: {{animalDetails.adoptionStatus}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Shelter Name: {{animalDetails.shelter.shelterName}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Shelter Address: {{animalDetails.shelter.address}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> Shelter phone: {{animalDetails.shelter.phone}}</li>
               </ul>
               <div class="button">
                 <a href="#" class="btn main" title="Buy Now">
