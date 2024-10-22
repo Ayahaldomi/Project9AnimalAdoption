@@ -95,7 +95,8 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
           {
             path: "getAnimalsAdmin",
             component: GetAnimalsAdminComponent
-          }
+          },
+          { path: "EditAnimals/:id", component:EditAnimalsComponent }
         ]
 
       },
