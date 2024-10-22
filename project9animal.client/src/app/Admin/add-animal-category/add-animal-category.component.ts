@@ -23,14 +23,22 @@ export class AddAnimalCategoryComponent {
 
 
   addNewNimalCategory(data: any) {
+
     debugger
     var form = new FormData();
+    debugger
     for (let key in data) {
       form.append(key, data[key])
     }
     form.append("Image", this.image);
+   
+
     this._ser.addNewNimalCategory(form).subscribe(() => {
+
+      debugger
       alert("animal category added succesfully")
+     
+
     },
       (error) => {
         alert(error.error)
