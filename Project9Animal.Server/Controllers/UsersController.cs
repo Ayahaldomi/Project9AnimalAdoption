@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.DTOs;
+using Project9Animal.Server.DTOs;
 using Project9Animal.Server.Models;
 using System.Net;
 
@@ -106,7 +107,24 @@ namespace Project9Animal.Server.Controllers
             return NoContent();
         }
 
-        private bool UserExists(int id)
+        [HttpPost("login")]
+        public IActionResult login([FromForm] loginDTO userdto)
+        {
+            
+            var user = _context.Users.FirstOrDefault(x => x.Email == userdto.Email && x.Password==userdto.Password);
+
+            if (user == null )
+            {
+                return Unauthorized("Invalid username or password.");
+            }
+          
+
+            return Ok(user);
+
+        }
+
+
+            private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.UserId == id);
         }

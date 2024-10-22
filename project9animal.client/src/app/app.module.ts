@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,9 +18,12 @@ import { OurCommunityDetailsComponent } from './ayah/our-community-details/our-c
 import { ShowAnimalsComponent } from './show-animals/show-animals.component';
 import { AddAnimalsComponent } from './Admin/add-animals/add-animals.component';
 import { EditAnimalsComponent } from './Admin/edit-animals/edit-animals.component';
-
+import { FormsModule } from '@angular/forms';
 import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
+import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
+import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
+import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
 
 
 @NgModule({
@@ -37,6 +40,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
     GetAllCategoryComponent,
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
+    OurCommunityDetailsComponent,
     DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
@@ -44,45 +48,49 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
 
     AddShelterComponent,
     EditShelterComponent,
+    AnimalsDetailsComponent,
+    GetAnimalsAdminComponent,
+    AdoptionFormComponent,
 
   ],
   imports: [
+    FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
+    FormsModule
+    ,
     RouterModule.forRoot([
-      //Ueser
+      //User
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-     
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
-
-
-      { path: "ShowAnimals", component: ShowAnimalsComponent }
-
-
-      ,
-
+      { path: "ShowAnimals", component: ShowAnimalsComponent },
+      { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
 
 
       //AdminDashboard
       {
-        path: "dashboard", component: DashboardComponent, children: [
-          {
-             path: "register", component: RegisterComponent ,
-          },
-          { path:"getAllCategory", component: GetAllCategoryComponent }]
+        path: "dashboard",
+        component: DashboardComponent,
+        children: [
+          { path: "getAllCategory", component: GetAllCategoryComponent },
+          { path: "addAnimalCategory", component: AddAnimalCategoryComponent },
+          { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
+          { path: "EditAnimals/:id", component: EditAnimalsComponent },
+          { path: "addAnimal", component: AddAnimalsComponent },
+
+        ]
 
       },
-
 
 
     ])
   ],
   providers: [],
   bootstrap: [AppComponent],
-   
- 
+
+
 })
 export class AppModule { }

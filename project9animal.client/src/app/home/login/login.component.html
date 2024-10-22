@@ -21,7 +21,7 @@
               </h3>
             </div>
             <div class="faq wow fadeInRight mt-4">
-              <form method="POST">
+              <form  #login="ngForm" (ngSubmit)="loginUser(login.value)">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group">
@@ -31,7 +31,7 @@
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group">
-                      <input type="password" id="password" class="form-control"
+                      <input type="password" name="password" id="password" class="form-control"
                              placeholder="Password" required>
                     </div>
                   </div>

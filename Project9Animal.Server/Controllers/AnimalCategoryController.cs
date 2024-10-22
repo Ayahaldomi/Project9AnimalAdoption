@@ -68,10 +68,20 @@ namespace Project9Animal.Server.Controllers
             return Ok(category);
         }
         [HttpGet("GetAllCategories")]
-        public async Task<IActionResult> GetAllCategories()
+        public IActionResult GetAllCategories()
         {
-            var categories = await _context.Categories.ToListAsync();
+            var categories = _context.Categories.ToList();
             return Ok(categories);
+        }
+        [HttpGet("getImage/{imageName}")]
+        public IActionResult getImage(string imageName)
+        {
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Animal", imageName);
+            if (System.IO.File.Exists(pathImage))
+            {
+                return PhysicalFile(pathImage, "image/*");
+            }
+            return NotFound();
         }
 
     }
