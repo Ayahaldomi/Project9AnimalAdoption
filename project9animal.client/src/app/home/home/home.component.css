@@ -1,21 +1,59 @@
+.services-block .inner-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px; /* Optional: Adds rounded corners */
+  height: 100%; /* Ensures the block occupies the full height */
+}
 
 .image-box {
-  width: 100%; /* Make sure the container takes up the full width */
-  height: 200px; /* Set a fixed height for the image container */
-  overflow: hidden; /* Prevent overflow of the image */
-  border-radius: 15px; /* Rounded corners */
-  margin-bottom: 20px; /* Space below the image */
   position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .category-image {
-  width: 100%; /* Ensure the image fills the width of the container */
-  height: 100%; /* Ensure the image fills the height of the container */
-  object-fit: cover; /* Ensures the image covers the entire container without distortion */
-  border-radius: 15px; /* Match the rounded corners of the container */
-  transition: transform 0.3s ease; /* Animation for hover effect */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire card without distortion */
+  transition: transform 0.5s ease; /* Smooth zoom effect on hover */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+  opacity: 0; /* Hidden by default */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease; /* Fade in overlay */
+}
+
+  .overlay .content {
+    text-align: center;
+    color: #fff;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Fade in text */
+  }
+
+    .overlay .content h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+.image-box:hover .overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.image-box:hover .content {
+  opacity: 1; /* Show text on hover */
 }
 
 .image-box:hover .category-image {
-  transform: scale(1.05); /* Slight zoom on hover */
+  transform: scale(1.1); /* Slight zoom on hover */
 }

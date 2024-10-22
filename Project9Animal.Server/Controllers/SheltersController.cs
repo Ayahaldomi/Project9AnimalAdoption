@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.DTOs;
 using Project9Animal.Server.Models;
 
@@ -102,5 +103,28 @@ namespace Project9Animal.Server.Controllers
         {
             return _context.Shelters.Any(e => e.ShelterId == id);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
 }

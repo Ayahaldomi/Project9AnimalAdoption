@@ -12,6 +12,17 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { AddAnimalCategoryComponent } from './Admin/add-animal-category/add-animal-category.component';
+import { GetAllCategoryComponent } from './Admin/get-all-category/get-all-category.component';
+import { OurCommunityDetailsComponent } from './ayah/our-community-details/our-community-details.component';
+import { ShowAnimalsComponent } from './show-animals/show-animals.component';
+import { AddAnimalsComponent } from './Admin/add-animals/add-animals.component';
+import { EditAnimalsComponent } from './Admin/edit-animals/edit-animals.component';
+
+import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
+import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
+import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +33,20 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
     AbuotComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddAnimalCategoryComponent,
+    GetAllCategoryComponent,
+    AddAnimalCategoryComponent,
+    OurCommunityDetailsComponent,
+    DashboardComponent,
+    ShowAnimalsComponent,
+    AddAnimalsComponent,
+    EditAnimalsComponent,
+
+    AddShelterComponent,
+    EditShelterComponent,
+    AnimalsDetailsComponent,
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -33,9 +57,15 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
       { path: "abuot", component: AbuotComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+     
+      { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
 
 
+      { path: "ShowAnimals", component: ShowAnimalsComponent },
+      { path: "AnimalsDetails", component: AnimalsDetailsComponent }
 
+
+      ,
 
 
 
@@ -44,7 +74,8 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
         path: "dashboard", component: DashboardComponent, children: [
           {
              path: "register", component: RegisterComponent ,
-          }]
+          },
+          { path:"getAllCategory", component: GetAllCategoryComponent }]
 
       },
 
