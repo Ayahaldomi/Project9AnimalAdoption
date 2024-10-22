@@ -9,6 +9,8 @@ import { UrlService } from '../../RamaURL/url.service';
 export class HomeComponent {
   ngOnInit() {
     this.getAllCategoryAnimals();
+    this.getAllTestmonials();
+    this.getTopSuccessStories();
   }
   constructor(private _ser: UrlService) { }
 
@@ -19,6 +21,27 @@ export class HomeComponent {
       debugger
       this.categories = data;
       console.log(this.categories)
+    })
+  }
+  testmonials: any
+  getAllTestmonials() {
+    debugger
+    this._ser.getAllTestmonials().subscribe((data) => {
+      debugger
+      this.testmonials = data;
+      console.log(this.testmonials)
+
+    })
+  }
+
+  stories: any
+  getTopSuccessStories() {
+    debugger
+    this._ser.getTopSuccessStories().subscribe((data) => {
+      debugger
+      this.stories = data;
+      console.log(this.stories)
+
     })
   }
 }
