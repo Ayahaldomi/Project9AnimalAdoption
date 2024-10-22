@@ -91,7 +91,8 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
           { path: "GitShelter", component: GitShelterComponent },
-          { path: "AddShelter", component: AddShelterComponent},
+          { path: "AddShelter", component: AddShelterComponent },
+          { path: "updatecategory", component: UpdateCategoryComponent }
 
         ]
 
