@@ -86,12 +86,14 @@ import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-
           { path:"getAllCategory", component: GetAllCategoryComponent }
 
       ,
-        path: "dashboard", component: DashboardComponent, children: [
+          {
+            path: "dashboard", component: DashboardComponent, children: [
 
 
-          { path: "getAllCategory", component: GetAllCategoryComponent }
+              { path: "getAllCategory", component: GetAllCategoryComponent }
 
-        ]
+            ]
+          },
 
           { path: "register",
             component: RegisterComponent

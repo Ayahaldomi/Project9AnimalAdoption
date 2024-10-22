@@ -110,14 +110,14 @@ namespace Project9Animal.Server.Controllers
         [HttpPost("login")]
         public IActionResult login([FromForm] loginDTO userdto)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Email == userdto.Email);
+            
+            var user = _context.Users.FirstOrDefault(x => x.Email == userdto.Email && x.Password==userdto.Password);
 
-            if (user == null  )
+            if (user == null )
             {
                 return Unauthorized("Invalid username or password.");
             }
-            _context.Users.Add(user);
-            _context.SaveChanges();
+          
 
             return Ok(user);
 

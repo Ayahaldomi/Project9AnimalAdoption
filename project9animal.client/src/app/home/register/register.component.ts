@@ -16,13 +16,12 @@ export class RegisterComponent {
   constructor(private _ser: LeenURLService) { }
 
 
-  addNewTips(data: any) {
+  addNewUser(data: any) {
 
     var form = new FormData();
     for (let key in data) {
       form.append(key, data[key])
     }
-
     
     this._ser.addUser(form).subscribe(() =>
 
