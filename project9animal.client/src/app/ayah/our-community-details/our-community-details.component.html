@@ -34,7 +34,8 @@
                 </div>
                 <h3>{{ story.title }}</h3>
                 <ul class="post-meta">
-                  <li><button class="btn btn-outline-primary" (click)="addLike()">Like</button></li>
+                  <li *ngIf="!isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">Like</button></li>
+                  <li *ngIf="isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">UnLike</button></li>
                   <li>{{commentcount}} Comments</li>
                   <li><span class="icon fa fa-heart"></span> {{like}}</li>
                 </ul>
@@ -45,7 +46,7 @@
                   {{story.storyText}}
                   </div>
                   
-                  <div class="row clearfix">
+                  <!--<div class="row clearfix">
                     <div class="col-md-7 col-sm-7 col-xs-12">
                       <div class="image">
                         <img src="assets/images/resource/news-11.jpg" alt="" />
@@ -70,7 +71,7 @@
                     thus for but but yawned that alas before less thus and serenely versus
                     cannily the on because blind a cuckoo jeepers told blew held far hello far
                     as the while private much lantern and less cockatoo returned disbanded into.
-                  </p>
+                  </p>-->
                 </div>
               <!--post-share-options-->
               <div class="post-share-options clearfix">
@@ -79,7 +80,9 @@
                 </div>
                 <div class="pull-right social-icon-four clearfix">
                   <span class="share">Share</span>
-                  <a href="#"><span class="fa fa-twitter"></span></a>
+                  <a href="https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url=https://yourwebsite.com" target="_blank">
+                    <span class="fa fa-twitter"></span>
+                  </a>
                   <a href="#"><span class="fa fa-facebook-square"></span></a>
                   <a href="#"><span class="fa fa-linkedin"></span></a>
                   <a href="#"><span class="fa fa-google-plus"></span></a>

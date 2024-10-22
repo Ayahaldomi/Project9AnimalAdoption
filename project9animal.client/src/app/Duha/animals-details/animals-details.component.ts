@@ -13,6 +13,7 @@ export class AnimalsDetailsComponent {
   ngOnInit() {
     this.animalId = this._activate.snapshot.paramMap.get('id')
     console.log(" this.animalId", this.animalId)
+    this.getAnimalsDetailsById()
 
   }
   constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute) { }

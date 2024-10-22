@@ -49,25 +49,51 @@ namespace Project9Animal.Server.Controllers
 
             return Ok(animals.ToList()); 
         }
-
-        [HttpGet("FilertName")]
-        public IActionResult GetAnimalsFilertName(string name)
-        {
-            return Ok(_context.Animals.Where(i => i.Name == name).ToList());
-        }
-        // GET: api/Animals1/5
-        [HttpGet("Animals1{id}")]
+        [HttpGet("Animals1/{id}")]
         public IActionResult GetAnimal(int id)
         {
-            var animal = _context.Animals.Find(id);
+            var animal = _context.Animals
+                .Include(a => a.Category) // تضمين الفئة
+                .Include(a => a.Shelter) // تضمين الملجأ
+                .FirstOrDefault(a => a.AnimalId == id); // العثور على الحيوان
 
             if (animal == null)
             {
                 return NotFound();
             }
 
-            return Ok(animal);
+            // إرجاع جميع البيانات المطلوبة
+            return Ok(new
+            {
+                animalId = animal.AnimalId,
+                name = animal.Name,
+              
+                breed = animal.Breed,
+                age = animal.Age,
+                size = animal.Size,
+                temperament = animal.Temperament,
+                specialNeeds = animal.SpecialNeeds,
+                description = animal.Description,
+                adoptionStatus = animal.AdoptionStatus,
+                image1 = animal.Image1,
+                image2 = animal.Image2,
+                image3 = animal.Image3,
+                image4 = animal.Image4,
+                adoptionApplications = animal.AdoptionApplications,
+                category = new
+                {
+                    id = animal.Category.Id,
+                    name = animal.Category.Name 
+                },
+                shelter = new
+                {
+                    id = animal.Shelter.ShelterId, 
+                    name = animal.Shelter.ShelterName 
+                },
+                successStories = animal.SuccessStories
+            });
         }
+
 
         // PUT: api/Animals1/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -238,27 +264,27 @@ namespace Project9Animal.Server.Controllers
 
         /////////////////
         ///
-        [HttpPut("UpdateAnimal1/{id}")]
+        [HttpPut("UpdateAnimal/{id}")]
         public async Task<IActionResult> UpdateAnimal(int id, [FromForm] AnimalDTO updatedAnimalDto)
         {
-   
+     
             var animal = await _context.Animals.FindAsync(id);
             if (animal == null)
             {
                 return NotFound();
             }
 
-            
-            animal.Name = updatedAnimalDto.Name;
-            animal.CategoryId = updatedAnimalDto.CategoryId;
-            animal.ShelterId = updatedAnimalDto.ShelterId;
-            animal.Breed = updatedAnimalDto.Breed;
-            animal.Age = updatedAnimalDto.Age;
-            animal.Size = updatedAnimalDto.Size;
-            animal.Temperament = updatedAnimalDto.Temperament;
-            animal.SpecialNeeds = updatedAnimalDto.SpecialNeeds;
-            animal.Description = updatedAnimalDto.Description;
-            animal.AdoptionStatus = updatedAnimalDto.AdoptionStatus;
+    
+            animal.Name = string.IsNullOrWhiteSpace(updatedAnimalDto.Name) ? animal.Name : updatedAnimalDto.Name;
+            animal.CategoryId = updatedAnimalDto.CategoryId != 0 ? updatedAnimalDto.CategoryId : animal.CategoryId;
+            animal.ShelterId = updatedAnimalDto.ShelterId != 0 ? updatedAnimalDto.ShelterId : animal.ShelterId;
+            animal.Breed = string.IsNullOrWhiteSpace(updatedAnimalDto.Breed) ? animal.Breed : updatedAnimalDto.Breed;
+            animal.Age = updatedAnimalDto.Age != 0 ? updatedAnimalDto.Age : animal.Age;
+            animal.Size = string.IsNullOrWhiteSpace(updatedAnimalDto.Size) ? animal.Size : updatedAnimalDto.Size;
+            animal.Temperament = string.IsNullOrWhiteSpace(updatedAnimalDto.Temperament) ? animal.Temperament : updatedAnimalDto.Temperament;
+            animal.SpecialNeeds = string.IsNullOrWhiteSpace(updatedAnimalDto.SpecialNeeds) ? animal.SpecialNeeds : updatedAnimalDto.SpecialNeeds;
+            animal.Description = string.IsNullOrWhiteSpace(updatedAnimalDto.Description) ? animal.Description : updatedAnimalDto.Description;
+            animal.AdoptionStatus = string.IsNullOrWhiteSpace(updatedAnimalDto.AdoptionStatus) ? animal.AdoptionStatus : updatedAnimalDto.AdoptionStatus;
 
     
             var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
@@ -317,16 +343,14 @@ namespace Project9Animal.Server.Controllers
             return NoContent();
         }
 
-
         private bool DoesAnimalExist(int id)
         {
             return _context.Animals.Any(e => e.AnimalId == id);
         }
-        //////////////////////
-       [HttpPost("AddAnimal")]
+
+        [HttpPost("AddAnimal")]
         public async Task<IActionResult> AddAnimal([FromForm] AnimalDTO newAnimalDto)
         {
-        
             var animal = new Animal
             {
                 Name = newAnimalDto.Name,
@@ -341,7 +365,7 @@ namespace Project9Animal.Server.Controllers
                 AdoptionStatus = newAnimalDto.AdoptionStatus
             };
 
-        
+            // حفظ الصور
             var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
@@ -385,7 +409,7 @@ namespace Project9Animal.Server.Controllers
                 animal.Image4 = newAnimalDto.Image4.FileName;
             }
 
-          
+            // إضافة الحيوان إلى قاعدة البيانات
             _context.Animals.Add(animal);
 
             try
@@ -397,7 +421,8 @@ namespace Project9Animal.Server.Controllers
                 return StatusCode(500, $"Error saving animal: {ex.Message}");
             }
 
-            return CreatedAtAction("GetAnimalById", new { id = animal.AnimalId }, animal);
+            // إرجاع استجابة نجاح مع تفاصيل الحيوان المضاف
+            return Ok();
         }
 
 
