@@ -131,3 +131,17 @@
 a:hover {
   text-decoration: underline;
 }
+
+.profile-edit-btn {
+  background-color: #FFA500; /* اللون البرتقالي */
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+  .profile-edit-btn:hover {
+    background-color: #e69500; /* تأثير Hover بلون برتقالي داكن */
+  }
