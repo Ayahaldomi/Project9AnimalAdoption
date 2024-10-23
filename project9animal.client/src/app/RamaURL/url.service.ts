@@ -20,4 +20,24 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}/AnimalCategory/AddCategory`, data)
 
   }
+  getAllTestmonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/Home/GetTestimonials`);
+  }
+
+  getTopSuccessStories(): Observable<any> {
+    debugger
+    return this.http.get(`${this.baseUrl}/Home/top`);
+  }
+  deleteCategory(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/AnimalCategory/DeleteCategory${id}`);
+  }
+  UpdateCategory(id: number, data: any): Observable<any> {
+    debugger
+    return this.http.put(`${this.baseUrl}/AnimalCategory/UpdateCategory/${id}`, data);
+  }
+  getCategoryById(id: number): Observable<any> {
+    debugger
+    
+    return this.http.get<any>(`${this.baseUrl}/AnimalCategory/GetCategoryById/${id}`);
+  }
 }

@@ -35,4 +35,12 @@ export class AyahURLService {
     return this.http.post<any>(`${this.staticData}/addLike`, data)
   }
 
+  CommentPost(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/commentPOST`, data)
+  }
+
+  ReplyPost(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/replyPost`, data)
+  }
+
 }

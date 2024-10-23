@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,8 +24,11 @@ import { AddShelterComponent } from './Admin/add-shelter/add-shelter.component';
 import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.component';
 import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
+import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
-import { AdoptionApplicationRequestComponent } from './Admin/adoption-application-request/adoption-application-request.component';
+import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
+import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
+import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 
 
 @NgModule({
@@ -42,7 +46,6 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     OurCommunityDetailsComponent,
-    DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
     EditAnimalsComponent,
@@ -51,7 +54,11 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
     EditShelterComponent,
     AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
+    BlogComponent,
     AdoptionFormComponent,
+    CreateSucessStoryComponent,
+    GitShelterComponent,
+    UpdateCategoryComponent,
     AdoptionApplicationRequestComponent,
 
   ],
@@ -59,7 +66,8 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
     FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     ,
     RouterModule.forRoot([
       //User
@@ -73,6 +81,11 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
       { path: "AdoptionForm/:id", component: AdoptionFormComponent },
 
 
+      { path: "app-blog", component: BlogComponent },
+      { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+
+
+
       //AdminDashboard
       {
         path: "dashboard",
@@ -83,11 +96,18 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
           { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
+          { path: "GitShelter", component: GitShelterComponent },
+          { path: "AddShelter", component: AddShelterComponent },
+          { path: "updatecategory/:id", component: UpdateCategoryComponent }
+          { path: "AddShelter", component: AddShelterComponent},
+          { path: "EditShelter/:id", component:EditShelterComponent },
           { path: "ShowAdoptionRequest", component: AdoptionApplicationRequestComponent }
 
         ]
 
       },
+
+
 
 
     ])

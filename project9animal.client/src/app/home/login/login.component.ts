@@ -9,26 +9,51 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private _ser: LeenURLService, private _router: Router) { }
 
   ngOnInit() { }
+  constructor(private _ser: LeenURLService, private _route: Router) { }
 
   loginUser(data: any) {
-    debugger;
+    
     var form = new FormData();
-    for (let key in data) {
-      form.append(key, data[key]);
+    for (let k in data) {
+      form.append(k, data[k])
     }
+    debugger
 
-    this._ser.login(form).subscribe(
-      response => {
-        alert('Login Successful');
-     
-      },
-      error => {
-        alert('Login Failed');
-        
+    this._ser.login(form).subscribe((newData) => {
+      alert("logged in successfully")
+      //console.log(data)
+
+      localStorage.setItem("userId", newData.userId)
+      debugger
+      //this._ser['userId'].next(newData.userId)
+
+      //debugger
+
+      //this._ser['email'].next(newData.email)
+
+      if (newData.email == "huda@gmail.com") {
+        this._route.navigate(['/dashboard'])
       }
-    );
-  }
+      else {
+        this._route.navigate(['/'])
+      }
+
+
+   
+
+    },
+      (error) => { alert(error.error) }
+    )
+
+
+
+
+
+
+
+    }
 }
+
+

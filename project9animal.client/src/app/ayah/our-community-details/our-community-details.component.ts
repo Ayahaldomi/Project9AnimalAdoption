@@ -9,7 +9,9 @@ import { Location } from '@angular/common';
   templateUrl: './our-community-details.component.html',
   styleUrl: './our-community-details.component.css'
 })
+
 export class OurCommunityDetailsComponent {
+
   parameter: any;
   story: any;
   like: any;
@@ -82,4 +84,88 @@ export class OurCommunityDetailsComponent {
    
 
   }
+  addCommentObj = {
+    "storyId": 0,
+    "userId": 1,
+    "comment1": "string"
+  }
+
+  addComment(data: any) {
+    this.addCommentObj.storyId = this.parameter;
+    this.addCommentObj.comment1 = data.comment1;
+    this._ser.CommentPost(this.addCommentObj).subscribe((data) => {
+      this.SeccessStoryByID(this.parameter)
+      this.likes(this.parameter)
+      this.comments(this.parameter)
+      this.commentCount(this.parameter)
+      this.isItLiked()
+    })
+  }
+
+  openTwitterShare(event: MouseEvent) {
+    event.preventDefault(); // Prevent the default action of opening the link in a new tab
+    const width = 600;
+    const height = 400;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+
+    const twitterUrl = `https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url=${this.pageUrl}`;
+
+    window.open(
+      twitterUrl,
+      'Share on Twitter',
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  }
+
+  openFacebookShare(event: MouseEvent) {
+    event.preventDefault(); // Prevent default anchor behavior
+    const width = 600;
+    const height = 400;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+
+    // Replace with the URL you want to share
+    //const facebookUrl = `https://www.facebook.com/sharer/sharer.php?&quote=${encodeURIComponent(`Check out this awesome content! ${this.pageUrl}`)}`;
+    //const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.pageUrl)}&quote=${encodeURIComponent('Check out this awesome content!')}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+
+    window.open(
+      facebookUrl,
+      'Share on Facebook',
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  }
+
+ 
+
+  showReplyForm: boolean[] = [];
+
+  toggleReplyForm(index: number) {
+    this.showReplyForm[index] = !this.showReplyForm[index];
+  }
+
+  addReplyObj = {
+    "commentId": 0,
+    "userId": 4,
+    "comment": "string"
+  }
+
+  addReply(commentIndex: number, replyForm: any, comentID: any) {
+    this.addReplyObj.commentId = comentID;
+    this.addReplyObj.comment = replyForm.comment;
+
+    this._ser.ReplyPost(this.addReplyObj).subscribe((data) => {
+      this.SeccessStoryByID(this.parameter)
+      this.likes(this.parameter)
+      this.comments(this.parameter)
+      this.commentCount(this.parameter)
+      this.isItLiked()
+      this.showReplyForm[commentIndex] = false;
+      replyForm.reset();
+    });
+
+    
+  }
+
 }
