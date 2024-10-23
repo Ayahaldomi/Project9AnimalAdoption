@@ -16,5 +16,9 @@ export class LeenURLService {
     login(data: any): Observable<any> {
     return this.http.post<any>(`https://localhost:7269/api/Users/login`, data);
   }
+
+  getUsers(): Observable<any> {
+    return this.http.get(`https://localhost:7269/api/Users/GetUserById`);
+  }
   
 }

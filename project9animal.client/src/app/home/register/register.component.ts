@@ -18,13 +18,14 @@ export class RegisterComponent {
 
   addNewUser(data: any) {
 
+    debugger;
     var form = new FormData();
     for (let key in data) {
       form.append(key, data[key])
     }
     
     this._ser.addUser(form).subscribe(() =>
-
+    
       alert("add User Sucssfully")
     )
   }
