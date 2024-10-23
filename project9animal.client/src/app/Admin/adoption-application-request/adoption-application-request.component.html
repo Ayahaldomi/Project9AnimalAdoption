@@ -1,0 +1,35 @@
+  <div class="container my-5">
+    <h2 class="mb-4">Adoption Applications</h2>
+    <table class="table table-bordered table-striped table-hover">
+      <thead >
+        <tr>
+          <th>Application ID</th>
+          <th>Adopter Name</th>
+          <th>Animal Image</th>
+          <th>Application Date</th>
+          <th>Status</th>
+          <th>User Info</th>
+          <th>Animal Info</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+        <tr *ngFor="let item of dataApplicationArray">
+          <td>{{item.applicationId}}</td>
+          <td>{{item.adopterName}}</td>
+          <td><img src="https://via.placeholder.com/50" alt="Animal Image" class="img-fluid"></td>
+          <td>{{item.applicationDate}}</td>
+          <td><span>{{item.status}}</span></td>
+          <!--<button class="btn btn-info btn-sm" (click)="getApplicationsByUser()">Get Applications for User</button>-->
+          <td><button class="btn btn-primary btn-sm" onclick="showAnimalInfo(1)">Show</button></td>
+          <td><button class="btn btn-warning btn-sm" onclick="editApplication(1)">Edit</button></td>
+        </tr>
+
+     
+      </tbody>
+    </table>
+  </div>
+
+
+

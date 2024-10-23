@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,14 @@ import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
 import { ProfileComponent } from './home/profile/profile.component';
 
+import { AdoptionApplicationRequestComponent } from './Admin/adoption-application-request/adoption-application-request.component';
+
+import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
+import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
+import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +52,6 @@ import { ProfileComponent } from './home/profile/profile.component';
     AddAnimalCategoryComponent,
     OurCommunityDetailsComponent,
     OurCommunityDetailsComponent,
-    DashboardComponent,
     ShowAnimalsComponent,
     AddAnimalsComponent,
     EditAnimalsComponent,
@@ -56,12 +64,21 @@ import { ProfileComponent } from './home/profile/profile.component';
     AdoptionFormComponent,
     ProfileComponent,
 
+    AdoptionApplicationRequestComponent,
+
+    CreateSucessStoryComponent,
+    GitShelterComponent,
+    UpdateCategoryComponent,
+    GetTestmonialsComponent,
+
+
   ],
   imports: [
     FormsModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     ,
     RouterModule.forRoot([
       //User
@@ -74,8 +91,11 @@ import { ProfileComponent } from './home/profile/profile.component';
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
       { path: "AdoptionForm", component: AdoptionFormComponent },
       { path: "profile" , component:ProfileComponent},
+      { path: "AdoptionForm/:id", component: AdoptionFormComponent },
+
 
       { path: "app-blog", component: BlogComponent },
+      { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
 
 
       //AdminDashboard
@@ -89,9 +109,21 @@ import { ProfileComponent } from './home/profile/profile.component';
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
 
+          { path: "ShowAdoptionRequest", component: AdoptionApplicationRequestComponent },
+
+          { path: "GitShelter", component: GitShelterComponent },
+          { path: "AddShelter", component: AddShelterComponent },
+          { path: "updatecategory/:id", component: UpdateCategoryComponent },
+          { path: "AddShelter", component: AddShelterComponent},
+          { path: "EditShelter/:id", component: EditShelterComponent },
+          { path: "showwTestmoinals", component: GetTestmonialsComponent },
+
+
         ]
 
       },
+
+
 
 
     ])

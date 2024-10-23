@@ -17,6 +17,53 @@ namespace Project9Animal.Server.Controllers
             _db = db;
         }
 
+
+        [HttpGet("GetAllApplications")]
+        public IActionResult GetAllApplications()
+        {
+          
+            var applications = _db.AdoptionApplications
+                                  .Include(a => a.User)
+                                  .Include(a => a.Animal)
+                                  .Select(app => new
+                                  {
+                                      ApplicationId = app.ApplicationId,
+                                      UserId = app.UserId,
+                                      AdopterName = app.User.FullName,
+                                      AnimalName = app.Animal.Name,    
+                                      AnimalImage = app.Animal.Image2, 
+                                      ApplicationDate = app.ApplicationDate,
+                                      Status = app.Status,
+                                      IsReceived = app.IsReceived
+                                  }).ToList();
+
+            return Ok(applications);
+        }
+
+
+        [HttpGet("GetApplicationsByUserId/{userId}")]
+        public IActionResult GetApplicationsByUserId(int userId)
+        {
+            var applications = _db.AdoptionApplications
+                                  .Include(a => a.User)
+                                  .Include(a => a.Animal)
+                                  .Where(a => a.UserId == userId)
+                                  .Select(app => new
+                                  {
+                                      ApplicationId = app.ApplicationId,
+                                      UserId = app.UserId,
+                                      AdopterName = app.User.FullName,
+                                      AnimalName = app.Animal.Name,
+                                      AnimalImage = app.Animal.Image2,
+                                      ApplicationDate = app.ApplicationDate,
+                                      Status = app.Status,
+                                      IsReceived = app.IsReceived
+                                  }).ToList();
+
+            return Ok(applications);
+        }
+
+
         [HttpPost("SubmitAdoptionApplication")]
         public IActionResult SubmitAdoptionApplication([FromForm] AdoptionApplicationDto dto)
         {
