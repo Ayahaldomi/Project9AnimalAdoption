@@ -23,5 +23,7 @@ export class LeenURLService {
   getUsers(): Observable<any> {
     return this.http.get(`https://localhost:7269/api/Users/GetUserById`);
   }
-  
+  getUsers1(): Observable<any> {
+    return this.http.get(`https://localhost:7269/api/Users/GetAllUser`);
+  }
 }
