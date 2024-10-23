@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DuhaUrlService } from '../duha-url.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LeenURLService } from '../../leen/leen-url.service';
 
 @Component({
   selector: 'app-animals-details',
@@ -21,11 +22,11 @@ export class AnimalsDetailsComponent {
   //  this.getAnimalsDetailsById()
 
   //}
-  constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute, private _router: Router) { }
+  constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute, private _router: Router, private _leen: LeenURLService) { }
   ngOnInit() {
   
-    this._ser.UserId.subscribe((data) => {
-      console.log("User ID from service after subscription:", data);  
+    this._leen.UserId.subscribe((data) => {
+      console.log("User ID from service after aaaaaaaaaaaaaaaaaaaaaa:", data);  
       this.userId = data;
 
       if (this.userId && this.userId !== '') {
@@ -49,8 +50,8 @@ export class AnimalsDetailsComponent {
   checkUserLogin(animalId: any) {
     console.log('Animal ID passed to checkUserLogin:', animalId);
     console.log('User ID in checkUserLogin before check:', this.userId);  // Add this to check if userId is being retrieved
-
-    if (this.userId && this.userId !== '') {
+    debugger
+    if (this.userId != '') {
       // User is logged in, navigate to the adoption form
       console.log('User is logged in, navigating to AdoptionForm');
       this._router.navigate(['/AdoptionForm', animalId], { queryParams: { userId: this.userId } });
