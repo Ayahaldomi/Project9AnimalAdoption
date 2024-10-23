@@ -24,6 +24,7 @@ import { EditShelterComponent } from './Admin/edit-shelter/edit-shelter.componen
 import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-details.component';
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { AdoptionApplicationRequestComponent } from './Admin/adoption-application-request/adoption-application-request.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
     AnimalsDetailsComponent,
     GetAnimalsAdminComponent,
     AdoptionFormComponent,
+    AdoptionApplicationRequestComponent,
 
   ],
   imports: [
@@ -68,7 +70,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
-      { path: "AdoptionForm", component: AdoptionFormComponent },
+      { path: "AdoptionForm/:id", component: AdoptionFormComponent },
 
 
       //AdminDashboard
@@ -81,6 +83,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
           { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
+          { path: "ShowAdoptionRequest", component: AdoptionApplicationRequestComponent }
 
         ]
 

@@ -58,7 +58,7 @@
                 <li><i class="fas fa-paw yellow me-2"></i> Shelter phone: {{animalDetails.shelter.phone}}</li>
               </ul>
               <div class="button">
-                <a routerLink="/AdoptionForm" class="btn main" title="Adopte">
+                <a (click)="checkUserLogin(item.id)" class="btn main" title="Adopte">
                   Adopte <i class="fas fa-paw"></i>
                 </a>
               </div>

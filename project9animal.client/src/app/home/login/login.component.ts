@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LeenURLService } from '../../leen/leen-url.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { LeenURLService } from '../../leen/leen-url.service';
 })
 export class LoginComponent {
 
-  constructor(private _ser: LeenURLService) { }
+  constructor(private _ser: LeenURLService, private _router: Router) { }
 
   ngOnInit() { }
 
