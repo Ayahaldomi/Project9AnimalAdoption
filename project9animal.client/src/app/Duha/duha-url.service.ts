@@ -21,8 +21,8 @@ export class DuhaUrlService {
   }
 
   postAdoptionApplication(data: any): Observable<any> {
-    debugger
-    return this.http.post<any>(`${this.staticData}/AdoptionForm/SubmitAdoptionApplication`, data)
+    
+    return this.http.post<any>(`https://localhost:7269/api/AdoptionForm/SubmitAdoptionApplication`, data)
   }
 
   getAllApplication(): Observable<any> {

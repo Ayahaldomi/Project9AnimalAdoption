@@ -60,17 +60,35 @@ export class AdoptionFormComponent {
       console.error("User ID is not available, unable to fetch user details");
     }
   }
+  myform = {
+    "userId": 0,
+    "animalId": 0,
+    "address": "string",
+    "medicalStatus": "string",
+    "flatType": "string",
+    "financialStatus": "string",
+    "haveKids": true,
+    "moreDetails": "string"
+  }
 
   addNewAdoptionform(data: any, animalId:any ,userId:any) {
     debugger;
-    var form = new FormData();
-    for (let key in data) {
-      form.append(key, data[key])
-      
+    this.myform.userId = userId
+    this.myform.animalId = animalId
+    this.myform.address = data.address
+    this.myform.medicalStatus = data.medicalStatus
+    this.myform.flatType = data.flatType
+    this.myform.financialStatus = data.finaincalStatus
+    this.myform.moreDetails = data.moreDetails
+    if (data.haveKids == "yes") {
+      this.myform.haveKids = true
+
+    } else {
+      this.myform.haveKids = false
+
     }
-    form.append("userId", userId)
-    form.append("animalId", animalId)
-    this._ser.postAdoptionApplication(form).subscribe(
+  
+    this._ser.postAdoptionApplication(this.myform).subscribe(
       (datas) => {
         alert("Add successfully!");
       },

@@ -41,7 +41,6 @@ export class AnimalsDetailsComponent {
   checkUserLogin(animalId: any) {
     console.log('Animal ID passed to checkUserLogin:', animalId);
     console.log('User ID in checkUserLogin before check:', this.userId);  // Add this to check if userId is being retrieved
-    debugger
     if (this.userId != '') {
       // User is logged in, navigate to the adoption form
       console.log('User is logged in, navigating to AdoptionForm');
