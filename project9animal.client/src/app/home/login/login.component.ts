@@ -41,7 +41,7 @@ export class LoginComponent {
 
         if (redirectTo && animalId) {
           console.log("Navigating to:", `${redirectTo}/${animalId}`);
-          this._route.navigate([`${redirectTo}/${animalId}`]);  // إعادة التوجيه بعد تسجيل الدخول إلى صفحة التفاصيل
+          this._route.navigate([`${redirectTo}/${animalId}`]);  
         } else if (newData.email === 'huda@gmail.com') {
           this._route.navigate(['/dashboard']);
         } else {
