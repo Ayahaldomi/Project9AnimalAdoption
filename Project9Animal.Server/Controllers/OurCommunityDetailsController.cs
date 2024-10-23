@@ -41,11 +41,21 @@ namespace Project9Animal.Server.Controllers
         [HttpGet("comments/{id}")]
         public IActionResult comments(int id) {
             var comments = _context.Comments
-                .Where(c => c.StoryId == id)
-                .Include(c => c.User)
-                .Include(c => c.Replies)
-                .ToList();
-            
+                    .Where(c => c.StoryId == id)
+                    .Select(c => new
+                    {
+                        c.CommentId,
+                        c.Comment1, 
+                        UserName = c.User.FullName, 
+                        Replies = c.Replies.Select(r => new
+                        {
+                            r.Comment,
+                            r.CommentDate, 
+                            UserName = r.User.FullName 
+                        }).ToList()
+                    })
+                    .ToList();
+
             return Ok(comments);
         }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AyahURLService } from '../ayah-url.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { LeenURLService } from '../../leen/leen-url.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class OurCommunityDetailsComponent {
   like: any;
   commentcount: any;
   comment: any;
+  userID: any;
   ngOnInit() {
     this.parameter = this._route.snapshot.paramMap.get("id");
     this.SeccessStoryByID(this.parameter)
@@ -24,10 +26,15 @@ export class OurCommunityDetailsComponent {
     this.comments(this.parameter)
     this.commentCount(this.parameter)
     this.isItLiked()
+
+    this._leen.UserId.subscribe((data) => {
+      console.log("User ID from service after ayah:", data);
+      this.userID = data;
+    });
   }
   pageUrl: string;
 
-  constructor(private _ser: AyahURLService, private _route: ActivatedRoute, private _router: Router, private location: Location)
+  constructor(private _ser: AyahURLService, private _route: ActivatedRoute, private _router: Router, private location: Location, private _leen: LeenURLService)
   {
     this.pageUrl = encodeURIComponent(window.location.href); // Or this.location.path() if you need relative URLs
 
@@ -56,6 +63,7 @@ export class OurCommunityDetailsComponent {
       this.comment = data
     })
   }
+
   likePOST = {
     "userId": 4,
     "storyId": 0
@@ -63,6 +71,7 @@ export class OurCommunityDetailsComponent {
   isItLikedObj: any
   isItLiked() {
     this.likePOST.storyId = this.parameter
+    this.likePOST.userId = this.userID
     this._ser.LikeIsIt(this.likePOST).subscribe((data) => {
       this.isItLikedObj = data
       console.log(data)
@@ -72,6 +81,7 @@ export class OurCommunityDetailsComponent {
 
   addLike() {
     this.likePOST.storyId = this.parameter
+    this.likePOST.userId = this.userID
     this._ser.postLike(this.likePOST).subscribe((data) => {
       //this._router.navigate([`/OurCommunityDetails`, this.parameter]);
       this.SeccessStoryByID(this.parameter)
@@ -93,6 +103,7 @@ export class OurCommunityDetailsComponent {
   addComment(data: any) {
     this.addCommentObj.storyId = this.parameter;
     this.addCommentObj.comment1 = data.comment1;
+    this.addCommentObj.userId = data.userID;
     this._ser.CommentPost(this.addCommentObj).subscribe((data) => {
       this.SeccessStoryByID(this.parameter)
       this.likes(this.parameter)
@@ -147,13 +158,14 @@ export class OurCommunityDetailsComponent {
 
   addReplyObj = {
     "commentId": 0,
-    "userId": 4,
+    "userId": 0,
     "comment": "string"
   }
 
   addReply(commentIndex: number, replyForm: any, comentID: any) {
     this.addReplyObj.commentId = comentID;
     this.addReplyObj.comment = replyForm.comment;
+    this.addReplyObj.userId = this.userID;
 
     this._ser.ReplyPost(this.addReplyObj).subscribe((data) => {
       this.SeccessStoryByID(this.parameter)
