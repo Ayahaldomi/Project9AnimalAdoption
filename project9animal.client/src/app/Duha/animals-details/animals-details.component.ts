@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DuhaUrlService } from '../duha-url.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-animals-details',
@@ -8,15 +8,64 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './animals-details.component.css'
 })
 export class AnimalsDetailsComponent {
-
+  userId: any 
   animalId: any
-  ngOnInit() {
-    this.animalId = this._activate.snapshot.paramMap.get('id')
-    console.log(" this.animalId", this.animalId)
-    this.getAnimalsDetailsById()
+  //ngOnInit() {
+  //  this._ser.UserId.subscribe((data) => {
+  //    this.userId = data;
+  //  });
 
+
+  //  this.animalId = this._activate.snapshot.paramMap.get('id')
+  //  console.log(" this.animalId", this.animalId)
+  //  this.getAnimalsDetailsById()
+
+  //}
+  constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute, private _router: Router) { }
+  ngOnInit() {
+  
+    this._ser.UserId.subscribe((data) => {
+      console.log("User ID from service after subscription:", data);  
+      this.userId = data;
+
+      if (this.userId && this.userId !== '') {
+        console.log("User ID is available after subscription:", this.userId);
+      } else {
+        console.log("User ID is NOT available after subscription");
+      }
+    });
+
+   
+    this.animalId = this._activate.snapshot.paramMap.get('id') || this._activate.snapshot.queryParamMap.get('animalId');
+    console.log("this.animalId", this.animalId);
+
+    this.getAnimalsDetailsById();
   }
-  constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute) { }
+
+
+ 
+
+
+  checkUserLogin(animalId: any) {
+    console.log('Animal ID passed to checkUserLogin:', animalId);
+    console.log('User ID in checkUserLogin before check:', this.userId);  // Add this to check if userId is being retrieved
+
+    if (this.userId && this.userId !== '') {
+      // User is logged in, navigate to the adoption form
+      console.log('User is logged in, navigating to AdoptionForm');
+      this._router.navigate(['/AdoptionForm', animalId], { queryParams: { userId: this.userId } });
+    } else {
+      // User is not logged in, redirect to login with redirectTo and animalId in query params
+      console.log('Redirecting to login, animalId:', animalId);
+      this._router.navigate(['/login'], { queryParams: { redirectTo: '/AnimalsDetails', animalId: animalId } });
+    }
+  }
+
+
+
+
+
+
 
 
   animalDetails: any

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,9 @@ import { Observable, observable } from 'rxjs';
 export class LeenURLService {
  
   constructor(private http: HttpClient) { }
+
+  UserId: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  UserIdObserve = this.UserId.asObservable();
 
     addUser(data : any) : Observable < any > {
       return this.http.post<any>(`https://localhost:7269/api/Users/AddUser`, data);

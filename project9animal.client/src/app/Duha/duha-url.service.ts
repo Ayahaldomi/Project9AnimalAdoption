@@ -1,15 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DuhaUrlService {
+  UserId: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  UserIdObserve = this.UserId.asObservable();
 
   staticData = "https://localhost:7269/api"
   constructor(private http: HttpClient) { }
 
+
+  login(data: any): Observable<any> {
+    return this.http.post<any>(`https://localhost:7269/api/Users/login`, data);
+  }
   getAnimalDetailsByAnimalId(id: any): Observable<any> {
     return this.http.get<any>(`${this.staticData}/AnimalsDetails/${id}`);
   }

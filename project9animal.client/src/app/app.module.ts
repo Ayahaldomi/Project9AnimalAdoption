@@ -26,9 +26,13 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+
+import { AdoptionApplicationRequestComponent } from './Admin/adoption-application-request/adoption-application-request.component';
+
 import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+
 
 
 @NgModule({
@@ -56,10 +60,13 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+
+    AdoptionApplicationRequestComponent,
+
     CreateSucessStoryComponent,
     GitShelterComponent,
     UpdateCategoryComponent,
-    AdoptionApplicationRequestComponent,
+
 
   ],
   imports: [
@@ -85,7 +92,6 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
 
 
-
       //AdminDashboard
       {
         path: "dashboard",
@@ -96,12 +102,15 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
           { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
+
+          { path: "ShowAdoptionRequest", component: AdoptionApplicationRequestComponent },
+
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent },
-          { path: "updatecategory/:id", component: UpdateCategoryComponent }
+          { path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component:EditShelterComponent },
-          { path: "ShowAdoptionRequest", component: AdoptionApplicationRequestComponent }
+
 
         ]
 
