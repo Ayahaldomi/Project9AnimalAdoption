@@ -65,7 +65,7 @@ namespace Project9Animal.Server.Controllers
 
 
         [HttpPost("SubmitAdoptionApplication")]
-        public IActionResult SubmitAdoptionApplication([FromForm] AdoptionApplicationDto dto)
+        public IActionResult SubmitAdoptionApplication([FromBody] AdoptionApplicationDto dto)
         {
             
             var user = _db.Users.FirstOrDefault(u => u.UserId == dto.UserId);
@@ -99,7 +99,7 @@ namespace Project9Animal.Server.Controllers
             _db.AdoptionApplications.Add(adoptionApplication);
              _db.SaveChanges();
 
-            return Ok(new { message = "Application submitted successfully!" });
+            return Ok(adoptionApplication);
         }
     }
 }

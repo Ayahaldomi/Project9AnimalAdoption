@@ -16,6 +16,5 @@
     <Folder Include="src\app\RamaURL\" />
     <Folder Include="src\app\leen\" />
     <Folder Include="src\app\URL-serices\" />
-    <Folder Include="src\assets\" />
   </ItemGroup>
 </Project>

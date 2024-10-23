@@ -21,7 +21,8 @@ export class DuhaUrlService {
   }
 
   postAdoptionApplication(data: any): Observable<any> {
-    return this.http.post<any>(`${this.staticData}/AdoptionForm/SubmitAdoptionApplication`, data)
+    
+    return this.http.post<any>(`https://localhost:7269/api/AdoptionForm/SubmitAdoptionApplication`, data)
   }
 
   getAllApplication(): Observable<any> {
@@ -31,8 +32,8 @@ export class DuhaUrlService {
     return this.http.get(`${this.staticData}/AdoptionForm/GetApplicationsByUserId/${userId}`);
   }
 
-  getAllUser(): Observable<any> {
-    return this.http.get<any>(`${this.staticData}/Users/GetAllUser`)
-
+  getUserById(id: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Users/GetUserById${id}`);
   }
+
 }
