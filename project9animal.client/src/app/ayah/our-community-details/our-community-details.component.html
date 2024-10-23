@@ -25,7 +25,7 @@
         <div class="blog-single padding-right">
           <div class="inner-box">
             <div class="image">
-              <img src="assets/images/resource/news-10.jpg" alt="" />
+              <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="" />
             </div>
             <div class="lower-content">
               <div class="title-box">
@@ -166,100 +166,42 @@
       <!--Sidebar Side-->
       <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
         <aside class="sidebar">
-          <!--Blog Category Widget-->
-          <div class="sidebar-widget sidebar-blog-category">
-            <div class="sidebar-title">
-              <h2>categories</h2>
-            </div>
-            <ul class="cat-list">
-              <li><a href="#">Pets Lovers</a></li>
-              <li><a href="#">Cats & Dogs Food</a></li>
-              <li><a href="#">Other Pets</a></li>
-              <li><a href="#">Pets Health</a></li>
-              <li><a href="#">Homemade & DIY</a></li>
-              <li><a href="#">Pets Adoption</a></li>
-              <li><a href="#">Vaccine Care</a></li>
-            </ul>
-          </div>
+         
           <!--Blog Category Widget-->
           <div class="sidebar-widget adoption">
             <div class="sidebar-title">
               <h2>For Adoptions</h2>
             </div>
             <div class="row clearfix">
-              <a href="assets/images/resource/thumb-1.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="assets/images/resource/thumb-1.jpg" alt="" /></a>
-              <a href="images/resource/thumb-2.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="assets/images/resource/thumb-2.jpg" alt="" /></a>
-              <a href="images/resource/thumb-3.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="assets/images/resource/thumb-3.jpg" alt="" /></a>
-              <a href="images/resource/thumb-4.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="assets/images/resource/thumb-4.jpg" alt="" /></a>
-              <a href="images/resource/thumb-5.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="assets/images/resource/thumb-5.jpg" alt="" /></a>
-              <a href="images/resource/thumb-6.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="assets/images/resource/thumb-6.jpg" alt="" /></a>
+              <div *ngFor="let item of categoryAnimal" class="hello">
+                <a routerLink="/AnimalsDetails/{{item.animalId}}" data-fancybox="images" data-caption=""
+                   class="lightbox-image">
+                  <img src="https://localhost:7269/api/Animals1/getImages/{{item.image1}}" alt="" class="fixed-image" />
+                </a>
+              </div>
             </div>
           </div>
-          <!-- Popular Tags -->
-          <div class="sidebar-widget popular-tags">
-            <div class="sidebar-title">
-              <h2>tags</h2>
-            </div>
-            <a href="#">pet lovers</a>
-            <a href="#">cat</a>
-            <a href="#">dog</a>
-            <a href="#">grooming</a>
-            <a href="#">pet care</a>
-            <a href="#">pet lovers</a>
-          </div>
+         
           <!-- Popular Posts -->
           <div class="sidebar-widget popular-posts" style="text-align: left;">
             <div class="sidebar-title">
               <h2>Recent Posts</h2>
             </div>
-            <article class="post">
+            <article class="post" *ngFor="let item of resent">
               <figure class="post-thumb">
-                <a href="blog-single.html">
-                  <img src="assets/images/resource/post-thumb-3.jpg" alt="">
+                <a (click)="goTo(item.storyId)">
+                  <img src="https://localhost:7269/api/Bassam/getImage/{{item.photoUrl1}}" alt="">
                 </a>
               </figure>
               <div class="text">
-                <a href="blog-single.html">
-                  Considering at aesthetic more some
-                  dreamed
+                <a (click)="goTo(item.storyId)">
+                  {{ item.title }}
                 </a>
+
               </div>
-              <div class="post-info">Feb 31, 2021</div>
+              <div class="post-info">{{ item.date | date:'MMMM d, yyyy' }}</div>
             </article>
-            <article class="post">
-              <figure class="post-thumb">
-                <a href="blog-single.html">
-                  <img src="assets/images/resource/post-thumb-4.jpg" alt="">
-                </a>
-              </figure>
-              <div class="text">
-                <a href="blog-single.html">
-                  Dear gose dreamed less confessedly
-                  some
-                </a>
-              </div>
-              <div class="post-info">Jan 25, 2021</div>
-            </article>
-            <article class="post">
-              <figure class="post-thumb">
-                <a href="blog-single.html">
-                  <img src="assets/images/resource/post-thumb-5.jpg" alt="">
-                </a>
-              </figure>
-              <div class="text">
-                <a href="blog-single.html">
-                  At away gazel petulantly crud
-                  lightheartedly
-                </a>
-              </div>
-              <div class="post-info">Jan 19, 2021</div>
-            </article>
+
           </div>
         </aside>
       </div>

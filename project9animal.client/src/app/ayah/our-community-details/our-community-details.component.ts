@@ -26,6 +26,7 @@ export class OurCommunityDetailsComponent {
     this.comments(this.parameter)
     this.commentCount(this.parameter)
     this.isItLiked()
+    this.getresent()
 
     this._leen.UserId.subscribe((data) => {
       console.log("User ID from service after ayah:", data);
@@ -43,7 +44,8 @@ export class OurCommunityDetailsComponent {
   SeccessStoryByID(id: any) {
     this._ser.getSeccessStoryByID(id).subscribe((data) => {
       this.story = data
-      console.log("this is the story" + data)
+      console.log("this is the story" + this.story)
+      this.getAnimalByCategoryID(this.story.animalId)
     })
   }
 
@@ -89,6 +91,8 @@ export class OurCommunityDetailsComponent {
       this.comments(this.parameter)
       this.commentCount(this.parameter)
       this.isItLiked()
+      this.getresent()
+
     });
     this.parameter = this._route.snapshot.paramMap.get("id");
    
@@ -110,6 +114,8 @@ export class OurCommunityDetailsComponent {
       this.comments(this.parameter)
       this.commentCount(this.parameter)
       this.isItLiked()
+      this.getresent()
+
     })
   }
 
@@ -173,11 +179,42 @@ export class OurCommunityDetailsComponent {
       this.comments(this.parameter)
       this.commentCount(this.parameter)
       this.isItLiked()
+      this.getresent()
+
       this.showReplyForm[commentIndex] = false;
       replyForm.reset();
     });
 
     
+  }
+  categoryAnimal: any;
+
+  getAnimalByCategoryID(id: any) {
+    this._ser.getanimalCategory(id).subscribe((data) => {
+      this.categoryAnimal = data
+    })
+  }
+
+  resent: any;
+
+  getresent() {
+    this._ser.resentStory().subscribe((data) => {
+      this.resent = data
+    })
+  }
+
+  goTo(id: any) {
+    this.SeccessStoryByID(id)
+    this.likes(id)
+    this.comments(id)
+    this.commentCount(id)
+    this.isItLiked()
+    this.getresent()
+
+    this._leen.UserId.subscribe((data) => {
+      console.log("User ID from service after ayah:", data);
+      this.userID = data;
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
@@ -127,7 +128,31 @@ namespace Project9Animal.Server.Controllers
             return Ok(newReply);
         }
 
+        [HttpGet("getAnimalByCategoryID/{id}")]
+        public IActionResult getAnimalByCategoryID(int id)
+        {
+            var categoryID = _context.Animals.FirstOrDefault(x => x.AnimalId == id);
+            var animals = _context.Animals
+                .Where(a => a.CategoryId == categoryID.CategoryId)
+                .OrderBy(a => Guid.NewGuid()) 
+                .Take(4) 
+                .ToList();
+            return Ok(animals);
+        }
+        [HttpGet("resentStory")]
+        public IActionResult resentStory()
+        {
+            var story = _context.SuccessStories
+                .Where(a =>a.Status == "Published")
+                .OrderBy(a => a.StoryId)
+                .Take(3)
+                .ToList();
+            return Ok(story);
+        }
+
     }
+
+    
 
 
 }
