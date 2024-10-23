@@ -34,6 +34,7 @@ import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
+import { ContactComponent } from './home/contact/contact.component';
 
 
 
@@ -70,6 +71,7 @@ import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials
     GitShelterComponent,
     UpdateCategoryComponent,
     GetTestmonialsComponent,
+    ContactComponent,
 
 
   ],
@@ -92,7 +94,7 @@ import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials
       { path: "AdoptionForm", component: AdoptionFormComponent },
       { path: "profile" , component:ProfileComponent},
       { path: "AdoptionForm/:id", component: AdoptionFormComponent },
-
+      { path: "contact", component:ContactComponent},
 
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },

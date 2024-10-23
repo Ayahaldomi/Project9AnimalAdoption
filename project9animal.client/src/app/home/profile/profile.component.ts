@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: LeenURLService) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getUsers1().subscribe((data) => {
       this.users = data; 
     });
   }
