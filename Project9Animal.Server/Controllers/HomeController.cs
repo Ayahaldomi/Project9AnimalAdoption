@@ -33,6 +33,43 @@ namespace Project9Animal.Server.Controllers
 
             return Ok(testimonials);
         }
+        [HttpGet("getAllTestimonials")]
+        public async Task<ActionResult<IEnumerable<Testimonial>>> GetAllTestimonials()
+        {
+            return await _context.Testimonials.Include(t => t.User).ToListAsync();
+        }
+        // PUT: api/Testimonials/acceptTestimonial/5
+        [HttpPut("acceptTestimonial/{id}")]
+        public async Task<IActionResult> AcceptTestimonial(int id)
+        {
+            var testimonial = await _context.Testimonials.FindAsync(id);
+            if (testimonial == null)
+            {
+                return NotFound();
+            }
+
+            testimonial.IsAccept = true;
+            await _context.SaveChangesAsync();
+
+            return Ok(testimonial);
+        }
+
+        // PUT: api/Testimonials/rejectTestimonial/5
+        [HttpDelete("rejectTestimonial/{id}")]
+        public async Task<IActionResult> RejectTestimonial(int id)
+        {
+            var testimonial = await _context.Testimonials.FindAsync(id);
+            if (testimonial == null)
+            {
+                return NotFound();
+            }
+
+           
+             _context.Testimonials.Remove(testimonial);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
         // GET: api/SuccessStory/top
         [HttpGet("top")]
         public async Task<ActionResult<IEnumerable<StoryDto>>> GetStories()

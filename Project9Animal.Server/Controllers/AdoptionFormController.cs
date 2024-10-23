@@ -99,7 +99,7 @@ namespace Project9Animal.Server.Controllers
             _db.AdoptionApplications.Add(adoptionApplication);
              _db.SaveChanges();
 
-            return Ok(new { message = "Application submitted successfully!" });
+            return Ok(adoptionApplication);
         }
     }
 }

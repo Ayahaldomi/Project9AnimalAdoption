@@ -40,4 +40,18 @@ export class UrlService {
     
     return this.http.get<any>(`${this.baseUrl}/AnimalCategory/GetCategoryById/${id}`);
   }
+  // Fetch all testimonials for the admin
+  getTestimonialsAdmin(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/Home/getAllTestimonials`);
+  }
+  // Accept a testimonial
+  acceptTestimonial(id: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/Home/acceptTestimonial/${id}`, null);
+  }
+
+  // Reject a testimonial
+  rejectTestimonial(id: number): Observable<any> {
+    debugger
+    return this.http.put(`${this.baseUrl}/Home/rejectTestimonial/${id}`, null);
+  }
 }

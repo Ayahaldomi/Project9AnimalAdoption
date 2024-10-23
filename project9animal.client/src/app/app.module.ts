@@ -26,6 +26,7 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { ProfileComponent } from './home/profile/profile.component';
 
 import { AdoptionApplicationRequestComponent } from './Admin/adoption-application-request/adoption-application-request.component';
 
@@ -61,6 +62,7 @@ import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+    ProfileComponent,
 
     AdoptionApplicationRequestComponent,
 
@@ -87,6 +89,8 @@ import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials
       { path: "OurCommunityDetails/:id", component: OurCommunityDetailsComponent },
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
+      { path: "AdoptionForm", component: AdoptionFormComponent },
+      { path: "profile" , component:ProfileComponent},
       { path: "AdoptionForm/:id", component: AdoptionFormComponent },
 
 

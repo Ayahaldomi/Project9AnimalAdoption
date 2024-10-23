@@ -11,17 +11,7 @@ import { LeenURLService } from '../../leen/leen-url.service';
 export class AnimalsDetailsComponent {
   userId: any 
   animalId: any
-  //ngOnInit() {
-  //  this._ser.UserId.subscribe((data) => {
-  //    this.userId = data;
-  //  });
-
-
-  //  this.animalId = this._activate.snapshot.paramMap.get('id')
-  //  console.log(" this.animalId", this.animalId)
-  //  this.getAnimalsDetailsById()
-
-  //}
+  
   constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute, private _router: Router, private _leen: LeenURLService) { }
   ngOnInit() {
   
@@ -41,6 +31,7 @@ export class AnimalsDetailsComponent {
     console.log("this.animalId", this.animalId);
 
     this.getAnimalsDetailsById();
+
   }
 
 
