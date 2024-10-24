@@ -1,8 +1,6 @@
-<p>edit-profile works!</p>
+
 
 <div class="main-wrapper pet register">
-
-
 
   <div class="pet login">
     <div class="pet service">
@@ -18,7 +16,7 @@
                 </p>
                 <h3 class="orange">
                   <span class="wow pulse" data-wow-delay="1s">
-                    Register
+                    Edit Profile
                   </span>
                 </h3>
               </div>
@@ -28,34 +26,62 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group">
                         <input type="text" name="fullName" id="fullName" placeholder="Full Name"
-                               class="form-control" required [(ngModel)]="user.fullName" >
+                               class="form-control" required [(ngModel)]="user.fullName">
                       </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group">
                         <input type="email" name="email" id="email" placeholder="Email"
-                               class="form-control" required [(ngModel)]="user.email" >
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control"
-                               placeholder="Password" required [(ngModel)]="user.password" >
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="form-group">
-                        <input type="password" id="confirmpassword" class="form-control"
-                               placeholder="Confirm Password" [(ngModel)]="user.confirmpassword"  required name="ConfirmPassword">
+                               class="form-control" required [(ngModel)]="user.email">
                       </div>
                     </div>
 
-                   
-                   
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" id="address" class="form-control"
+                               placeholder="Address" [(ngModel)]="user.address" required name="address">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" id="medicalStatus" class="form-control"
+                               placeholder="Medical Status" [(ngModel)]="user.medicalStatus" required name="medicalStatus">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" id="flatType" class="form-control"
+                               placeholder="Flat Type" [(ngModel)]="user.flatType" required name="flatType">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" id="finaincalStatus" class="form-control"
+                               placeholder="Finaincal Status" [(ngModel)]="user.finaincalStatus" required name="finaincalStatus">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" id="moreDetails" class="form-control"
+                               placeholder="More Details" [(ngModel)]="user.moreDetails" required name="moreDetails">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" id="haveKids" class="form-control"
+                               placeholder="Have Kids" [(ngModel)]="user.haveKids" required name="haveKids">
+                      </div>
+                    </div>
+
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="form-group text-center mt-4">
 
-                        <button type="submit" class="btn form-control">Signup</button>
+                        <button type="submit" class="btn form-control"><span style="color:wheat">edit</span></button>
                       </div>
                     </div>
 
