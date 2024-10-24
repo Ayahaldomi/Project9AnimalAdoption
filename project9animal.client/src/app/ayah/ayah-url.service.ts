@@ -43,4 +43,12 @@ export class AyahURLService {
     return this.http.post<any>(`${this.staticData}/replyPost`, data)
   }
 
+  getanimalCategory(id: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/getAnimalByCategoryID/${id}`)
+  }
+
+  resentStory(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/resentStory`)
+  }
+
 }
