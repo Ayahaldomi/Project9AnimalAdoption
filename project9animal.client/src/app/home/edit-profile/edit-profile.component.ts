@@ -15,7 +15,7 @@ export class EditProfileComponent {
     confirmpassword: ''
   };
 
-  userId: number | null = null;
+  userId: any;
   
   constructor(
     private userService: LeenURLService,
@@ -23,9 +23,10 @@ export class EditProfileComponent {
   ) { }
 
   ngOnInit() {
+    debugger;
     // الاشتراك في BehaviorSubject للحصول على userId
-    this.userService.currentUserId.subscribe((id: any) => {
-      this.userId = id;
+    this.userService.UserId.subscribe((data) => {
+      this.userId = data;
       console.log("this is editeprofile : " + this.userId);
       if (this.userId) {
         // جلب بيانات المستخدم عند توفر userId
@@ -34,6 +35,7 @@ export class EditProfileComponent {
         console.error('No userId available');
       }
     });
+
   }
 
   // جلب بيانات المستخدم
