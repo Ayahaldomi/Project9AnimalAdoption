@@ -35,6 +35,7 @@ import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
 import { ContactComponent } from './home/contact/contact.component';
+import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
 
 
 
@@ -72,6 +73,7 @@ import { ContactComponent } from './home/contact/contact.component';
     UpdateCategoryComponent,
     GetTestmonialsComponent,
     ContactComponent,
+    EditProfileComponent,
 
 
   ],
@@ -95,7 +97,7 @@ import { ContactComponent } from './home/contact/contact.component';
       { path: "profile" , component:ProfileComponent},
       { path: "AdoptionForm/:id", component: AdoptionFormComponent },
       { path: "contact", component:ContactComponent},
-
+      { path: 'editprofile/:id', component: EditProfileComponent },
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
 
