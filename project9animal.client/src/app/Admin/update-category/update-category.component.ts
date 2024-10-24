@@ -62,10 +62,12 @@ export class UpdateCategoryComponent {
     this._ser.UpdateCategory(this.param, updatedData).subscribe(
       (response) => {
         alert('Category updated successfully!');
-        formData.reset();
 
         // Redirect to "All Categories" page
-        this._router.navigate(['/getAllCategory']);  
+        // Redirect to "All Categories" page
+        this._router.navigate(['/dashboard/getAllCategory']).then(() => {
+          formData.reset();  // Only reset form after navigation succeeds
+        }); 
       },
       (error) => {
         alert('Error updating category: ' + error.message);
