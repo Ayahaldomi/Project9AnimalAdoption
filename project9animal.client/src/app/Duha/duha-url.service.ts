@@ -36,4 +36,10 @@ export class DuhaUrlService {
     return this.http.get<any>(`${this.staticData}/Users/GetUserById${id}`);
   }
 
+  getAnimalById(animalId: any): Observable<any> {
+    return this.http.get(`${this.staticData}/AdoptionForm/GetAnimalById/${animalId}`);
+  }
+
+
+
 }
