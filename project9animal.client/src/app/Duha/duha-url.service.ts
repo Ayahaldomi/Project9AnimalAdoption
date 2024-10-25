@@ -41,5 +41,12 @@ export class DuhaUrlService {
   }
 
 
+  updateAdoptionApplicationStatus(applicationId: any, status: any): Observable<any> {
+    return this.http.put(`${this.staticData}/AdoptionForm/UpdateApplicationStatus?applicationId=${applicationId}&status=${status}`, {});
+
+  }
+
+
+
 
 }
