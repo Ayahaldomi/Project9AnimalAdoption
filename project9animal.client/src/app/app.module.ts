@@ -32,7 +32,7 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
 
 import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
-import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+//import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
@@ -72,7 +72,7 @@ import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.compon
 
     CreateSucessStoryComponent,
     GitShelterComponent,
-    UpdateCategoryComponent,
+    //UpdateCategoryComponent,
     GetTestmonialsComponent,
     ContactComponent,
     EditProfileComponent,
@@ -121,7 +121,7 @@ import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.compon
 
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent },
-          { path: "updatecategory/:id", component: UpdateCategoryComponent },
+          //{ path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
