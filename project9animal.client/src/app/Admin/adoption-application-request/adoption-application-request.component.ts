@@ -50,5 +50,16 @@ export class AdoptionApplicationRequestComponent {
       this.showAnimalInfoModal = true; // عرض المودال بعد جلب بيانات الحيوان
     });
   }
-
+  updateStatus(applicationId: number, status: string) {
+    console.log(`Updating status for applicationId: ${applicationId} to status: ${status}`);
+    this._ser.updateAdoptionApplicationStatus(applicationId, status).subscribe(
+      (response) => {
+        this.getAllApplication(); // Refresh applications after update
+        alert(`Application has been ${status}`);
+      },
+      (error) => {
+        console.error('Error updating status:', error);
+      }
+    );
+  }
 }
