@@ -54,4 +54,9 @@ export class LeenURLService {
     return this.http.post<any>(`https://localhost:7269/api/Testimonials
 `, formData)
   }
+
+
+  getApplicationsByUserId(userId: any): Observable<any> {
+    return this.http.get(`https://localhost:7269/api/AdoptionForm/GetApplicationsByUserId/${userId}`);
+  }
 }
