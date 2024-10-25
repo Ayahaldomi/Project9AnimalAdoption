@@ -16,14 +16,16 @@ export class LoginComponent {
   constructor(private _ser: LeenURLService, private _route: Router, private _activatedRoute: ActivatedRoute, private authService: AuthServiceService // إضافة AuthService هنا
 ) { }
 
-  loginUser(data: any) {
+  loginUser1(data: any) {
     const form = new FormData();
     for (let k in data) {
       form.append(k, data[k]);
     }
 
     this._ser.login(form).subscribe(
+     
       (newData: any) => {
+        debugger;
         alert("Logged in successfully");
 
        
@@ -36,19 +38,17 @@ export class LoginComponent {
         console.log("User ID set in service:", newData.userId);
 
      
-        const redirectTo = this._activatedRoute.snapshot.queryParamMap.get('redirectTo');
-        const animalId = this._activatedRoute.snapshot.queryParamMap.get('animalId');
+        
+        debugger;
+      
 
-        console.log("Redirect To:", redirectTo);
-        console.log("Animal ID in login:", animalId);
+        if (data.email === 'admin@gmail.com') {
 
-        if (redirectTo && animalId) {
-          console.log("Navigating to:", `${redirectTo}/${animalId}`);
-          this._route.navigate([`${redirectTo}/${animalId}`]);  
-        } else if (newData.email === 'huda@gmail.com') {
-          this._route.navigate(['/dashboard']);
+          this.authService.setAdminStatus(true); // تعيين حالة الـ Admin
+          this._route.navigate(['/dashboard']); // توجيه المستخدم إلى الداشبورد
         } else {
-          this._route.navigate(['/']);
+          this.authService.setAdminStatus(false);
+          this._route.navigate(['/']); // توجيه المستخدم إلى الصفحة الرئيسية
         }
       },
       (error) => {
@@ -62,16 +62,17 @@ export class LoginComponent {
 
 
 
-  loginUser1(data: any) {
-    // افترض أن `data.email` هو البريد الإلكتروني المسجل
-    if (data.email === 'admin@example.com') {
-      this.authService.setAdminStatus(true); // تعيين حالة الـ Admin
-      this._route.navigate(['/dashboard']); // توجيه المستخدم إلى الداشبورد
-    } else {
-      this.authService.setAdminStatus(false);
-      this._route.navigate(['/']); // توجيه المستخدم إلى الصفحة الرئيسية
-    }
-  }
+  //loginUser(data: any) {
+  //  // افترض أن `data.email` هو البريد الإلكتروني المسجل
+  //  if (data.email === 'admin@example.com') {
+      
+  //    this.authService.setAdminStatus(true); // تعيين حالة الـ Admin
+  //    this._route.navigate(['/dashboard']); // توجيه المستخدم إلى الداشبورد
+  //  } else {
+  //    this.authService.setAdminStatus(false);
+  //    this._route.navigate(['/']); // توجيه المستخدم إلى الصفحة الرئيسية
+  //  }
+  //}
 
 
 
