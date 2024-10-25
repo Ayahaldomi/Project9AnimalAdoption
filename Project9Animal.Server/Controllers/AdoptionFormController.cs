@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
 using Project9Animal.Server.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace Project9Animal.Server.Controllers
 {
@@ -115,6 +117,69 @@ namespace Project9Animal.Server.Controllers
             }
             return Ok(animal);
         }
+
+
+
+        [HttpPut("UpdateApplicationStatus")]
+        public async Task<IActionResult> UpdateApplicationStatus(int applicationId, string status)
+        {
+            var application = _db.AdoptionApplications.FirstOrDefault(a => a.ApplicationId == applicationId);
+
+            if (application == null)
+            {
+                return NotFound();
+            }
+
+            // تحديث حالة الطلب
+            application.Status = status;
+            _db.SaveChanges();
+
+            // جلب بيانات المستخدم لإرسال البريد الإلكتروني
+            var user = _db.Users.FirstOrDefault(u => u.UserId == application.UserId);
+            if (user != null)
+            {
+                // إرسال البريد الإلكتروني بناءً على حالة الطلب
+                string subject = "Adoption Application Status";
+                string message;
+
+                if (status == "Approved")
+                {
+                    message = $"Dear {user.FullName},\n\nYour adoption application has been approved!";
+                }
+                else
+                {
+                    message = $"Dear {user.FullName},\n\nUnfortunately, your adoption application has been rejected.";
+                }
+
+                // استدعاء دالة إرسال البريد الإلكتروني
+                await SendEmail(user.Email, subject, message);
+            }
+
+            return Ok();
+        }
+
+        private async Task SendEmail(string email, string subject, string message)
+        {
+            // إعدادات البريد الإلكتروني
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("odatduha@gmail.com", "ijmt lrkb drnt vcao"),
+                EnableSsl = true,
+            };
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress("odatduha@gmail.com"),
+                Subject = subject,
+                Body = message,
+                IsBodyHtml = false,
+            };
+            mailMessage.To.Add(email);
+
+            await smtpClient.SendMailAsync(mailMessage);
+        }
+
 
 
     }
