@@ -37,6 +37,10 @@ export class AddAnimalCategoryComponent {
 
       debugger
       alert("animal category added succesfully")
+      // Redirect to "All Categories" page
+      this._router.navigate(['/dashboard/getAllCategory']).then(() => {
+      
+      });
      
 
     },

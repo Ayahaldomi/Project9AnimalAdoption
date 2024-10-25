@@ -52,6 +52,6 @@ export class UrlService {
   // Reject a testimonial
   rejectTestimonial(id: number): Observable<any> {
     debugger
-    return this.http.put(`${this.baseUrl}/Home/rejectTestimonial/${id}`, null);
+    return this.http.delete(`${this.baseUrl}/Home/rejectTestimonial/${id}`);
   }
 }

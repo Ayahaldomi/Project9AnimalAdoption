@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LeenURLService {
+    currentUserId: any;
  
   constructor(private http: HttpClient) { }
 
@@ -20,8 +21,15 @@ export class LeenURLService {
     return this.http.post<any>(`https://localhost:7269/api/Users/login`, data);
   }
 
-  getUsers(): Observable<any> {
-    return this.http.get(`https://localhost:7269/api/Users/GetUserById`);
+  getUserById(id: any): Observable<any> {
+    return this.http.get<any>(`https://localhost:7269/api/Users/GetUserById${id}` );
+  }
+  getUsers1(): Observable<any> {
+    return this.http.get(`https://localhost:7269/api/Users/GetAllUser`);
   }
   
+  editUser(data: FormData): Observable<any> {
+    return this.http.put<any>(`https://localhost:7269/api/Users/UpdeteUser`, data);
+  }
+ 
 }

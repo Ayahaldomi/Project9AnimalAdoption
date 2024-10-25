@@ -3,7 +3,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container emp-profile" *ngFor="let user of users">
+<div class="container emp-profile" *ngIf="userDetails" >
   <form method="post">
     <div class="row">
       <div class="col-md-4">
@@ -15,12 +15,12 @@
       <div class="col-md-6">
         <div class="profile-head">
           <h5>
-            {{ user.fullName }}
+            {{ userDetails.fullName }}
           </h5>
           <h6>
-            {{ user.address }}
+            {{ userDetails.address }}
           </h6>
-          <p class="proile-rating">Medical Details : <span>{{user.moreDetails}}</span></p>
+          <p class="proile-rating">More Details : <span>{{userDetails.moreDetails}}</span></p>
 
           <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-md-2">
-        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+        <button (click)="goToEditProfile()" class="profile-edit-btn">Edit Profile</button>
       </div>
     </div>
     <div class="row">
@@ -36,13 +36,13 @@
         <div class="profile-work">
 
           <p>Finaincal Status</p>
-          <span>{{user.finaincalStatus}}</span><br />
+          <span>{{userDetails.finaincalStatus}}</span><br />
 
           <p>Medical Status</p>
-          <span>{{ user.medicalStatus }}</span><br />
+          <span>{{ userDetails.medicalStatus }}</span><br />
 
           <p>haveKids</p>
-          <span>{{user.haveKids}}</span><br />
+          <span>{{userDetails.haveKids}}</span><br />
 
 
         </div>
@@ -56,7 +56,7 @@
                 <label>Name</label>
               </div>
               <div class="col-md-6">
-                <p>{{ user.fullName }}</p>
+                <p>{{ userDetails.fullName }}</p>
               </div>
             </div>
             <div class="row">
@@ -64,7 +64,7 @@
                 <label>Email</label>
               </div>
               <div class="col-md-6">
-                <p>{{ user.email }}</p>
+                <p>{{ userDetails.email }}</p>
               </div>
             </div>
             <div class="row">
@@ -72,7 +72,7 @@
                 <label>address</label>
               </div>
               <div class="col-md-6">
-                <p>{{ user.address }}</p>
+                <p>{{ userDetails.address }}</p>
               </div>
             </div>
            
