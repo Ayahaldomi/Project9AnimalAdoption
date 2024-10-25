@@ -37,6 +37,7 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
 import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { MyAdoptionApplicationComponent } from './home/my-adoption-application/my-adoption-application.component';
+import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
 
 
 
@@ -79,6 +80,10 @@ import { MyAdoptionApplicationComponent } from './home/my-adoption-application/m
     ShowAllUserComponent,
     UpdateCategoryComponent,
     MyAdoptionApplicationComponent,
+    
+
+    GetStoriesComponent,
+
     
 
 
@@ -125,6 +130,9 @@ import { MyAdoptionApplicationComponent } from './home/my-adoption-application/m
 
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent },
+          { path: "getStories", component: GetStoriesComponent },
+
+          { path: "updatecategory/:id", component: UpdateCategoryComponent }
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },

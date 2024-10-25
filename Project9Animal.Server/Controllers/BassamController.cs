@@ -123,6 +123,15 @@ public async Task<IActionResult> createPost([FromForm] DTOsCreatePost model)
             return Ok(new { message = "Story created successfully!" });
 }
 
+        [HttpDelete("deleteStory{storyId}")]
+        public IActionResult deleteStory(int storyId)
+        {
+            var story=_db.SuccessStories.Where(x => x.StoryId == storyId).FirstOrDefault();
+            _db.SuccessStories.Remove(story);
+            _db.SaveChanges();
+            return NotFound(story);
+        }
+
 
     }
 }
