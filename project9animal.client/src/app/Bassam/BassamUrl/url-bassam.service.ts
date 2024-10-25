@@ -13,6 +13,7 @@ export class UrlBassamService {
 
   // Method to fetch blog success stories
   getSuccessStories(): Observable<any> {
+    debugger;
     return this.http.get<any>(`${this.apiUrl}`);
   }
   getImage(imageName: string): Observable<Blob> {
@@ -22,5 +23,9 @@ export class UrlBassamService {
   }
   createSuccessStory(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/createPost`, formData);
+  }
+  deleteStory(storyId: number): Observable<any> {
+    debugger;
+    return this.http.delete<any>(`${this.apiUrl}/deleteStory${storyId}`);
   }
 }

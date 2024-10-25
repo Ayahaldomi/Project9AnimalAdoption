@@ -29,6 +29,7 @@ import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.compon
 import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     CreateSucessStoryComponent,
     GitShelterComponent,
     UpdateCategoryComponent,
+    GetStoriesComponent,
 
   ],
   imports: [
@@ -97,6 +99,8 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
           { path: "addAnimal", component: AddAnimalsComponent },
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent },
+          { path: "getStories", component: GetStoriesComponent },
+
           { path: "updatecategory/:id", component: UpdateCategoryComponent }
 
         ]
