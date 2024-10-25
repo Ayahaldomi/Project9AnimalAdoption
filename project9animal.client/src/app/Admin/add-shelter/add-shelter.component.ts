@@ -4,12 +4,11 @@ import { RawaahServicesService } from '../../URL-serices/rawaah-services.service
 @Component({
   selector: 'app-add-shelter',
   templateUrl: './add-shelter.component.html',
-  styleUrls: ['./add-shelter.component.css']
+  styleUrls: ['./add-shelter.component.css'], // تصحيح هنا (styleUrls بدلاً من styleUrl)
 })
 export class AddShelterComponent implements OnInit {
   shelters: any[] = [];
-  image: any;
-
+  image: File | null = null; // ضبط نوع الصورة لتجنب الأخطاء
   isLoading: boolean = false;
 
   constructor(private _ser: RawaahServicesService) { }
@@ -18,6 +17,7 @@ export class AddShelterComponent implements OnInit {
     this.loadShelters();
   }
 
+  // تحميل الملاجئ من الخدمة
   loadShelters() {
     this._ser.getShelters().subscribe(
       (shelters) => {
@@ -29,15 +29,20 @@ export class AddShelterComponent implements OnInit {
     );
   }
 
+  // حدث تغيير الصورة
   changeImageEvent(event: any) {
-    this.image = event.target.files[0];
+    this.image = event.target.files[0] || null;
   }
 
   addShelters(data: any) {
     const form = new FormData();
 
     for (let key in data) {
-      if (data[key]) { // Ensure the value is not empty
+      if (key === 'openingTime' && data[key]) {
+
+        const formattedTime = `${data[key]}:00`; 
+        form.append('openingTime', formattedTime);
+      } else if (data[key]) {
         form.append(key, data[key]);
       }
     }
@@ -46,7 +51,7 @@ export class AddShelterComponent implements OnInit {
       form.append('ShelterImage', this.image);
     }
 
-    this.isLoading = true;  // Start loading
+    this.isLoading = true;
 
     this._ser.addShelters(form).subscribe(
       () => {
@@ -54,7 +59,8 @@ export class AddShelterComponent implements OnInit {
         this.resetForm();
       },
       (error) => {
-        alert('Error adding shelter: ' + error.message);
+        console.error('Error adding shelter:', error);
+        alert(`Error: ${error.status} - ${error.message}`);
       },
       () => {
         this.isLoading = false;
@@ -62,8 +68,8 @@ export class AddShelterComponent implements OnInit {
     );
   }
 
+  // إعادة تعيين النموذج
   resetForm() {
     this.image = null;
-    // Reset any other fields if necessary
   }
 }

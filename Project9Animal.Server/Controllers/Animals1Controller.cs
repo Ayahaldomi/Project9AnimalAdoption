@@ -416,30 +416,6 @@ namespace Project9Animal.Server.Controllers
         //    return Ok(new { message = "The shelter has been successfully deleted." });
         //}
 
-        [HttpDelete("{shelterId}")]
-        public async Task<IActionResult> DeleteShelter(int shelterId)
-        {
-            // Retrieve the shelter along with its associated animals
-            var shelter = await _context.Shelters.Include(s => s.Animals).FirstOrDefaultAsync(s => s.ShelterId == shelterId);
-
-            if (shelter == null)
-            {
-                return NotFound(new { message = "The shelter does not exist." });
-            }
-
-            // If there are related animals, remove them first
-            if (shelter.Animals.Any())
-            {
-                _context.Animals.RemoveRange(shelter.Animals);
-            }
-
-            // Remove the shelter
-            _context.Shelters.Remove(shelter);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "The shelter and its associated animals have been successfully deleted." });
-        }
-
 
 
 

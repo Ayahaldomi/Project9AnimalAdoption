@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from './services/auth-service.service';
 
 interface WeatherForecast {
   date: string;
@@ -16,9 +17,13 @@ interface WeatherForecast {
 export class AppComponent implements OnInit {
   public forecasts: WeatherForecast[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthServiceService) {}
 
   ngOnInit() {
+    
+    this.authService.isAdminLoggedIn.subscribe((status) => {
+      this.isAdmin = status;
+    });
     this.getForecasts();
   }
 
@@ -34,4 +39,9 @@ export class AppComponent implements OnInit {
   }
 
   title = 'project9animal.client';
+
+
+  isAdmin: boolean = false;
+
+
 }

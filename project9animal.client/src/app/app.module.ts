@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
@@ -26,10 +25,21 @@ import { AnimalsDetailsComponent } from './Duha/./animals-details/animals-detail
 import { GetAnimalsAdminComponent } from './Admin/get-animals-admin/get-animals-admin.component';
 import { BlogComponent } from './Bassam/blog/blog.component';
 import { AdoptionFormComponent } from './Duha/adoption-form/adoption-form.component';
+import { ProfileComponent } from './home/profile/profile.component';
+
+import { AdoptionApplicationRequestComponent } from './Admin/adoption-application-request/adoption-application-request.component';
+
 import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
+import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
+import { ContactComponent } from './home/contact/contact.component';
+import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
+import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
+
+
+
 
 
 @NgModule({
@@ -57,10 +67,22 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
     GetAnimalsAdminComponent,
     BlogComponent,
     AdoptionFormComponent,
+    ProfileComponent,
+
+    AdoptionApplicationRequestComponent,
+
     CreateSucessStoryComponent,
     GitShelterComponent,
+    GetTestmonialsComponent,
+    ContactComponent,
+    EditProfileComponent,
+    ShowAllUserComponent,
     UpdateCategoryComponent,
     GetStoriesComponent,
+
+    
+
+
 
   ],
   imports: [
@@ -80,11 +102,12 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
       { path: "ShowAnimals", component: ShowAnimalsComponent },
       { path: "AnimalsDetails/:id", component: AnimalsDetailsComponent },
       { path: "AdoptionForm", component: AdoptionFormComponent },
-
-
+      { path: "profile" , component:ProfileComponent},
+      { path: "AdoptionForm/:id", component: AdoptionFormComponent },
+      { path: "contact", component:ContactComponent},
+      { path: 'editprofile/:id', component: EditProfileComponent },
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
-
 
 
       //AdminDashboard
@@ -97,11 +120,20 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
           { path: "getAnimalsAdmin", component: GetAnimalsAdminComponent},
           { path: "EditAnimals/:id", component: EditAnimalsComponent },
           { path: "addAnimal", component: AddAnimalsComponent },
+
+          { path: "ShowAdoptionRequest", component: AdoptionApplicationRequestComponent },
+
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent },
           { path: "getStories", component: GetStoriesComponent },
 
           { path: "updatecategory/:id", component: UpdateCategoryComponent }
+          { path: "AddShelter", component: AddShelterComponent},
+          { path: "EditShelter/:id", component: EditShelterComponent },
+          { path: "showwTestmoinals", component: GetTestmonialsComponent },
+          { path: "showAllUser", component: ShowAllUserComponent },
+          { path: "updatecategory/:id", component: UpdateCategoryComponent },
+
 
         ]
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LeenURLService } from '../../leen/leen-url.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../../services/auth-service.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,41 +13,49 @@ export class LoginComponent {
 
 
   ngOnInit() { }
-  constructor(private _ser: LeenURLService, private _route: Router) { }
+  constructor(private _ser: LeenURLService, private _route: Router, private _activatedRoute: ActivatedRoute, private authService: AuthServiceService // إضافة AuthService هنا
+) { }
 
-  loginUser(data: any) {
-    
-    var form = new FormData();
+  loginUser1(data: any) {
+    const form = new FormData();
     for (let k in data) {
-      form.append(k, data[k])
+      form.append(k, data[k]);
     }
-    debugger
 
-    this._ser.login(form).subscribe((newData) => {
-      alert("logged in successfully")
-      //console.log(data)
+    this._ser.login(form).subscribe(
+     
+      (newData: any) => {
+        debugger;
+        alert("Logged in successfully");
 
-      localStorage.setItem("userId", newData.userId)
-      debugger
-      //this._ser['userId'].next(newData.userId)
+       
+        console.log("User ID from response:", newData.userId);
 
-      //debugger
+    
+        this._ser.UserId.next(newData.userId); 
 
-      //this._ser['email'].next(newData.email)
+       
+        console.log("User ID set in service:", newData.userId);
 
-      if (newData.email == "huda@gmail.com") {
-        this._route.navigate(['/dashboard'])
+     
+        
+        debugger;
+      
+
+        if (data.email === 'admin@gmail.com') {
+
+          this.authService.setAdminStatus(true); 
+          this._route.navigate(['/dashboard']); 
+        } else {
+          this.authService.setAdminStatus(false);
+          this._route.navigate(['/']); 
+        }
+      },
+      (error) => {
+        alert(error.error);
       }
-      else {
-        this._route.navigate(['/'])
-      }
-
-
-   
-
-    },
-      (error) => { alert(error.error) }
-    )
+    );
+  }
 
 
 
@@ -53,7 +63,12 @@ export class LoginComponent {
 
 
 
-    }
+
+
+
+
+
+
 }
 
 
