@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LeenURLService } from '../../leen/leen-url.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,8 @@ export class LoginComponent {
 
 
   ngOnInit() { }
-  constructor(private _ser: LeenURLService, private _route: Router, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _ser: LeenURLService, private _route: Router, private _activatedRoute: ActivatedRoute, private authService: AuthService // إضافة AuthService هنا
+) { }
 
   loginUser(data: any) {
     const form = new FormData();
@@ -57,6 +59,18 @@ export class LoginComponent {
 
 
 
+
+
+  loginUser1(data: any) {
+    // افترض أن `data.email` هو البريد الإلكتروني المسجل
+    if (data.email === 'admin@example.com') {
+      this.authService.setAdminStatus(true); // تعيين حالة الـ Admin
+      this._route.navigate(['/dashboard']); // توجيه المستخدم إلى الداشبورد
+    } else {
+      this.authService.setAdminStatus(false);
+      this._route.navigate(['/']); // توجيه المستخدم إلى الصفحة الرئيسية
+    }
+  }
 
 
 

@@ -40,6 +40,7 @@ import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.compon
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +77,7 @@ import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.compon
     ContactComponent,
     EditProfileComponent,
     ShowAllUserComponent,
+
 
 
   ],
