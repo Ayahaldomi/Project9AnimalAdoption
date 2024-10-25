@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthServiceService) {}
 
   ngOnInit() {
-    // مراقبة حالة الـ Admin لتحديث واجهة المستخدم
+    
     this.authService.isAdminLoggedIn.subscribe((status) => {
       this.isAdmin = status;
     });

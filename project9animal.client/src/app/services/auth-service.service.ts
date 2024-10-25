@@ -6,19 +6,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  private isAdmin = new BehaviorSubject<boolean>(false); // `false` تعني أن المستخدم ليس Admin
-  isAdminLoggedIn = this.isAdmin.asObservable(); // يمكننا الاشتراك في هذه القيمة لمراقبة التغييرات
+  private isAdmin = new BehaviorSubject<boolean>(false); 
+  isAdminLoggedIn = this.isAdmin.asObservable(); 
 
   constructor(private router: Router) { }
 
-  // دالة لتحديث حالة الـ Admin
+
   setAdminStatus(isAdmin: boolean) {
-    this.isAdmin.next(isAdmin); // تحديث حالة الـ Admin
+    this.isAdmin.next(isAdmin); 
   }
 
-  // دالة لتسجيل الخروج
   logout() {
-    this.isAdmin.next(false); // إعادة تعيين حالة الـ Admin عند تسجيل الخروج
-    this.router.navigate(['/login']); // إعادة التوجيه لصفحة تسجيل الدخول
+    this.isAdmin.next(false); 
+    this.router.navigate(['/login']); 
   }
 }

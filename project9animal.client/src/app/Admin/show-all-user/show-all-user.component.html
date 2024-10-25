@@ -18,8 +18,7 @@
           <th scope="col">Financial Status</th>
           <th scope="col">Have Kids</th>
           <th scope="col">More Details</th>
-          <th scope="col">Is Admin</th>
-          <th scope="col">Action</th>
+         
         </tr>
       </thead>
       <tbody>
@@ -32,12 +31,9 @@
           <td>{{ user.flatType }}</td>
           <td>{{ user.finaincalStatus }}</td>
           <td>{{ user.haveKids ? 'Yes' : 'No' }}</td>
-          <td>{{ user.moreDetails || 'N/A' }}</td>
-          <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
-          <td>
-            <div class="d-flex justify-content-around">
-            </div>
-          </td>
+          <td>{{ user.moreDetails  }}</td>
+          
+        
         </tr>
       </tbody>
     </table>
