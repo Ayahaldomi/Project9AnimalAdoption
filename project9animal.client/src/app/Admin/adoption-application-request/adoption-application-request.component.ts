@@ -20,6 +20,35 @@ export class AdoptionApplicationRequestComponent {
 
     this._ser.getAllApplication().subscribe((data) => {
       this.dataApplicationArray = data
+      console.log(data)
     })
   }
+
+
+
+  userInfo: any; 
+  showUserInfoModal: boolean = false; 
+  getUserInfo(userId: any) {
+    this._ser.getUserById(userId).subscribe((data) => {
+      this.userInfo = data;
+      this.showUserInfoModal = true; 
+    });
+  }
+
+  closeModal() {
+    this.showUserInfoModal = false;
+    this.showAnimalInfoModal = false; // إغلاق المودال عند الانتهاء
+  }
+
+
+  animalInfo: any; // لتخزين بيانات الحيوان
+  showAnimalInfoModal: boolean = false; // للتحكم بعرض المودال
+
+  getAnimalInfo(animalId: any) {
+    this._ser.getAnimalById(animalId).subscribe((data) => {
+      this.animalInfo = data;
+      this.showAnimalInfoModal = true; // عرض المودال بعد جلب بيانات الحيوان
+    });
+  }
+
 }

@@ -29,6 +29,7 @@ namespace Project9Animal.Server.Controllers
                                   {
                                       ApplicationId = app.ApplicationId,
                                       UserId = app.UserId,
+                                      AnimalId = app.AnimalId,
                                       AdopterName = app.User.FullName,
                                       AnimalName = app.Animal.Name,    
                                       AnimalImage = app.Animal.Image2, 
@@ -52,6 +53,7 @@ namespace Project9Animal.Server.Controllers
                                   {
                                       ApplicationId = app.ApplicationId,
                                       UserId = app.UserId,
+                                     
                                       AdopterName = app.User.FullName,
                                       AnimalName = app.Animal.Name,
                                       AnimalImage = app.Animal.Image2,
@@ -101,5 +103,19 @@ namespace Project9Animal.Server.Controllers
 
             return Ok(adoptionApplication);
         }
+
+
+        [HttpGet("GetAnimalById/{animalId}")]
+        public IActionResult GetAnimalById(int animalId)
+        {
+            var animal = _db.Animals.FirstOrDefault(a => a.AnimalId == animalId);
+            if (animal == null)
+            {
+                return NotFound();
+            }
+            return Ok(animal);
+        }
+
+
     }
 }
