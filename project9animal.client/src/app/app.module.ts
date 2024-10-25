@@ -41,6 +41,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     EditProfileComponent,
     ShowAllUserComponent,
     UpdateCategoryComponent,
+    
 
 
 

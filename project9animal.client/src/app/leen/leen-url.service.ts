@@ -48,4 +48,10 @@ export class LeenURLService {
     this.isAdmin.next(false); // إعادة تعيين الحالة عند تسجيل الخروج
     this.router.navigate(['/login']);
   }
+
+
+  addTestimonial(formData: FormData): Observable<any> {
+    return this.http.post<any>(`https://localhost:7269/api/Testimonials
+`, formData)
+  }
 }
