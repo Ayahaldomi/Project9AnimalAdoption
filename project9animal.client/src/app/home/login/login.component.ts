@@ -44,11 +44,11 @@ export class LoginComponent {
 
         if (data.email === 'admin@gmail.com') {
 
-          this.authService.setAdminStatus(true); // تعيين حالة الـ Admin
-          this._route.navigate(['/dashboard']); // توجيه المستخدم إلى الداشبورد
+          this.authService.setAdminStatus(true); 
+          this._route.navigate(['/dashboard']); 
         } else {
           this.authService.setAdminStatus(false);
-          this._route.navigate(['/']); // توجيه المستخدم إلى الصفحة الرئيسية
+          this._route.navigate(['/']); 
         }
       },
       (error) => {
@@ -60,19 +60,6 @@ export class LoginComponent {
 
 
 
-
-
-  //loginUser(data: any) {
-  //  // افترض أن `data.email` هو البريد الإلكتروني المسجل
-  //  if (data.email === 'admin@example.com') {
-      
-  //    this.authService.setAdminStatus(true); // تعيين حالة الـ Admin
-  //    this._route.navigate(['/dashboard']); // توجيه المستخدم إلى الداشبورد
-  //  } else {
-  //    this.authService.setAdminStatus(false);
-  //    this._route.navigate(['/']); // توجيه المستخدم إلى الصفحة الرئيسية
-  //  }
-  //}
 
 
 
