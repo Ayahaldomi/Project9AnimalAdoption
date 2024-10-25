@@ -36,6 +36,7 @@ import { ContactComponent } from './home/contact/contact.component';
 import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
 import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+import { MyAdoptionApplicationComponent } from './home/my-adoption-application/my-adoption-application.component';
 
 
 
@@ -77,6 +78,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
     EditProfileComponent,
     ShowAllUserComponent,
     UpdateCategoryComponent,
+    MyAdoptionApplicationComponent,
     
 
 
@@ -105,6 +107,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
       { path: 'editprofile/:id', component: EditProfileComponent },
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+      { path: "myApplication", component: MyAdoptionApplicationComponent },
 
 
       //AdminDashboard
@@ -127,6 +130,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
           { path: "showAllUser", component: ShowAllUserComponent },
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
+
 
 
         ]

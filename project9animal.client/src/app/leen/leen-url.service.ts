@@ -8,7 +8,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class LeenURLService {
     currentUserId: any;
- 
+
+  email: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  emailaddress = this.email.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
 
   UserId: BehaviorSubject<string> = new BehaviorSubject<string>("");
@@ -58,5 +60,13 @@ export class LeenURLService {
 
   getApplicationsByUserId(userId: any): Observable<any> {
     return this.http.get(`https://localhost:7269/api/AdoptionForm/GetApplicationsByUserId/${userId}`);
+  }
+
+  logoutFunc() {
+ 
+
+    this.email.next("");
+    this.UserId.next("");
+
   }
 }

@@ -53,7 +53,7 @@
               </button>
             </div>
             <div class="navbar-collapse collapse clearfix">
-              <ul class="navigation clearfix">
+              <ul class="navigation clearfix ">
                 <li class="current dropdown">
                   <a href="#">Home</a>
 
@@ -63,13 +63,13 @@
 
                 </li>
                 <!--<li class="dropdown">
-                  <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/dashboard">Dashboard</a>
 
-                </li>-->
-                <li class="dropdown">
-                  <a routerLink="/profile">profile</a>
+  </li>-->
+                <!--<li class="dropdown">
+    <a routerLink="/profile">profile</a>
 
-                </li>
+  </li>-->
                 <!--<li class="dropdown">
     <a href="services.html">Services</a>
     <ul>
@@ -89,10 +89,7 @@
 
                 </li>
 
-                <li class="dropdown">
-                  <a routerLink="/AnimalsDetails">AnimalsDetails</a>
 
-                </li>
                 <li class="dropdown">
                   <a routerLink="/app-blog">Blog</a>
 
@@ -102,9 +99,23 @@
 
                 </li>
                 <li class="dropdown">
-                  <a routerLink="/login">login</a>
+                  <a routerLink="/login" *ngIf="UserId == ''">login</a>
 
                 </li>
+
+                <li *ngIf="UserId != ''">
+                  <div class="dropdown">
+                    <a><i class="fas fa-user"></i></a>
+                    <ul class="dropdown-menu">
+                      <li><a routerLink="/profile">My Profile</a></li>
+                      <li><a routerLink="/myApplication">My Adoption Application</a></li>
+                      <li><a (click)="logout()">Log Out</a></li>
+                    </ul>
+                  </div>
+                </li>
+
+
+
               </ul>
             </div>
           </nav>
@@ -149,17 +160,17 @@
 
               </li>
               <!--<li class="dropdown">
-                <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/dashboard">Dashboard</a>
 
-              </li>-->
+  </li>-->
               <!--<li class="dropdown">
-                <a href="services.html">Services</a>
-                <ul>
-                  <li><a href="pet-service.html">Services 01</a></li>
-                  <li><a href="pet-service.html">Services 02</a></li>
+    <a href="services.html">Services</a>
+    <ul>
+      <li><a href="pet-service.html">Services 01</a></li>
+      <li><a href="pet-service.html">Services 02</a></li>
 
-                </ul>
-              </li>-->
+    </ul>
+  </li>-->
 
               <li class="dropdown">
                 <a routerLink="/ShowAnimals">ShowAnimals</a>
@@ -171,10 +182,7 @@
 
               </li>
 
-              <li class="dropdown">
-                <a routerLink="/AnimalsDetails">AnimalsDetails</a>
 
-              </li>
               <li class="dropdown">
                 <a routerLink="/app-blog">Blog</a>
 
@@ -184,8 +192,19 @@
 
               </li>
               <li class="dropdown">
-                <a routerLink="/login">login</a>
+                <a routerLink="/login" *ngIf="UserId == ''">login</a>
 
+              </li>
+
+              <li *ngIf="UserId != ''">
+                <div class="dropdown">
+                  <a><i class="fas fa-user"></i></a>
+                  <ul class="dropdown-menu">
+                    <li><a routerLink="/profile">My Profile</a></li>
+                    <li><a routerLink="/myApplication">My Adoption Application</a></li>
+                    <li><a (click)="logout()">Log Out</a></li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>
