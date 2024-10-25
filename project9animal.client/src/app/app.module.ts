@@ -36,6 +36,7 @@ import { UpdateCategoryComponent } from './Admin/update-category/update-category
 import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
+import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
 
 
 
@@ -74,6 +75,7 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
     GetTestmonialsComponent,
     ContactComponent,
     EditProfileComponent,
+    ShowAllUserComponent,
 
 
   ],
@@ -121,6 +123,7 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
+          { path: "showAllUser" , component:ShowAllUserComponent}
 
 
         ]
