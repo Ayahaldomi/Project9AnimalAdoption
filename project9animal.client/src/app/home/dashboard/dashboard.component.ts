@@ -28,7 +28,7 @@ export class DashboardComponent {
 
     this._ser.logoutFunc();
 
-    this._route.navigate(["/"])
+    window.location.href = "/"
  
   }
 }

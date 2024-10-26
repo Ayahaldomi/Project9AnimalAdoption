@@ -66,7 +66,7 @@ namespace Project9Animal.Server.Controllers
                 return BadRequest();
             }
 
-            data.ReplyMessage = form.AdminResponse;
+            data.ReplyMessage = form.replyMessage;
 
             _db.ContactUs.Update(data);
             _db.SaveChanges();
@@ -80,7 +80,7 @@ namespace Project9Animal.Server.Controllers
                     <html>
                     <body>
                         <h2>Hello {data.Name}</h2>
-                        <p>{form.AdminResponse}</p>
+                        <p>{form.replyMessage}</p>
                         <p>If you have any more questions, feel free to reach out to us.</p>
                         <p>With best regards,<br>Admin</p>
                     </body>

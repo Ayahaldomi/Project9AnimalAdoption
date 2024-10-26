@@ -16,7 +16,6 @@ export class AddAnimalCategoryComponent {
   image: any
   changeImage(event: any) {
 
-    debugger
     this.image = event.target.files[0]
 
   }
@@ -24,9 +23,7 @@ export class AddAnimalCategoryComponent {
 
   addNewNimalCategory(data: any) {
 
-    debugger
     var form = new FormData();
-    debugger
     for (let key in data) {
       form.append(key, data[key])
     }
@@ -35,7 +32,6 @@ export class AddAnimalCategoryComponent {
 
     this._ser.addNewNimalCategory(form).subscribe(() => {
 
-      debugger
       alert("animal category added succesfully")
       // Redirect to "All Categories" page
       this._router.navigate(['/dashboard/getAllCategory']).then(() => {
