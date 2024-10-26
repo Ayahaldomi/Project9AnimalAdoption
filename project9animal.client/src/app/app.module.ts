@@ -36,6 +36,7 @@ import { ContactComponent } from './home/contact/contact.component';
 import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
 import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+import { MyAdoptionApplicationComponent } from './home/my-adoption-application/my-adoption-application.component';
 import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
 import { AcceptStoryComponent } from './Admin/accept-story/accept-story.component';
 import { StoryDetailsComponent } from './Admin/story-details/story-details.component';
@@ -80,6 +81,9 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
     EditProfileComponent,
     ShowAllUserComponent,
     UpdateCategoryComponent,
+    MyAdoptionApplicationComponent,
+    
+
     GetStoriesComponent,
     AcceptStoryComponent,
     StoryDetailsComponent,
@@ -112,6 +116,7 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
       { path: 'editprofile/:id', component: EditProfileComponent },
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+      { path: "myApplication", component: MyAdoptionApplicationComponent },
 
 
       //AdminDashboard
@@ -131,14 +136,15 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
           { path: "AddShelter", component: AddShelterComponent },
           { path: "getStories", component: GetStoriesComponent },
 
-          { path: "updatecategory/:id", component: UpdateCategoryComponent }
-          ,{ path: "AddShelter", component: AddShelterComponent},
+          { path: "updatecategory/:id", component: UpdateCategoryComponent },
+          { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
           { path: "showAllUser", component: ShowAllUserComponent },
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "accept-story", component: AcceptStoryComponent },
           { path: "storyDetails/:id", component:StoryDetailsComponent }
+
 
 
         ]

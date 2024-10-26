@@ -8,7 +8,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class LeenURLService {
     currentUserId: any;
- 
+
+  email: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  emailaddress = this.email.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
 
   UserId: BehaviorSubject<string> = new BehaviorSubject<string>("");
@@ -44,10 +46,10 @@ export class LeenURLService {
     this.isAdmin.next(isAdmin);
   }
 
-  logout() {
-    this.isAdmin.next(false); // إعادة تعيين الحالة عند تسجيل الخروج
-    this.router.navigate(['/login']);
-  }
+  //logout() {
+  //  this.isAdmin.next(false); // إعادة تعيين الحالة عند تسجيل الخروج
+  //  this.router.navigate(['/login']);
+  //}
 
 
   addTestimonial(formData: FormData): Observable<any> {
@@ -58,5 +60,14 @@ export class LeenURLService {
 
   getApplicationsByUserId(userId: any): Observable<any> {
     return this.http.get(`https://localhost:7269/api/AdoptionForm/GetApplicationsByUserId/${userId}`);
+  }
+
+  
+
+  // Logout function
+  logoutFunc() {
+    this.setAdminStatus(false); // Reset admin status on logout
+    this.email.next("");
+    this.UserId.next("");
   }
 }
