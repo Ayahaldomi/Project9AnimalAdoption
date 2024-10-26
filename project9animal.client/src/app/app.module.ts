@@ -37,6 +37,8 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
 import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
+import { AcceptStoryComponent } from './Admin/accept-story/accept-story.component';
+import { StoryDetailsComponent } from './Admin/story-details/story-details.component';
 
 
 
@@ -79,6 +81,8 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
     ShowAllUserComponent,
     UpdateCategoryComponent,
     GetStoriesComponent,
+    AcceptStoryComponent,
+    StoryDetailsComponent,
 
     
 
@@ -128,11 +132,13 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
           { path: "getStories", component: GetStoriesComponent },
 
           { path: "updatecategory/:id", component: UpdateCategoryComponent }
-          { path: "AddShelter", component: AddShelterComponent},
+          ,{ path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
           { path: "showAllUser", component: ShowAllUserComponent },
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
+          { path: "accept-story", component: AcceptStoryComponent },
+          { path: "storyDetails/:id", component:StoryDetailsComponent }
 
 
         ]
