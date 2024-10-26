@@ -50,9 +50,10 @@ export class RawaahServicesService {
   getAllAnimalsAdmin(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/Animals1`);
   }
-  UpdateAnimalsAdmin(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/Animals1/UpdateAnimal/${id}`, data);
+  UpdateAnimalsAdmin(id: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.baseUrl}/Animals1/UpdateAnimal/${id}`, formData);
   }
+
 
 
   addAnimalsAdmin(data: any): Observable<any> {

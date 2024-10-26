@@ -22,10 +22,10 @@ export class GetAnimalsAdminComponent {
   }
 
   deleteAnimals(id: number) {
-    if (confirm("Are you sure you want to delete this instructor?")) {
+    if (confirm("Are you sure you want to delete this Animals?")) {
       this._ser.deleteAnimals(id).subscribe(
         (response) => {
-          this.getAllAnimalsAdmin(); // Refresh the instructor list after deletion
+          this.getAllAnimalsAdmin(); 
         },
         (error) => {
           console.error('Error deleting instructor:', error);
