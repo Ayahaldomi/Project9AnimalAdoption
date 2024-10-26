@@ -63,7 +63,7 @@
               <li>{{animal.breed}}</li>
               <li>{{animal.adoptionStatus}}</li>
             </ul>
-            <a routerLink="/AnimalsDetails/{{animal.animalId}}" class="theme-btn btn-style-eight">adopt me</a>
+            <a *ngIf="animal.adoptionStatus != 'Adopted'" routerLink="/AnimalsDetails/{{animal.animalId}}" class="theme-btn btn-style-eight">adopt me</a>
           </div>
         </div>
       </div>
