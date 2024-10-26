@@ -15,7 +15,7 @@ export class AddAnimalsComponent implements OnInit {
   selectedShelterId: string | undefined;  
 
   isLoading: boolean = false;  
-
+  imageFiles: File[] = []; 
   constructor(private _ser: RawaahServicesService) { }
 
   ngOnInit() {
@@ -45,12 +45,16 @@ export class AddAnimalsComponent implements OnInit {
     );
   }
 
-  changeImageEvent(event: any) {
-    this.image = event.target.files[0];
+  changeImageEvent(event: any, index: number) {
+
+    if (index >= 1 && index <= 4) {
+      this.imageFiles[index - 1] = event.target.files[0];
+    }
   }
+  
 
   addAnimalsAdmin(data: any) {
-    // قم بإزالة التحقق من الحقول هنا
+  
     const form = new FormData();
     
     if (this.selectedCategoryId) {
@@ -62,16 +66,17 @@ export class AddAnimalsComponent implements OnInit {
     }
 
     for (let key in data) {
-      if (data[key]) { // تحقق من أن القيمة ليست فارغة
+      if (data[key]) { 
         form.append(key, data[key]);
       }
     }
-
-    if (this.image) {
-      form.append('AnimalsImage', this.image);
-    }
-
-    this.isLoading = true;  // Start loading
+    this.imageFiles.forEach((file, index) => {
+      if (file) {
+        form.append(`image${index + 1}`, file);
+      }
+    });
+   
+    this.isLoading = true; 
 
     this._ser.addAnimalsAdmin(form).subscribe(
       () => {

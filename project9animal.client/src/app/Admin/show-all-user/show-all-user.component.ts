@@ -22,4 +22,18 @@ import { LeenURLService } from '../../leen/leen-url.service';
     });
   }
 
+
+  userAdoptionApplicationArray: any;
+  showUserApplicationsModal: boolean = false; // للتحكم بعرض المودال
+  getApplicationsByUser(userId: any) {
+    this._ser.getApplicationsByUserId(userId).subscribe((data) => {
+      this.userAdoptionApplicationArray = data;
+      this.showUserApplicationsModal = true; // فتح المودال لعرض الطلبات الخاصة
+    });
+  }
+
+  closeModal() {
+    this.showUserApplicationsModal = false; // إغلاق المودال عند الانتهاء
+  }
+
 }

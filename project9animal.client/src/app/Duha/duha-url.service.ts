@@ -47,6 +47,22 @@ export class DuhaUrlService {
   }
 
 
+  getTotalShelters(): Observable<number> {
+    return this.http.get<number>(`${this.staticData}/Statistics/TotalShelters`);
+  }
+
+  getTotalAnimals(): Observable<number> {
+    return this.http.get<number>(`${this.staticData}/Statistics/TotalAnimal`);
+  }
+
+  getTotalUsers(): Observable<number> {
+    return this.http.get<number>(`${this.staticData}/Statistics/TotalUser`);
+  }
+
+  getAnimalsCountByShelter(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.staticData}/Statistics/AnimalsCountByShelter`);
+  }
+
 
 
 }

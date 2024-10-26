@@ -5,44 +5,44 @@
 }
 
 .modal {
-  display: block; /* Ensure it's visible */
-  position: fixed; /* To fix its position on the screen */
+  display: block;
+  position: fixed; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1050; /* Ensure it's above other elements */
+  z-index: 1050;
   background-color: white;
   width: 60%;
   max-height: 80%;
-  overflow-y: auto; /* Allow scrolling if content exceeds modal height */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+  overflow-y: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   background-color: transparent;
 }
-/* تأثير تغميق للخلفية */
+
 .modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* إضافة لون أسود شفاف */
-  z-index: 1040; /* أقل من المودال */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1040; 
 }
 
-/* تأكد أن المودال يظهر فوق الـ backdrop */
+
 .modal-dialog {
   z-index: 1050;
 }
 
 .modal-content {
-  padding: 0; /* إزالة الحواف الداخلية حول المودال */
+  padding: 0; 
 }
 
 .modal-body {
-  padding: 0; /* إزالة الحواف حول جسم المودال */
+  padding: 0;
 }
 
 .table {
-  margin-bottom: 0; /* إزالة المسافة السفلية للجدول */
+  margin-bottom: 0; 
 }
 

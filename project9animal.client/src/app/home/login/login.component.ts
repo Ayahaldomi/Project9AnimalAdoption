@@ -37,18 +37,15 @@ export class LoginComponent {
        
         console.log("User ID set in service:", newData.userId);
 
-     
-        
-        debugger;
-      
 
         if (data.email === 'admin@gmail.com') {
 
-          this.authService.setAdminStatus(true); 
-          this._route.navigate(['/dashboard']); 
+          this._ser.setAdminStatus(true); 
+          this._route.navigate(['/dashboard/adminStatistic']); 
         } else {
-          this.authService.setAdminStatus(false);
-          this._route.navigate(['/']); 
+          this._ser.setAdminStatus(false);
+          this._route.navigate(['/']);
+           
         }
       },
       (error) => {
