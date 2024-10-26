@@ -38,11 +38,7 @@
             <div class="post-date">{{ story.storyDate | date: 'dd' }} <span>{{ story.storyDate | date: 'MMM' }}</span></div>
           </div>
           <div class="lower-content">
-            <ul class="post-meta">
-              <li>Pet Care</li>
-              <li> {{ story.likes.length }}</li>
-              <li><span class="icon fa fa-heart"></span> {{ story.likes.length }}</li>
-            </ul>
+           
             <h3><a href="blog-single.html">{{ story.title }}</a></h3>
             <div class="text">
               {{ story.storyText | slice: 0:150 }}...  <!-- Displaying a snippet -->
@@ -54,14 +50,7 @@
 
 
     </div>
-    <!--Styled Pagination-->
-    <ul class="styled-pagination text-center">
-      <li><a href="#" class="active">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li class="next"><a href="#">Next</a></li>
-    </ul>
-    <!--End Styled Pagination-->
+
   </div>
 </section>
 <!--End Blog Page Section-->

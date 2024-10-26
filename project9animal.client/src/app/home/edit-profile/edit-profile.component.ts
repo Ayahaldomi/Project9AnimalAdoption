@@ -40,7 +40,6 @@ export class EditProfileComponent {
 
   // جلب بيانات المستخدم
   getUserDetails() {
-    debugger;
     if (this.userId) {
       this.userService.getUserById(this.userId).subscribe(
         (data) => {
