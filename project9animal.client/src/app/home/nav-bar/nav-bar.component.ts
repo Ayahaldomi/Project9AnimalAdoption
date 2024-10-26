@@ -28,7 +28,7 @@ export class NavBarComponent {
 
     this._ser.logoutFunc();
 
-    this._route.navigate(["/"])
+    window.location.href = "/"
   }
 
 }

@@ -16,7 +16,6 @@ export class GetStoriesComponent implements OnInit {
   }
 
   loadSuccessStories(): void {
-    debugger;
     this.urlBassamService.getSuccessStories().subscribe(
       data => {
         this.successStories = data;

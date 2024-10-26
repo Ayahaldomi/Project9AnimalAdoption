@@ -14,9 +14,7 @@ export class GetAllCategoryComponent {
 
   categories: any
   getAllCategoryAnimals() {
-    debugger
     this._ser.getAllCategoryAnimals().subscribe((data) => {
-      debugger
       this.categories = data;
       console.log(this.categories)
     })
