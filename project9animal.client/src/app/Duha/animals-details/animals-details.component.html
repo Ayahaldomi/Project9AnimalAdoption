@@ -134,11 +134,12 @@
                 <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Address:</span> {{animalDetails.shelter.address}}</li>
                 <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Phone:</span> {{animalDetails.shelter.phone}}</li>
               </ul>
-              <div class="button">
+              <div class="button" *ngIf="animalDetails.status !== 'adopted'">
                 <a (click)="checkUserLogin(animalDetails.animalId)" class="btn main" title="Adopt">
                   Adopt <i class="fas fa-paw"></i>
                 </a>
               </div>
+
             </div>
           </div>
 
