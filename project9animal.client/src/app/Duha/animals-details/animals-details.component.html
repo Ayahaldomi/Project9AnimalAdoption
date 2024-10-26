@@ -109,16 +109,7 @@
                   <p>No image available for image1</p>
                 </ng-template>
 
-                <div class="item" *ngIf="animalDetails.image2; else noImage2">
-                  <div class="testimon">
-                    <div class="image">
-                      <img class="animal-image" [src]="'https://localhost:7269/api/Animals1/getImages/' + animalDetails.image2" alt="{{ animalDetails.name }}" />
-                    </div>
-                  </div>
-                </div>
-                <ng-template #noImage2>
-                  <p>No image available for image2</p>
-                </ng-template>
+               
 
 
               </div>
