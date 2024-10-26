@@ -37,10 +37,6 @@ export class LoginComponent {
        
         console.log("User ID set in service:", newData.userId);
 
-     
-        
-        debugger;
-      
 
         if (data.email === 'admin@gmail.com') {
 
@@ -48,7 +44,8 @@ export class LoginComponent {
           this._route.navigate(['/dashboard']); 
         } else {
           this._ser.setAdminStatus(false);
-          this._route.navigate(['/']); 
+          this._route.navigate(['/']);
+           
         }
       },
       (error) => {
