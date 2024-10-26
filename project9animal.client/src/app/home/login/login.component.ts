@@ -25,7 +25,6 @@ export class LoginComponent {
     this._ser.login(form).subscribe(
      
       (newData: any) => {
-        debugger;
         alert("Logged in successfully");
 
        

@@ -19,6 +19,7 @@
 }
 .table-container {
   margin-top: 20px;
+  overflow-x: auto; /* Ensure that if the table is too wide, it scrolls */
 }
 .table th, .table td {
   vertical-align: middle;
@@ -53,6 +54,7 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure the table respects the container's width */
 }
 
 .thead-dark th {
