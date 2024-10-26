@@ -101,7 +101,7 @@
                   <a routerLink="/login" >login</a>
                 </li>
 
-                <li *ngIf="UserId != ''">
+                <li *ngIf="UserId != ''" class="login-button">
                   <div class="dropdown">
                     <a><i class="fas fa-user"></i></a>
                     <ul class="dropdown-menu">
@@ -130,7 +130,7 @@
       <!--Logo-->
       <div class="logo pull-left">
         <a href="index.html" class="img-responsive">
-          <img src="assete/images/logo-small.png" alt=""
+          <img src="assets/images/logo-small.png" alt=""
                title="">
         </a>
       </div>
@@ -190,7 +190,7 @@
                 <a routerLink="/login">login</a>
               </li>
 
-              <li *ngIf="UserId != ''">
+              <li *ngIf="UserId != ''" class="login-button">
                 <div class="dropdown">
                   <a><i class="fas fa-user"></i></a>
                   <ul class="dropdown-menu">
