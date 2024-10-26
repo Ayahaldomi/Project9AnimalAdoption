@@ -202,7 +202,7 @@
                   <img src="https://localhost:7269/api/AnimalCategory/getImage/{{category.image}}" alt="Dogs Image" class="category-image" />
                   <div class="overlay">
                     <div class="content">
-                      <h3><a href="categories.html?type=dogs">{{category.name}}</a></h3>
+                      <h3><a (click)="viewCategory(category.id)" > {{category.name}}</a></h3>
                     </div>
                   </div>
                 </div>
@@ -270,12 +270,12 @@
   </section>-->
   <!--End Appointment Section-->
   <!--Team Section-->
-  <section class="team-section">
-    <div class="auto-container">
+  <!--<section class="team-section">
+    <div class="auto-container">-->
       <!--Sec Title-->
-      <div class="row clearfix">
+      <!--<div class="row clearfix">-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -287,17 +287,17 @@
               <div class="designation">founder</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -309,17 +309,17 @@
               <div class="designation">pet lover</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -331,17 +331,17 @@
               <div class="designation">donator</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -353,10 +353,10 @@
               <div class="designation">pet Adopter</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
@@ -364,7 +364,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
   <!--End Team Section-->
   <!--Counter Section-->
   <section class="counter-section">
@@ -547,7 +547,7 @@
                   {{ testimonial.testimonialMessege }}
                 </div>
                 <div class="author-image">
-                  <img src="assets/images/resource/author-1.jpg" alt="Author Image" class="rounded-circle" />
+                  <!--<img src="assets/images/resource/author-1.jpg" alt="Author Image" class="rounded-circle" />-->
                 </div>
                 <div class="author-name">{{ testimonial.userName }}</div>
                 <div class="designation">{{ testimonial.designation }}</div>
@@ -593,17 +593,14 @@
                 <div class="inner-box wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
                   <div class="image">
                     <div class="post-date">{{ s.storyDate | date:'dd MMM' }}</div>
-                    <a href="blog-single.html"><img src="https://localhost:44376/api/AnimalCategory/getImageForStories/{{s.photoUrl1}}" alt="{{ s.title }}" /></a>
+                    <a routerLink="/OurCommunityDetails/{{s.storyId}}"><img src="https://localhost:7269/api/Bassam/getImage/{{s.photoUrl1}}" alt="{{ s.title }}" height="240"/></a>
                   </div>
                   <div class="lower-content">
-                    <ul class="news-info">
-                      <li>Pets</li>
-                      <li>{{ s.commentCount }} comments</li>
-                    </ul>
+                    
                     <h3>
-                      <a href="blog-single.html">{{ s.title }}</a>
+                      <a routerLink="/OurCommunityDetails/{{s.storyId}}">{{ s.title }}</a>
                     </h3>
-                    <a href="blog-single.html" class="read-more">Read More</a>
+                    <a routerLink="/OurCommunityDetails/{{s.storyId}}" class="read-more">Read More</a>
                   </div>
                 </div>
               </div>

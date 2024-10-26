@@ -25,8 +25,6 @@ export class LoginComponent {
     this._ser.login(form).subscribe(
      
       (newData: any) => {
-        debugger;
-        alert("Logged in successfully");
 
        
         console.log("User ID from response:", newData.userId);
@@ -41,7 +39,7 @@ export class LoginComponent {
         if (data.email === 'admin@gmail.com') {
 
           this._ser.setAdminStatus(true); 
-          this._route.navigate(['/dashboard']); 
+          this._route.navigate(['/dashboard/adminStatistic']); 
         } else {
           this._ser.setAdminStatus(false);
           this._route.navigate(['/']);

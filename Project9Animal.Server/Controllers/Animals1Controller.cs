@@ -267,7 +267,7 @@ namespace Project9Animal.Server.Controllers
             animal.Description = string.IsNullOrWhiteSpace(updatedAnimalDto.Description) ? animal.Description : updatedAnimalDto.Description;
             animal.AdoptionStatus = string.IsNullOrWhiteSpace(updatedAnimalDto.AdoptionStatus) ? animal.AdoptionStatus : updatedAnimalDto.AdoptionStatus;
 
-            var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
+            var folder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
             await SaveImage(updatedAnimalDto.Image1, folder, animal, (img) => animal.Image1 = img);
@@ -329,8 +329,8 @@ namespace Project9Animal.Server.Controllers
                 AdoptionStatus = newAnimalDto.AdoptionStatus
             };
 
-            // حفظ الصور
-            var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
+        
+            var folder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
             if (newAnimalDto.Image1 != null)
@@ -373,7 +373,7 @@ namespace Project9Animal.Server.Controllers
                 animal.Image4 = newAnimalDto.Image4.FileName;
             }
 
-            // إضافة الحيوان إلى قاعدة البيانات
+        
             _context.Animals.Add(animal);
 
             try

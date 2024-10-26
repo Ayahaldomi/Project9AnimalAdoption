@@ -28,8 +28,8 @@
       <div *ngFor="let story of successStories" class="news-block-two col-md-6 col-sm-12 col-xs-12">
         <div class="inner-box">
           <div class="image">
-            <a routerLink="/OurCommunityDetails/{{story.userId}}">
-              <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="Story Image" />
+            <a routerLink="/OurCommunityDetails/{{story.storyId}}">
+              <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="Story Image" height="240" />
             </a>
 
             <div class="post-date">{{ story.storyDate | date: 'dd' }} <span>{{ story.storyDate | date: 'MMM' }}</span></div>
@@ -44,7 +44,7 @@
             <div class="text">
               {{ story.storyText | slice: 0:150 }}...  <!-- Displaying a snippet -->
             </div>
-            <a href="blog-single.html" class="theme-btn btn-style-eight">read more</a>
+            <a routerLink="/OurCommunityDetails/{{story.storyId}}" class="theme-btn btn-style-eight">read more</a>
           </div>
         </div>
       </div>

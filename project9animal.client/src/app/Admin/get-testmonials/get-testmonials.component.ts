@@ -43,7 +43,6 @@ export class GetTestmonialsComponent {
   // Reject a testimonial
   rejectTestimonial(id: number) {
 
-    debugger
     this._ser.rejectTestimonial(id).subscribe(
       (response) => {
         alert('Testimonial rejected successfully');

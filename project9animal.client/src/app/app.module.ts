@@ -40,6 +40,11 @@ import { MyAdoptionApplicationComponent } from './home/my-adoption-application/m
 import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
 import { AcceptStoryComponent } from './Admin/accept-story/accept-story.component';
 import { StoryDetailsComponent } from './Admin/story-details/story-details.component';
+import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics.component';
+import { ContactUsAdminComponent } from './Admin/ayah/contact-us-admin/contact-us-admin.component';
+import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-form.component';
+import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
+import { AnimalsByCategoryComponent } from './home/animals-by-category/animals-by-category.component';
 
 
 
@@ -87,6 +92,11 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
     GetStoriesComponent,
     AcceptStoryComponent,
     StoryDetailsComponent,
+            AdminStatsticsComponent,
+            ContactUsAdminComponent,
+            ContactUsFormComponent,
+            AdminProfileComponent,
+            AnimalsByCategoryComponent,
 
     
 
@@ -117,7 +127,7 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
       { path: "myApplication", component: MyAdoptionApplicationComponent },
-
+      { path: "animals/:categoryId", component: AnimalsByCategoryComponent },
 
       //AdminDashboard
       {
@@ -143,8 +153,11 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
           { path: "showAllUser", component: ShowAllUserComponent },
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "accept-story", component: AcceptStoryComponent },
-          { path: "storyDetails/:id", component:StoryDetailsComponent }
-
+          { path: "storyDetails/:id", component:StoryDetailsComponent },
+          { path: "adminStatistic", component: AdminStatsticsComponent },
+          { path: "contactUs", component: ContactUsAdminComponent },
+          { path: "contactUsForm/:id", component: ContactUsFormComponent },
+          { path: "adminProfile" , component:AdminProfileComponent},
 
 
         ]
