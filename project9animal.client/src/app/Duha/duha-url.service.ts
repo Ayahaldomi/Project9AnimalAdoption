@@ -36,4 +36,33 @@ export class DuhaUrlService {
     return this.http.get<any>(`${this.staticData}/Users/GetUserById${id}`);
   }
 
+  getAnimalById(animalId: any): Observable<any> {
+    return this.http.get(`${this.staticData}/AdoptionForm/GetAnimalById/${animalId}`);
+  }
+
+
+  updateAdoptionApplicationStatus(applicationId: any, status: any): Observable<any> {
+    return this.http.put(`${this.staticData}/AdoptionForm/UpdateApplicationStatus?applicationId=${applicationId}&status=${status}`, {});
+
+  }
+
+
+  getTotalShelters(): Observable<number> {
+    return this.http.get<number>(`${this.staticData}/Statistics/TotalShelters`);
+  }
+
+  getTotalAnimals(): Observable<number> {
+    return this.http.get<number>(`${this.staticData}/Statistics/TotalAnimal`);
+  }
+
+  getTotalUsers(): Observable<number> {
+    return this.http.get<number>(`${this.staticData}/Statistics/TotalUser`);
+  }
+
+  getAnimalsCountByShelter(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.staticData}/Statistics/AnimalsCountByShelter`);
+  }
+
+
+
 }

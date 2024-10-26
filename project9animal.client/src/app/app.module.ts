@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
@@ -32,10 +31,21 @@ import { AdoptionApplicationRequestComponent } from './Admin/adoption-applicatio
 
 import { CreateSucessStoryComponent } from './Bassam/create-sucess-story/create-sucess-story.component';
 import { GitShelterComponent } from './Admin/git-shelter/git-shelter.component';
-import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { GetTestmonialsComponent } from './Admin/get-testmonials/get-testmonials.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { EditProfileComponent } from './home/edit-profile/edit-profile.component';
+import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.component';
+import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+import { MyAdoptionApplicationComponent } from './home/my-adoption-application/my-adoption-application.component';
+import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
+import { AcceptStoryComponent } from './Admin/accept-story/accept-story.component';
+import { StoryDetailsComponent } from './Admin/story-details/story-details.component';
+import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics.component';
+import { ContactUsAdminComponent } from './Admin/ayah/contact-us-admin/contact-us-admin.component';
+import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-form.component';
+import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
+
+
 
 
 
@@ -70,10 +80,24 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
 
     CreateSucessStoryComponent,
     GitShelterComponent,
-    UpdateCategoryComponent,
     GetTestmonialsComponent,
     ContactComponent,
     EditProfileComponent,
+    ShowAllUserComponent,
+    UpdateCategoryComponent,
+    MyAdoptionApplicationComponent,
+    
+
+    GetStoriesComponent,
+    AcceptStoryComponent,
+    StoryDetailsComponent,
+            AdminStatsticsComponent,
+            ContactUsAdminComponent,
+            ContactUsFormComponent,
+            AdminProfileComponent,
+
+    
+
 
 
   ],
@@ -100,6 +124,7 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
       { path: 'editprofile/:id', component: EditProfileComponent },
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
+      { path: "myApplication", component: MyAdoptionApplicationComponent },
 
 
       //AdminDashboard
@@ -117,10 +142,20 @@ import { EditProfileComponent } from './home/edit-profile/edit-profile.component
 
           { path: "GitShelter", component: GitShelterComponent },
           { path: "AddShelter", component: AddShelterComponent },
+          { path: "getStories", component: GetStoriesComponent },
+
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
+          { path: "showAllUser", component: ShowAllUserComponent },
+          { path: "updatecategory/:id", component: UpdateCategoryComponent },
+          { path: "accept-story", component: AcceptStoryComponent },
+          { path: "storyDetails/:id", component:StoryDetailsComponent },
+          { path: "adminStatistic", component: AdminStatsticsComponent },
+          { path: "contactUs", component: ContactUsAdminComponent },
+          { path: "contactUsForm/:id", component: ContactUsFormComponent },
+          { path: "adminProfile" , component:AdminProfileComponent},
 
 
         ]

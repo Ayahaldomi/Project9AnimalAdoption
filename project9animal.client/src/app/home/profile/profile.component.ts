@@ -71,6 +71,38 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  submitTestimonial(data: any) {
+    var formdata = new FormData();
+
+
+    for (let item in data) {
+      formdata.append(item, data[item]);
+    }
+
+   
+    formdata.append('TestimonialMessege', data.Content);
+    formdata.append('UserId', this.userId);
+
+    formdata.forEach((value, key) => {
+      console.log(key + ', ' + value);
+    });
+
+    
+    this._ser.addTestimonial(formdata).subscribe(
+      () => {
+        alert("Thank you for your testimonial!");
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 2000);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+
+
 
 
 }

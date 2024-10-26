@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LeenURLService } from '../../leen/leen-url.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthServiceService } from '../../services/auth-service.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,17 +13,18 @@ export class LoginComponent {
 
 
   ngOnInit() { }
-  constructor(private _ser: LeenURLService, private _route: Router, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _ser: LeenURLService, private _route: Router, private _activatedRoute: ActivatedRoute, private authService: AuthServiceService // إضافة AuthService هنا
+) { }
 
-  loginUser(data: any) {
+  loginUser1(data: any) {
     const form = new FormData();
     for (let k in data) {
       form.append(k, data[k]);
     }
 
     this._ser.login(form).subscribe(
+     
       (newData: any) => {
-        alert("Logged in successfully");
 
        
         console.log("User ID from response:", newData.userId);
@@ -32,20 +35,15 @@ export class LoginComponent {
        
         console.log("User ID set in service:", newData.userId);
 
-     
-        const redirectTo = this._activatedRoute.snapshot.queryParamMap.get('redirectTo');
-        const animalId = this._activatedRoute.snapshot.queryParamMap.get('animalId');
 
-        console.log("Redirect To:", redirectTo);
-        console.log("Animal ID in login:", animalId);
+        if (data.email === 'admin@gmail.com') {
 
-        if (redirectTo && animalId) {
-          console.log("Navigating to:", `${redirectTo}/${animalId}`);
-          this._route.navigate([`${redirectTo}/${animalId}`]);  
-        } else if (newData.email === 'huda@gmail.com') {
-          this._route.navigate(['/dashboard']);
+          this._ser.setAdminStatus(true); 
+          this._route.navigate(['/dashboard/adminStatistic']); 
         } else {
+          this._ser.setAdminStatus(false);
           this._route.navigate(['/']);
+           
         }
       },
       (error) => {
@@ -53,6 +51,19 @@ export class LoginComponent {
       }
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

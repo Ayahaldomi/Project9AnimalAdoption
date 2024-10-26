@@ -287,10 +287,10 @@
               <div class="designation">founder</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
@@ -309,10 +309,10 @@
               <div class="designation">pet lover</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
@@ -331,10 +331,10 @@
               <div class="designation">donator</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
@@ -353,10 +353,10 @@
               <div class="designation">pet Adopter</div>
               <div class="social-box">
                 <ul class="social-icon-one">
-                  <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                  <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                  <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                  <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                  <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                  <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                  <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                  <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                 </ul>
               </div>
             </div>
@@ -593,17 +593,14 @@
                 <div class="inner-box wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
                   <div class="image">
                     <div class="post-date">{{ s.storyDate | date:'dd MMM' }}</div>
-                    <a href="blog-single.html"><img src="https://localhost:7269/api/AnimalCategory/getImageForStories/{{s.photoUrl1}}" alt="{{ s.title }}" /></a>
+                    <a routerLink="/OurCommunityDetails/{{s.storyId}}"><img src="https://localhost:7269/api/Bassam/getImage/{{s.photoUrl1}}" alt="{{ s.title }}" height="240"/></a>
                   </div>
                   <div class="lower-content">
-                    <ul class="news-info">
-                      <li>Pets</li>
-                      <li>{{ s.commentCount }} comments</li>
-                    </ul>
+                    
                     <h3>
-                      <a href="blog-single.html">{{ s.title }}</a>
+                      <a routerLink="/OurCommunityDetails/{{s.storyId}}">{{ s.title }}</a>
                     </h3>
-                    <a href="blog-single.html" class="read-more">Read More</a>
+                    <a routerLink="/OurCommunityDetails/{{s.storyId}}" class="read-more">Read More</a>
                   </div>
                 </div>
               </div>
