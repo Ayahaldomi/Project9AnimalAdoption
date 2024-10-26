@@ -72,7 +72,7 @@
               <tr *ngFor="let item of userAdoptionApplicationArray">
                 <td>{{item.applicationId}}</td>
                 <td>{{item.adopterName}}</td>
-                <td><img src="https://via.placeholder.com/50" alt="Animal Image" class="img-fluid"></td>
+                <td><img src="https://localhost:7269/api/Animals1/getImages/{{item.animalImage}}" alt="Animal Image" class="img-fluid"></td>
                 <td>{{item.applicationDate | date: 'yyyy-MM-dd'}}</td>
                 <td>{{item.status}}</td>
               </tr>
