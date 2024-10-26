@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from './services/auth-service.service';
+import { LeenURLService } from './leen/leen-url.service';
 
 interface WeatherForecast {
   date: string;
@@ -15,10 +17,19 @@ interface WeatherForecast {
 })
 export class AppComponent implements OnInit {
   public forecasts: WeatherForecast[] = [];
-
-  constructor(private http: HttpClient) {}
+  isAdmin = false;
+  constructor(private http: HttpClient, private authService: AuthServiceService, private leenService: LeenURLService) {}
 
   ngOnInit() {
+    
+    //this.authService.isAdminLoggedIn.subscribe((status) => {
+    //  this.isAdmin = status;
+    //});
+    // Subscribe to admin status to update view on change
+    this.leenService.isAdminLoggedIn.subscribe((status) => {
+      this.isAdmin = status;
+    });
+
     this.getForecasts();
   }
 
@@ -34,4 +45,9 @@ export class AppComponent implements OnInit {
   }
 
   title = 'project9animal.client';
+
+
+  
+
+
 }

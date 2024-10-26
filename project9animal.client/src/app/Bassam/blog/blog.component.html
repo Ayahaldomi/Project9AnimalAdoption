@@ -28,7 +28,7 @@
       <div *ngFor="let story of successStories" class="news-block-two col-md-6 col-sm-12 col-xs-12">
         <div class="inner-box">
           <div class="image">
-            <a href="blog-single.html">
+            <a routerLink="/OurCommunityDetails/{{story.userId}}">
               <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="Story Image" />
             </a>
 

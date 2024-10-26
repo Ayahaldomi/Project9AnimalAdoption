@@ -62,10 +62,12 @@ export class UpdateCategoryComponent {
     this._ser.UpdateCategory(this.param, updatedData).subscribe(
       (response) => {
         alert('Category updated successfully!');
-        formData.reset();
 
         // Redirect to "All Categories" page
-        this._router.navigate(['/getAllCategory']);  
+        // Redirect to "All Categories" page
+        this._router.navigate(['/dashboard/getAllCategory']).then(() => {
+          formData.reset();  // Only reset form after navigation succeeds
+        });
       },
       (error) => {
         alert('Error updating category: ' + error.message);
@@ -73,32 +75,32 @@ export class UpdateCategoryComponent {
     );
   }
   // Update the category
-//  updateCategory(data: any) {
-//    debugger
-//    const formData = new FormData(); // Create a FormData object
+  //  updateCategory(data: any) {
+  //    debugger
+  //    const formData = new FormData(); // Create a FormData object
 
-//    // Append form fields
-//    for (let key in data) {
-//      if (data.hasOwnProperty(key)) {
-//        formData.append(key, data[key]);
-//      }
-//    }
-//    debugger
-//    // Append image file if selected
-//    if (this.imageFile) {
-//      formData.append('Image', this.imageFile); // 'Image' matches the DTO field
-//    }
+  //    // Append form fields
+  //    for (let key in data) {
+  //      if (data.hasOwnProperty(key)) {
+  //        formData.append(key, data[key]);
+  //      }
+  //    }
+  //    debugger
+  //    // Append image file if selected
+  //    if (this.imageFile) {
+  //      formData.append('Image', this.imageFile); // 'Image' matches the DTO field
+  //    }
 
 
 
-//    // Call the service to update the category
-//    this._ser.UpdateCategory(this.param!, formData).subscribe(
-//      (response) => {
-//        alert('Category updated successfully!');
-//      },
-//      (error) => {
-//        alert('Error updating category: ' + error.message);
-//      }
-//    );
-//  }
+  //    // Call the service to update the category
+  //    this._ser.UpdateCategory(this.param!, formData).subscribe(
+  //      (response) => {
+  //        alert('Category updated successfully!');
+  //      },
+  //      (error) => {
+  //        alert('Error updating category: ' + error.message);
+  //      }
+  //    );
+  //  }
 }

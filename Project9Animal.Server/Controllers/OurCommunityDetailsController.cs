@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project9Animal.Server.DTOs;
@@ -41,11 +42,21 @@ namespace Project9Animal.Server.Controllers
         [HttpGet("comments/{id}")]
         public IActionResult comments(int id) {
             var comments = _context.Comments
-                .Where(c => c.StoryId == id)
-                .Include(c => c.User)
-                .Include(c => c.Replies)
-                .ToList();
-            
+                    .Where(c => c.StoryId == id)
+                    .Select(c => new
+                    {
+                        c.CommentId,
+                        c.Comment1, 
+                        UserName = c.User.FullName, 
+                        Replies = c.Replies.Select(r => new
+                        {
+                            r.Comment,
+                            r.CommentDate, 
+                            UserName = r.User.FullName 
+                        }).ToList()
+                    })
+                    .ToList();
+
             return Ok(comments);
         }
 
@@ -117,7 +128,31 @@ namespace Project9Animal.Server.Controllers
             return Ok(newReply);
         }
 
+        [HttpGet("getAnimalByCategoryID/{id}")]
+        public IActionResult getAnimalByCategoryID(int id)
+        {
+            var categoryID = _context.Animals.FirstOrDefault(x => x.AnimalId == id);
+            var animals = _context.Animals
+                .Where(a => a.CategoryId == categoryID.CategoryId)
+                .OrderBy(a => Guid.NewGuid()) 
+                .Take(4) 
+                .ToList();
+            return Ok(animals);
+        }
+        [HttpGet("resentStory")]
+        public IActionResult resentStory()
+        {
+            var story = _context.SuccessStories
+                .Where(a =>a.Status == "Published")
+                .OrderBy(a => a.StoryId)
+                .Take(3)
+                .ToList();
+            return Ok(story);
+        }
+
     }
+
+    
 
 
 }

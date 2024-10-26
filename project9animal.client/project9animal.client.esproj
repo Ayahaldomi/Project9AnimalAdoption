@@ -8,14 +8,13 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\project9animal.client\browser\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\app\Admin\ayah\" />
     <Folder Include="src\app\Bassam\BassamUrl\" />
-    <Folder Include="src\app\Admin\" />
     <Folder Include="src\app\ayah\" />
-    <Folder Include="src\app\Admin\" />
     <Folder Include="src\app\Duha\" />
+    <Folder Include="src\app\services\" />
     <Folder Include="src\app\RamaURL\" />
     <Folder Include="src\app\leen\" />
     <Folder Include="src\app\URL-serices\" />
-    <Folder Include="src\assets\" />
   </ItemGroup>
 </Project>

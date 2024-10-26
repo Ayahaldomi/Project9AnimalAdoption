@@ -12,59 +12,68 @@
     <!--Default Form-->
     <div class="default-form">
       <div class="form-box">
-        <form method="post" action="https://www.shmai.com/preview/pawrex-html/contact-form">
+        <form  #addrequest="ngForm" (ngSubmit)="addNewAdoptionform(addrequest.value,animalDetails.animalId,userDetails.userId)">
           <div class="row clearfix">
+
+
+            <!--<input type="text" name="animalId" value="{{animalDetails.animalId}}" required ngModel>-->
+
+            <!--<input type="hidden" name="animalId" [value]="animalDetails?.animalId" ngModel required>
+            <input type="hidden" name="userId" [value]="userDetails?.userId" ngModel required>-->
+
+            <!--<input type="text" name="userId" value="{{userDetails.userId}}" required ngModel >-->
+
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="animal_name" class="text-white">Animal Name</label>
-              <input type="text" name="name" value=""  required>
+              <input type="text" name="name" value="{{animalDetails.name}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="animal_age" class="text-white">Animal Age</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="age" value="{{animalDetails.age}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="breed" class="text-white">Breed</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="breed" value="{{animalDetails.breed}}" required>
             </div>
 
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="size" class="text-white">Animal Size</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="size" value=" {{animalDetails.size}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="temperament" class="text-white">Temperament</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="temperament" value="{{animalDetails.temperament}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="description" class="text-white">Description</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="description" value="{{animalDetails.description}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="shelter_name" class="text-white">Shelter Name</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="shelterName" value="{{animalDetails.shelter.shelterName}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="shelter_phone" class="text-white">Shelter Phone #</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="address" value="{{animalDetails.shelter.phone}}" required>
             </div>
 
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
-              <label for="shelter_address"class="text-white">Shelter Address</label>
-              <input type="text" name="phone" value=""  required>
+              <label for="shelter_address" class="text-white">Shelter Address</label>
+              <input type="text" name="phone" value="{{animalDetails.shelter.address}}" required>
             </div>
             <!-- Adopter Info -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="full_name" class="text-white">Full Name</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="fullName" value="{{userDetails.fullName}}" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="your_address" class="text-white">Your Address</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="address" value="" required ngModel>
             </div>
             <!-- Dropdown: Financial Status -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
-              <label for="financial_status"class="text-white">Financial Status</label>
-              <select name="financial_status" required>
+              <label for="financial_status" class="text-white">Financial Status</label>
+              <select name="finaincalStatus" required ngModel>
                 <option value="" disabled selected>Financial Status</option>
                 <option value="high_income">High Income</option>
                 <option value="low_income">Low Income</option>
@@ -75,7 +84,7 @@
             <!-- Dropdown: Flat Type -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="flat_type" class="text-white">Flat Type</label>
-              <select name="flat_type" required>
+              <select name="flatType" required ngModel>
                 <option value="" disabled selected>Flat Type</option>
                 <option value="townhouse">Townhouse</option>
                 <option value="villa">Villa</option>
@@ -87,7 +96,7 @@
             <!-- Dropdown: Have Kids -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="have_kids" class="text-white">Have Kids</label>
-              <select name="have_kids" required>
+              <select name="haveKids" required ngModel>
                 <option value="" disabled selected>Have Kids</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
@@ -95,12 +104,12 @@
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="medical_status" class="text-white">Medical Status</label>
-              <input type="text" name="" value=""  required>
+              <input type="text" name="medicalStatus" value="" required ngModel>
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
               <label for="more_details" class="text-white">More details</label>
-              <textarea ></textarea>
+              <textarea name="moreDetails" ngModel></textarea>
             </div>
             <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
               <button type="submit" class="theme-btn btn-style-two">Send request</button>

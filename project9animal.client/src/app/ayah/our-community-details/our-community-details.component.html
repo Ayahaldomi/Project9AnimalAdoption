@@ -25,7 +25,7 @@
         <div class="blog-single padding-right">
           <div class="inner-box">
             <div class="image">
-              <img src="assets/images/resource/news-10.jpg" alt="" />
+              <img src="https://localhost:7269/api/Bassam/getImage/{{story.photoUrl1}}" alt="" />
             </div>
             <div class="lower-content">
               <div class="title-box">
@@ -34,134 +34,119 @@
                 </div>
                 <h3>{{ story.title }}</h3>
                 <ul class="post-meta">
+                  <div *ngIf="userID">
                   <li *ngIf="!isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">Like</button></li>
                   <li *ngIf="isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">UnLike</button></li>
-                  <li>{{commentcount}} Comments</li>
-                  <li><span class="icon fa fa-heart"></span> {{like}}</li>
-                </ul>
               </div>
-              <div class="text">
+              <li>{{commentcount}} Comments</li>
+              <li><span class="icon fa fa-heart"></span> {{like}}</li>
+              </ul>
+            </div>
+            <div class="text">
 
-                <div class="story-text">
-                  {{story.storyText}}
-                </div>
-
-                <!--<div class="row clearfix">
-                  <div class="col-md-7 col-sm-7 col-xs-12">
-                    <div class="image">
-                      <img src="assets/images/resource/news-11.jpg" alt="" />
-                    </div>
-                  </div>
-                  <div class="col-md-5 col-sm-5 col-xs-12">
-                    <p>
-                      Dry gazelle far lobster deftly shoddy and chek sar more wow much darn
-                      far grudgingly is sad speechlesy gosh where less away and adequat
-                      before upon until respectful found like authen tically much after.
-                    </p>
-                    <p>
-                      Clapped impolite goodness showy witlesly the rhinoceros the beaver
-                      the hello far excluding opossum gibbered closed jeper scowled cruds
-                      more away gazel petulantly crud lighthearted darn redid more ouch a
-                      banally.
-                    </p>
-                  </div>
-                </div>
-                <p>
-                  Acute yellow re-laid less or affirmatively elephant the forbade this gaudy
-                  thus for but but yawned that alas before less thus and serenely versus
-                  cannily the on because blind a cuckoo jeepers told blew held far hello far
-                  as the while private much lantern and less cockatoo returned disbanded into.
-                </p>-->
+              <div class="story-text">
+                {{story.storyText}}
               </div>
-              <!--post-share-options-->
-              <div class="post-share-options clearfix">
-                <div class="pull-left tags">
-                  <span>Post Tags:</span><a href="#">Pets,</a> <a href="#">Grooming,</a> <a href="#"> Shelter,</a><a href="#"> Breeds</a>
 
-                </div>
-                <div class="pull-right social-icon-four clearfix">
-                  <span class="share">Share</span>
-                  <a href="https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url={{ pageUrl }}" (click)="openTwitterShare($event)" class="twitter-share">
-                    <span class="fa fa-twitter"></span>
-                  </a>
-                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ pageUrl }}" (click)="openFacebookShare($event)" class="facebook-share">
-                    <span class="fa fa-facebook-square"></span>
-                  </a>
-                  <a href="#"><span class="fa fa-linkedin"></span></a>
-                  <a href="#"><span class="fa fa-google-plus"></span></a>
-                </div>
+            </div>
+            <!--post-share-options-->
+            <div class="post-share-options clearfix">
+              <div class="pull-left tags">
+                <span>Post Tags:</span><a href="#">Pets,</a> <a href="#">Grooming,</a> <a href="#"> Shelter,</a><a href="#"> Breeds</a>
+
+              </div>
+              <div class="pull-right social-icon-four clearfix">
+                <span class="share">Share</span>
+                <a href="https://twitter.com/intent/tweet?text=Check+out+this+awesome+content!&url={{ pageUrl }}" (click)="openTwitterShare($event)" class="twitter-share">
+                  <span class="fa fa-twitter"></span>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ pageUrl }}" (click)="openFacebookShare($event)" class="facebook-share">
+                  <span class="fa fa-facebook-square"></span>
+                </a>
+
               </div>
             </div>
           </div>
         </div>
-        <!--Comments Area-->
-        <div class="comments-area">
-          <div class="group-title">
-            <h2>Comments</h2>
-          </div>
-          <!--Comment Box-->
-          <div class="comment-box" *ngFor="let item of comment; let i = index">
-            <div class="comment">
-              <div class="author-thumb">
-                <img src="assets/images/resource/author-2.jpg" alt="author">
+      </div>
+      <!--Comments Area-->
+      <div class="comments-area">
+        <div class="group-title">
+          <h2>Comments</h2>
+        </div>
+
+        <!-- Comment Box -->
+        <div class="comment-box" *ngFor="let item of comment; let i = index">
+          <div class="comment">
+            <div class="author-thumb">
+              <img src="assets/images/icons/icon-yellow.png" alt="author">
+            </div>
+            <div class="comment-inner">
+              <div class="comment-info clearfix" style="text-align: left;">
+                <strong>{{ item.userName ? item.userName : 'No User Name' }}</strong>
+                <div class="comment-time">
+                  {{ item.commentDate | date: 'MMMM d, yyyy' }}
+                </div>
               </div>
-              <div class="comment-inner">
-                <div class="comment-info clearfix" style="text-align: left;">
-                  <strong>{{item.user.fullName}}</strong>
-                  <div class="comment-time">
-                    {{ item.commentDate | date: 'MMMM d, yyyy' }}
-                  </div>
-                </div>
-                <div class="text" style="text-align: left;">
-                  {{item.comment1}}
-                </div>
-                <a class="comment-reply" (click)="toggleReplyForm(i)">Reply</a>
 
-                <!-- Replies Section -->
-                <div class="replies" *ngIf="item.replies?.length > 0">
-                  <div class="reply-box" *ngFor="let reply of item.replies">
-                    <div>
-                      <img src="assets/images/resource/author-2.jpg" alt="reply-author" class="test">
+              <!-- Displaying the Comment Text -->
+              <div class="text" style="text-align: left;">
+                {{ item.comment1 }}
+              </div>
+
+              <!-- Reply Toggle Button -->
+              <a class="comment-reply" (click)="toggleReplyForm(i)">Reply</a>
+
+              <!-- Replies Section -->
+              <div class="replies" *ngIf="item.replies?.length > 0">
+                <div class="reply-box" *ngFor="let reply of item.replies">
+                  <div>
+                    <img src="assets/images/icons/gray-icon.png" alt="reply-author" class="test">
+                  </div>
+                  <div class="reply-inner">
+                    <div class="comment-info clearfix" style="text-align: left;">
+                      <strong>{{ reply.userName ? reply.userName : 'No User Name' }}</strong>
+                      <div class="comment-time">
+                        {{ reply.commentDate | date: 'MMMM d, yyyy' }}
+                      </div>
                     </div>
-                    <div class="reply-inner">
-                      <div class="comment-info clearfix" style="text-align: left;">
-                        <strong>{{ reply.user?.fullName }}</strong>
-                        <div class="comment-time">
-                          {{ reply.commentDate | date: 'MMMM d, yyyy' }}
-                        </div>
-                      </div>
-                      <div class="text" style="text-align: left;">
-                        {{ reply.comment }}
-                      </div>
+
+                    <div class="text" style="text-align: left;">
+                      {{ reply.comment }}
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <!-- Reply Form -->
-                <div *ngIf="showReplyForm[i]" class="reply-form">
+              <!-- Reply Form -->
+              <div *ngIf="showReplyForm[i]" class="reply-form">
+                <div *ngIf="userID">
                   <form #replyForm="ngForm" (ngSubmit)="addReply(i, replyForm.value, item.commentId)">
                     <input type="hidden" name="commentId" value="{{item.commentId}}" />
                     <textarea name="comment" ngModel required class="reply-form-textarea"></textarea>
                     <button type="submit" class="theme-btn btn-style-four">Submit Reply</button>
                   </form>
                 </div>
-                <!-- End of Reply Form -->
-
+                <div *ngIf="!userID">
+                  Please Log In First To Join The Conversation
+                </div>
               </div>
+              <!-- End of Reply Form -->
+
             </div>
           </div>
-
-
         </div>
-        <!--End Comments Area-->
-        <!-- Comment Form -->
+      </div>
+      <!--End Comments Area-->
+      <!-- Comment Form -->
+      <div *ngIf="userID">
         <div class="comment-form">
           <div class="group-title">
             <h2>Leave Reply</h2>
           </div>
-          <form #leaveComment="ngForm"t (ngSubmit)="addComment(leaveComment.value)">
+          <form #leaveComment="ngForm" (ngSubmit)="addComment(leaveComment.value)">
             <div class="row clearfix">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group" >
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                 <textarea name="comment1" placeholder="Comments" ngModel></textarea>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
@@ -174,112 +159,49 @@
           </form>
         </div>
       </div>
+      <div *ngIf="!userID">
+        Please Log In First To Join The Conversation
+      </div>
+    </div>
       <!--Sidebar Side-->
       <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
         <aside class="sidebar">
-          <!-- Search -->
-          <div class="sidebar-widget search-box">
-            <form method="post" action="https://www.shmai.com/preview/pawrex-html/contact.html">
-              <div class="form-group">
-                <input type="search" name="search-field" value="" placeholder="Search" required>
-                <button type="submit"><span class="icon fa fa-search"></span></button>
-              </div>
-            </form>
-          </div>
-          <!--Blog Category Widget-->
-          <div class="sidebar-widget sidebar-blog-category">
-            <div class="sidebar-title">
-              <h2>categories</h2>
-            </div>
-            <ul class="cat-list">
-              <li><a href="#">Pets Lovers</a></li>
-              <li><a href="#">Cats & Dogs Food</a></li>
-              <li><a href="#">Other Pets</a></li>
-              <li><a href="#">Pets Health</a></li>
-              <li><a href="#">Homemade & DIY</a></li>
-              <li><a href="#">Pets Adoption</a></li>
-              <li><a href="#">Vaccine Care</a></li>
-            </ul>
-          </div>
+         
           <!--Blog Category Widget-->
           <div class="sidebar-widget adoption">
             <div class="sidebar-title">
               <h2>For Adoptions</h2>
             </div>
             <div class="row clearfix">
-              <a href="assets/images/resource/thumb-1.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="images/resource/thumb-1.jpg" alt="" /></a>
-              <a href="images/resource/thumb-2.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="images/resource/thumb-2.jpg" alt="" /></a>
-              <a href="images/resource/thumb-3.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="images/resource/thumb-3.jpg" alt="" /></a>
-              <a href="images/resource/thumb-4.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="images/resource/thumb-4.jpg" alt="" /></a>
-              <a href="images/resource/thumb-5.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="images/resource/thumb-5.jpg" alt="" /></a>
-              <a href="images/resource/thumb-6.jpg" data-fancybox="images" data-caption=""
-                 class="lightbox-image"><img src="images/resource/thumb-6.jpg" alt="" /></a>
+              <div *ngFor="let item of categoryAnimal" class="hello">
+                <a routerLink="/AnimalsDetails/{{item.animalId}}" data-fancybox="images" data-caption=""
+                   class="lightbox-image">
+                  <img src="https://localhost:7269/api/Animals1/getImages/{{item.image1}}" alt="" class="fixed-image" />
+                </a>
+              </div>
             </div>
           </div>
-          <!-- Popular Tags -->
-          <div class="sidebar-widget popular-tags">
-            <div class="sidebar-title">
-              <h2>tags</h2>
-            </div>
-            <a href="#">pet lovers</a>
-            <a href="#">cat</a>
-            <a href="#">dog</a>
-            <a href="#">grooming</a>
-            <a href="#">pet care</a>
-            <a href="#">pet lovers</a>
-          </div>
+         
           <!-- Popular Posts -->
-          <div class="sidebar-widget popular-posts">
+          <div class="sidebar-widget popular-posts" style="text-align: left;">
             <div class="sidebar-title">
               <h2>Recent Posts</h2>
             </div>
-            <article class="post">
+            <article class="post" *ngFor="let item of resent">
               <figure class="post-thumb">
-                <a href="blog-single.html">
-                  <img src="images/resource/post-thumb-3.jpg" alt="">
+                <a (click)="goTo(item.storyId)">
+                  <img src="https://localhost:7269/api/Bassam/getImage/{{item.photoUrl1}}" alt="">
                 </a>
               </figure>
               <div class="text">
-                <a href="blog-single.html">
-                  Considering at aesthetic more some
-                  dreamed
+                <a (click)="goTo(item.storyId)">
+                  {{ item.title }}
                 </a>
+
               </div>
-              <div class="post-info">Feb 31, 2021</div>
+              <div class="post-info">{{ item.date | date:'MMMM d, yyyy' }}</div>
             </article>
-            <article class="post">
-              <figure class="post-thumb">
-                <a href="blog-single.html">
-                  <img src="images/resource/post-thumb-4.jpg" alt="">
-                </a>
-              </figure>
-              <div class="text">
-                <a href="blog-single.html">
-                  Dear gose dreamed less confessedly
-                  some
-                </a>
-              </div>
-              <div class="post-info">Jan 25, 2021</div>
-            </article>
-            <article class="post">
-              <figure class="post-thumb">
-                <a href="blog-single.html">
-                  <img src="images/resource/post-thumb-5.jpg" alt="">
-                </a>
-              </figure>
-              <div class="text">
-                <a href="blog-single.html">
-                  At away gazel petulantly crud
-                  lightheartedly
-                </a>
-              </div>
-              <div class="post-info">Jan 19, 2021</div>
-            </article>
+
           </div>
         </aside>
       </div>
