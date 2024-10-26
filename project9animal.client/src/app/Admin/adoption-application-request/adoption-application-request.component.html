@@ -94,8 +94,9 @@
           <p><strong>Temperament:</strong> {{animalInfo.temperament}}</p>
           <p><strong>Special Needs:</strong> {{animalInfo.specialNeeds}}</p>
           <p><strong>Description:</strong> {{animalInfo.description}}</p>
-          <img *ngIf="animalInfo.image1" [src]="animalInfo.image1" alt="Animal Image" class="img-fluid">
+          <img *ngIf="animalInfo.image1" src="https://localhost:7269/api/Animals1/getImages/{{animalInfo.image1}}" alt="Animal Image" class="img-fluid"style="width:75px">
           <!-- Add more images if needed -->
+        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
