@@ -92,3 +92,9 @@
   background: green;
   width: 154px;
 }
+.animal-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}

@@ -41,6 +41,8 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
 import { AcceptStoryComponent } from './Admin/accept-story/accept-story.component';
 import { StoryDetailsComponent } from './Admin/story-details/story-details.component';
 import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics.component';
+import { ContactUsAdminComponent } from './Admin/ayah/contact-us-admin/contact-us-admin.component';
+import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-form.component';
 
 
 
@@ -89,6 +91,8 @@ import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics
     AcceptStoryComponent,
     StoryDetailsComponent,
             AdminStatsticsComponent,
+            ContactUsAdminComponent,
+            ContactUsFormComponent,
 
     
 
@@ -147,6 +151,8 @@ import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics
           { path: "accept-story", component: AcceptStoryComponent },
           { path: "storyDetails/:id", component:StoryDetailsComponent },
           { path: "adminStatistic", component: AdminStatsticsComponent },
+          { path: "contactUs", component: ContactUsAdminComponent },
+          { path: "contactUsForm/:id", component: ContactUsFormComponent },
 
 
 
