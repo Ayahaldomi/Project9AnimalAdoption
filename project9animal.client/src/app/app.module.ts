@@ -43,6 +43,7 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
 import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics.component';
 import { ContactUsAdminComponent } from './Admin/ayah/contact-us-admin/contact-us-admin.component';
 import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-form.component';
+import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
 
 
 
@@ -93,6 +94,7 @@ import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-
             AdminStatsticsComponent,
             ContactUsAdminComponent,
             ContactUsFormComponent,
+            AdminProfileComponent,
 
     
 
@@ -153,7 +155,7 @@ import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-
           { path: "adminStatistic", component: AdminStatsticsComponent },
           { path: "contactUs", component: ContactUsAdminComponent },
           { path: "contactUsForm/:id", component: ContactUsFormComponent },
-
+          { path: "adminProfile" , component:AdminProfileComponent},
 
 
         ]
