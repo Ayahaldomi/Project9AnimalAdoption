@@ -98,12 +98,10 @@
           <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="new_custom images" *ngIf="animalDetails">
               <div class="owl-carousel">
-                <!-- Check if image1 exists -->
                 <div class="item" *ngIf="animalDetails.image1; else noImage1">
                   <div class="testimon">
                     <div class="image">
-                      <img [src]="'https://localhost:7269/api/Animals1/getImages/' + animalDetails.image1"
-                           alt="{{animalDetails.name}}" class="img-fluid customer" />
+                      <img class="animal-image" [src]="'https://localhost:7269/api/Animals1/getImages/' + animalDetails.image1" alt="{{ animalDetails.name }}" />
                     </div>
                   </div>
                 </div>
@@ -111,18 +109,18 @@
                   <p>No image available for image1</p>
                 </ng-template>
 
-                <!-- Check if image2 exists -->
                 <div class="item" *ngIf="animalDetails.image2; else noImage2">
                   <div class="testimon">
                     <div class="image">
-                      <img [src]="'https://localhost:7269/api/Animals1/getImages/' + animalDetails.image2"
-                           alt="{{animalDetails.name}}" class="img-fluid customer" />
+                      <img class="animal-image" [src]="'https://localhost:7269/api/Animals1/getImages/' + animalDetails.image2" alt="{{ animalDetails.name }}" />
                     </div>
                   </div>
                 </div>
                 <ng-template #noImage2>
                   <p>No image available for image2</p>
                 </ng-template>
+
+
               </div>
             </div>
           </div>
@@ -133,23 +131,17 @@
                 <h3>Name: <span> {{animalDetails.name}} </span></h3>
               </div>
               <ul>
-                <li><i class="fas fa-paw yellow me-2"></i> Age: {{animalDetails.age}}</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Breed: {{animalDetails.breed}}</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Temperament: {{animalDetails.temperament}}</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Size: {{animalDetails.size}}</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Description: {{animalDetails.description}}</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Special Needs: {{animalDetails.specialNeeds}}</li>
-                <li><i class="fas fa-paw yellow me-2"></i> Adoption Status: {{animalDetails.adoptionStatus}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Age:</span> {{animalDetails.age}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Breed:</span> {{animalDetails.breed}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Temperament:</span> {{animalDetails.temperament}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Size:</span> {{animalDetails.size}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Description:</span> {{animalDetails.description}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Special Needs:</span> {{animalDetails.specialNeeds}}</li>
+                <li><i class="fas fa-paw yellow me-2"></i> <span>Adoption Status:</span> {{animalDetails.adoptionStatus}}</li>
                 <!-- Check if shelter exists -->
-                <li *ngIf="animalDetails.shelter">
-                  <i class="fas fa-paw yellow me-2"></i> Shelter Name: {{animalDetails.shelter.shelterName}}
-                </li>
-                <li *ngIf="animalDetails.shelter">
-                  <i class="fas fa-paw yellow me-2"></i> Shelter Address: {{animalDetails.shelter.address}}
-                </li>
-                <li *ngIf="animalDetails.shelter">
-                  <i class="fas fa-paw yellow me-2"></i> Shelter Phone: {{animalDetails.shelter.phone}}
-                </li>
+                <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Name:</span> {{animalDetails.shelter.shelterName}}</li>
+                <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Address:</span> {{animalDetails.shelter.address}}</li>
+                <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Phone:</span> {{animalDetails.shelter.phone}}</li>
               </ul>
               <div class="button">
                 <a (click)="checkUserLogin(animalDetails.animalId)" class="btn main" title="Adopt">
@@ -158,6 +150,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
