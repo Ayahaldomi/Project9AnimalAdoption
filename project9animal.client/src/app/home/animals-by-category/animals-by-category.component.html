@@ -3,7 +3,7 @@
     <div class="inner-container" style="background-image:url(images/background/11.png)">
       <h2>Find Your Pet</h2>
 
-      <div class="pets-search-form">
+      <!--<div class="pets-search-form">
         <form (ngSubmit)="applyFilters()" #filterForm="ngForm">
           <div class="row clearfix">
             <div class="form-group col-md-3 col-sm-6 col-xs-12">
@@ -28,7 +28,7 @@
             </div>
           </div>
         </form>
-      </div>
+      </div>-->
     </div>
   </div>
 </section>
@@ -63,7 +63,7 @@
               <li>{{animal.breed}}</li>
               <li>{{animal.adoptionStatus}}</li>
             </ul>
-            <a *ngIf="animal.adoptionStatus != 'Adopted'" routerLink="/AnimalsDetails/{{animal.animalId}}" class="theme-btn btn-style-eight">adopt me</a>
+            <a routerLink="/AnimalsDetails/{{animal.animalId}}" class="theme-btn btn-style-eight">adopt me</a>
           </div>
         </div>
       </div>

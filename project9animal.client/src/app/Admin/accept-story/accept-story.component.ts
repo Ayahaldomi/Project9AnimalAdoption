@@ -30,7 +30,7 @@ export class AcceptStoryComponent {
     this.urlBassamService.changeStoryStatus(id).subscribe(
       response => {
         console.log(`Status of story with ID ${id} changed successfully:`, response);
-        // Optionally, update the story's status in the requestStories array
+
         const story = this.requestStories.find(story => story.id === id);
         if (story) {
           story.status = 'published';
@@ -45,7 +45,6 @@ export class AcceptStoryComponent {
     this.urlBassamService.deleteStory(storyId).subscribe({
       next: () => {
         console.log(`Deleted story with ID: ${storyId}`);
-        // Reload the success stories after deletion
 
 
       },

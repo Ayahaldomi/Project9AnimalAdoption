@@ -50,7 +50,7 @@
                  data-textalign="['top','top','top','top']"
                  data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
               <div class="btns-box">
-                <a href="animal-listings.html" class="theme-btn btn-style-two">Browse Animals</a>
+                <a routerLink="/ShowAnimals" class="theme-btn btn-style-two">Browse Animals</a>
               </div>
             </div>
           </li>
@@ -100,8 +100,8 @@
                  data-textalign="['top','top','top','top']"
                  data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
               <div class="btns-box text-center">
-                <a href="success-stories.html" class="theme-btn btn-style-two">Read Stories</a>
-                <a href="submit-story.html" class="theme-btn btn-style-three">Share Your Story</a>
+                <a routerLink="/app-blog" class="theme-btn btn-style-two">Read Stories</a>
+                
               </div>
             </div>
           </li>
@@ -137,7 +137,7 @@
               <li>Submit adoption applications online with ease</li>
               <li>Read heartwarming success stories from other adopters</li>
             </ul>
-            <a href="services.html" class="theme-btn btn-style-two">Explore Adoption Services</a>
+            <!--<a href="services.html" class="theme-btn btn-style-two">Explore Adoption Services</a>-->
           </div>
         </div>
       </div>
@@ -202,7 +202,7 @@
                   <img src="https://localhost:7269/api/AnimalCategory/getImage/{{category.image}}" alt="Dogs Image" class="category-image" />
                   <div class="overlay">
                     <div class="content">
-                      <h3><a href="categories.html?type=dogs">{{category.name}}</a></h3>
+                      <h3><a (click)="viewCategory(category.id)" > {{category.name}}</a></h3>
                     </div>
                   </div>
                 </div>
@@ -270,12 +270,12 @@
   </section>-->
   <!--End Appointment Section-->
   <!--Team Section-->
-  <section class="team-section">
-    <div class="auto-container">
+  <!--<section class="team-section">
+    <div class="auto-container">-->
       <!--Sec Title-->
-      <div class="row clearfix">
+      <!--<div class="row clearfix">-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -295,9 +295,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -317,9 +317,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -339,9 +339,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -364,7 +364,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
   <!--End Team Section-->
   <!--Counter Section-->
   <section class="counter-section">
@@ -547,7 +547,7 @@
                   {{ testimonial.testimonialMessege }}
                 </div>
                 <div class="author-image">
-                  <img src="assets/images/resource/author-1.jpg" alt="Author Image" class="rounded-circle" />
+                  <!--<img src="assets/images/resource/author-1.jpg" alt="Author Image" class="rounded-circle" />-->
                 </div>
                 <div class="author-name">{{ testimonial.userName }}</div>
                 <div class="designation">{{ testimonial.designation }}</div>

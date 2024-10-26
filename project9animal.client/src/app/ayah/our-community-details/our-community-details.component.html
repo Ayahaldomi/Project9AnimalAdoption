@@ -34,10 +34,8 @@
                 </div>
                 <h3>{{ story.title }}</h3>
                 <ul class="post-meta">
-                  <div *ngIf="userID">
-                  <li *ngIf="!isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">Like</button></li>
-                  <li *ngIf="isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">UnLike</button></li>
-              </div>
+                  <li *ngIf="userID && !isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">Like</button></li>
+                  <li *ngIf="userID && isItLikedObj"><button class="btn btn-outline-primary" (click)="addLike()">UnLike</button></li>
               <li>{{commentcount}} Comments</li>
               <li><span class="icon fa fa-heart"></span> {{like}}</li>
               </ul>

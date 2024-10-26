@@ -44,6 +44,7 @@ import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics
 import { ContactUsAdminComponent } from './Admin/ayah/contact-us-admin/contact-us-admin.component';
 import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-form.component';
 import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
+import { AnimalsByCategoryComponent } from './home/animals-by-category/animals-by-category.component';
 
 
 
@@ -95,6 +96,7 @@ import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.compo
             ContactUsAdminComponent,
             ContactUsFormComponent,
             AdminProfileComponent,
+            AnimalsByCategoryComponent,
 
     
 
@@ -125,7 +127,7 @@ import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.compo
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
       { path: "myApplication", component: MyAdoptionApplicationComponent },
-
+      { path: "animals/:categoryId", component: AnimalsByCategoryComponent },
 
       //AdminDashboard
       {

@@ -58,49 +58,50 @@
                   <a href="#">Home</a>
 
                 </li>
-                <li class="dropdown">
-                  <a routerLink="/abuot">About</a>
 
-                </li>
                 <!--<li class="dropdown">
-                  <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/dashboard">Dashboard</a>
 
-                </li>-->
+  </li>-->
                 <!--<li class="dropdown">
-                  <a routerLink="/profile">profile</a>
+    <a routerLink="/profile">profile</a>
 
-                </li>-->
+  </li>-->
                 <!--<li class="dropdown">
-                  <a href="services.html">Services</a>
-                  <ul>
-                    <li><a href="pet-service.html">Services 01</a></li>
-                    <li><a href="pet-service.html">Services 02</a></li>
+    <a href="services.html">Services</a>
+    <ul>
+      <li><a href="pet-service.html">Services 01</a></li>
+      <li><a href="pet-service.html">Services 02</a></li>
 
-                  </ul>
-                </li>-->
+    </ul>
+  </li>-->
 
                 <li class="dropdown">
                   <a routerLink="/ShowAnimals">ShowAnimals</a>
 
                 </li>
 
-                
+
 
 
                 <li class="dropdown">
                   <a routerLink="/app-blog">Blog</a>
 
                 </li>
+
                 <li class="dropdown">
                   <a routerLink="/contact">Contact</a>
 
                 </li>
                 <li class="dropdown">
-                  <a routerLink="/login" *ngIf="UserId == ''">login</a>
+                  <a routerLink="/abuot">About</a>
 
                 </li>
+                <li class="login-button" *ngIf="UserId == ''">
+                  <a routerLink="/login" >login</a>
+                </li>
 
-                <li *ngIf="UserId != ''">
+                <li *ngIf="UserId != ''" class="login-button">
                   <div class="dropdown">
                     <a><i class="fas fa-user"></i></a>
                     <ul class="dropdown-menu">
@@ -129,7 +130,7 @@
       <!--Logo-->
       <div class="logo pull-left">
         <a href="index.html" class="img-responsive">
-          <img src="assete/images/logo-small.png" alt=""
+          <img src="assets/images/logo-small.png" alt=""
                title="">
         </a>
       </div>
@@ -185,12 +186,11 @@
                 <a href="contact.html">Contact</a>
 
               </li>
-              <li class="dropdown">
-                <a routerLink="/login" *ngIf="UserId == ''">login</a>
-
+              <li class="login-button" *ngIf="UserId == ''">
+                <a routerLink="/login">login</a>
               </li>
 
-              <li *ngIf="UserId != ''">
+              <li *ngIf="UserId != ''" class="login-button">
                 <div class="dropdown">
                   <a><i class="fas fa-user"></i></a>
                   <ul class="dropdown-menu">

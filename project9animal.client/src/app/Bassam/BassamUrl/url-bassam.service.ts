@@ -39,4 +39,7 @@ export class UrlBassamService {
   getSuccessStoryById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/getSeccessStoryById/${id}`);
   }
+  getAnimalsName(userId: number): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/getTheAnimalsName/${userId}`);
+  }
 }
