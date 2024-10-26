@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthServiceService {
   private isAdmin = new BehaviorSubject<boolean>(false); 
   isAdminLoggedIn = this.isAdmin.asObservable(); 
-
+ 
   constructor(private router: Router) { }
 
 
