@@ -133,7 +133,7 @@ a:hover {
 }
 
 .profile-edit-btn {
-  background-color: #FFA500; /* اللون البرتقالي */
+  background-color: #FFA500; 
   border: none;
   padding: 10px 20px;
   color: white;
@@ -143,5 +143,5 @@ a:hover {
 }
 
   .profile-edit-btn:hover {
-    background-color: #e69500; /* تأثير Hover بلون برتقالي داكن */
+    background-color: #e69500; 
   }
