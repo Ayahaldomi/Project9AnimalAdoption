@@ -145,7 +145,7 @@ import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics
           { path: "showAllUser", component: ShowAllUserComponent },
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "accept-story", component: AcceptStoryComponent },
-          { path: "storyDetails/:id", component:StoryDetailsComponent }
+          { path: "storyDetails/:id", component:StoryDetailsComponent },
           { path: "adminStatistic", component: AdminStatsticsComponent },
 
 
