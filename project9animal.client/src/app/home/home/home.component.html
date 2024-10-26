@@ -202,7 +202,7 @@
                   <img src="https://localhost:7269/api/AnimalCategory/getImage/{{category.image}}" alt="Dogs Image" class="category-image" />
                   <div class="overlay">
                     <div class="content">
-                      <h3><a href="categories.html?type=dogs">{{category.name}}</a></h3>
+                      <h3><a (click)="viewCategory(category.categoryId)" href="categories.html?type=dogs"> {{category.name}}</a></h3>
                     </div>
                   </div>
                 </div>
@@ -270,12 +270,12 @@
   </section>-->
   <!--End Appointment Section-->
   <!--Team Section-->
-  <section class="team-section">
-    <div class="auto-container">
+  <!--<section class="team-section">
+    <div class="auto-container">-->
       <!--Sec Title-->
-      <div class="row clearfix">
+      <!--<div class="row clearfix">-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -295,9 +295,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -317,9 +317,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -339,9 +339,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--Team Block-->
-        <div class="team-block col-lg-3 col-md-6 col-sm-12">
+        <!--<div class="team-block col-lg-3 col-md-6 col-sm-12">
           <div class="inner-box">
             <div class="image">
               <a href="team-detail.html">
@@ -364,7 +364,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
   <!--End Team Section-->
   <!--Counter Section-->
   <section class="counter-section">
@@ -547,7 +547,7 @@
                   {{ testimonial.testimonialMessege }}
                 </div>
                 <div class="author-image">
-                  <img src="assets/images/resource/author-1.jpg" alt="Author Image" class="rounded-circle" />
+                  <!--<img src="assets/images/resource/author-1.jpg" alt="Author Image" class="rounded-circle" />-->
                 </div>
                 <div class="author-name">{{ testimonial.userName }}</div>
                 <div class="designation">{{ testimonial.designation }}</div>
