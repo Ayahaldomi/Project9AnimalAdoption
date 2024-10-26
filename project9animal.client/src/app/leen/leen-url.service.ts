@@ -46,10 +46,10 @@ export class LeenURLService {
     this.isAdmin.next(isAdmin);
   }
 
-  logout() {
-    this.isAdmin.next(false); // إعادة تعيين الحالة عند تسجيل الخروج
-    this.router.navigate(['/login']);
-  }
+  //logout() {
+  //  this.isAdmin.next(false); // إعادة تعيين الحالة عند تسجيل الخروج
+  //  this.router.navigate(['/login']);
+  //}
 
 
   addTestimonial(formData: FormData): Observable<any> {
@@ -62,11 +62,12 @@ export class LeenURLService {
     return this.http.get(`https://localhost:7269/api/AdoptionForm/GetApplicationsByUserId/${userId}`);
   }
 
-  logoutFunc() {
- 
+  
 
+  // Logout function
+  logoutFunc() {
+    this.setAdminStatus(false); // Reset admin status on logout
     this.email.next("");
     this.UserId.next("");
-
   }
 }

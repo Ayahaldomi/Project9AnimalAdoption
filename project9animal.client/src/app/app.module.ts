@@ -132,7 +132,7 @@ import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
           { path: "AddShelter", component: AddShelterComponent },
           { path: "getStories", component: GetStoriesComponent },
 
-          { path: "updatecategory/:id", component: UpdateCategoryComponent }
+          { path: "updatecategory/:id", component: UpdateCategoryComponent },
           { path: "AddShelter", component: AddShelterComponent},
           { path: "EditShelter/:id", component: EditShelterComponent },
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
