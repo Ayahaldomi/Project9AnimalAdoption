@@ -152,7 +152,7 @@ import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-
           { path: "storyDetails/:id", component:StoryDetailsComponent },
           { path: "adminStatistic", component: AdminStatsticsComponent },
           { path: "contactUs", component: ContactUsAdminComponent },
-          { path: "contactUsForm", component: ContactUsFormComponent },
+          { path: "contactUsForm/:id", component: ContactUsFormComponent },
 
 
 

@@ -2,7 +2,7 @@
 {
     public class contactPUT
     {
-        public string? AdminResponse { get; set; }
+        public string? replyMessage { get; set; }
 
     }
 }
