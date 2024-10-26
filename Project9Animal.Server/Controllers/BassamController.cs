@@ -133,5 +133,32 @@ public async Task<IActionResult> createPost([FromForm] DTOsCreatePost model)
         }
 
 
+        [HttpGet("getRequestStories")]
+        public IActionResult GetRequestStories()
+        {
+
+            var blog = _db.SuccessStories.Where(x=>x.Status=="pending").ToList();
+            return Ok(blog);
+        }
+        [HttpPut]
+        public IActionResult changeStatus(int id) {
+
+            var story=_db.SuccessStories.Find(id);
+
+            story.Status = "published";
+            _db.SaveChanges();
+            return Ok(story);
+        
+        }
+
+        [HttpGet("getSeccessStoryById/{id}")]
+        public IActionResult getSeccessStoryById(int id)
+        {
+
+            var story = _db.SuccessStories.Find(id);
+            return Ok(story);
+        }
+
+
     }
 }

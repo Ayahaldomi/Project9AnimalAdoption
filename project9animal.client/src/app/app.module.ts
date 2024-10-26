@@ -38,6 +38,8 @@ import { ShowAllUserComponent } from './Admin/show-all-user/show-all-user.compon
 import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
 import { MyAdoptionApplicationComponent } from './home/my-adoption-application/my-adoption-application.component';
 import { GetStoriesComponent } from './Admin/get-stories/get-stories.component';
+import { AcceptStoryComponent } from './Admin/accept-story/accept-story.component';
+import { StoryDetailsComponent } from './Admin/story-details/story-details.component';
 import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics.component';
 
 
@@ -84,6 +86,8 @@ import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics
     
 
     GetStoriesComponent,
+    AcceptStoryComponent,
+    StoryDetailsComponent,
             AdminStatsticsComponent,
 
     
@@ -140,6 +144,8 @@ import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics
           { path: "showwTestmoinals", component: GetTestmonialsComponent },
           { path: "showAllUser", component: ShowAllUserComponent },
           { path: "updatecategory/:id", component: UpdateCategoryComponent },
+          { path: "accept-story", component: AcceptStoryComponent },
+          { path: "storyDetails/:id", component:StoryDetailsComponent }
           { path: "adminStatistic", component: AdminStatsticsComponent },
 
 

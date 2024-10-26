@@ -28,4 +28,20 @@ export class UrlBassamService {
     debugger;
     return this.http.delete<any>(`${this.apiUrl}/deleteStory${storyId}`);
   }
+
+
+
+  getRequestStories(): Observable<any> {
+    debugger;
+    return this.http.get<any>(`${this.apiUrl}/getRequestStories`);
+  }
+  changeStoryStatus(id: number): Observable<any> {
+    debugger;
+    const url = `${this.apiUrl}?id=${id}`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put(url, {}, { headers });
+  }
+  getSuccessStoryById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getSeccessStoryById/${id}`);
+  }
 }
