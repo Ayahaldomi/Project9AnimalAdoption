@@ -127,7 +127,7 @@ import { AnimalsByCategoryComponent } from './home/animals-by-category/animals-b
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
       { path: "myApplication", component: MyAdoptionApplicationComponent },
-      { path: "animals", component: AnimalsByCategoryComponent },
+      { path: "animals/:categoryId", component: AnimalsByCategoryComponent },
 
       //AdminDashboard
       {
