@@ -79,7 +79,7 @@ namespace Project9Animal.Server.Controllers
     [HttpPost("createPost")]
 public async Task<IActionResult> createPost([FromForm] DTOsCreatePost model)
 {
-            var animalId=_db.SuccessStories.Where(x=>x.Animal.Name==model.AnimalName).Select(x=>x.Animal.AnimalId).FirstOrDefault();
+            var animalId=_db.Animals.Where(x=>x.Name==model.AnimalName).Select(x=>x.AnimalId).FirstOrDefault();
   
 
     var successStory = new SuccessStory

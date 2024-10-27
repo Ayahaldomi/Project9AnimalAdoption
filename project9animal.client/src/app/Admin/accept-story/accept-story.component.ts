@@ -25,7 +25,6 @@ export class AcceptStoryComponent {
     );
   }
   changeStoryStatus(id: number): void {
-    debugger;
     console.log(id);
     this.urlBassamService.changeStoryStatus(id).subscribe(
       response => {

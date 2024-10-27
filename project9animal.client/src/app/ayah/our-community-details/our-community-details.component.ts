@@ -105,9 +105,10 @@ export class OurCommunityDetailsComponent {
   }
 
   addComment(data: any) {
+    
     this.addCommentObj.storyId = this.parameter;
     this.addCommentObj.comment1 = data.comment1;
-    this.addCommentObj.userId = data.userID;
+    this.addCommentObj.userId = this.userID;
     this._ser.CommentPost(this.addCommentObj).subscribe((data) => {
       this.SeccessStoryByID(this.parameter)
       this.likes(this.parameter)

@@ -64,16 +64,16 @@
             <!-- Adopter Info -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="full_name" class="text-white">Full Name</label>
-              <input type="text" name="fullName" value="{{userDetails.fullName}}" required>
+              <input type="text" name="fullName" [(ngModel)]="userDetails.fullName" required>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="your_address" class="text-white">Your Address</label>
-              <input type="text" name="address" value="" required ngModel>
+              <input type="text" name="address" [(ngModel)]="userDetails.address" required >
             </div>
             <!-- Dropdown: Financial Status -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="financial_status" class="text-white">Financial Status</label>
-              <select name="finaincalStatus" required ngModel>
+              <select name="finaincalStatus" required [(ngModel)]="userDetails.finaincalStatus">
                 <option value="" disabled selected>Financial Status</option>
                 <option value="high_income">High Income</option>
                 <option value="low_income">Low Income</option>
@@ -84,7 +84,7 @@
             <!-- Dropdown: Flat Type -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="flat_type" class="text-white">Flat Type</label>
-              <select name="flatType" required ngModel>
+              <select name="flatType" required [(ngModel)]="userDetails.flatType">
                 <option value="" disabled selected>Flat Type</option>
                 <option value="townhouse">Townhouse</option>
                 <option value="villa">Villa</option>
@@ -96,20 +96,20 @@
             <!-- Dropdown: Have Kids -->
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="have_kids" class="text-white">Have Kids</label>
-              <select name="haveKids" required ngModel>
+              <select name="haveKids" required [(ngModel)]="userDetails.haveKids">
                 <option value="" disabled selected>Have Kids</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
               </select>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-12">
               <label for="medical_status" class="text-white">Medical Status</label>
-              <input type="text" name="medicalStatus" value="" required ngModel>
+              <input type="text" name="medicalStatus" [(ngModel)]="userDetails.medicalStatus" required >
             </div>
 
             <div class="form-group col-md-12 col-sm-12 col-xs-12">
               <label for="more_details" class="text-white">More details</label>
-              <textarea name="moreDetails" ngModel></textarea>
+              <textarea name="moreDetails" [(ngModel)]="userDetails.moreDetails"> </textarea>
             </div>
             <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
               <button type="submit" class="theme-btn btn-style-two">Send request</button>
