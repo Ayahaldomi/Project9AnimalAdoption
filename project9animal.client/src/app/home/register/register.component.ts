@@ -18,7 +18,6 @@ export class RegisterComponent {
 
 
   addNewUser(data: any) {
-    debugger;
     var form = new FormData();
     for (let key in data) {
       form.append(key, data[key])

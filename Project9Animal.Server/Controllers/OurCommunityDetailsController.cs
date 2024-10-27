@@ -47,7 +47,8 @@ namespace Project9Animal.Server.Controllers
                     {
                         c.CommentId,
                         c.Comment1, 
-                        UserName = c.User.FullName, 
+                        UserName = c.User.FullName,
+                        commentDate = c.CommentDate,
                         Replies = c.Replies.Select(r => new
                         {
                             r.Comment,

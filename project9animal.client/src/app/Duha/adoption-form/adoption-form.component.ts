@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { DuhaUrlService } from '../duha-url.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LeenURLService } from '../../leen/leen-url.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-adoption-form',
@@ -28,7 +29,7 @@ export class AdoptionFormComponent {
     this.getUserDetails();
 
   }
-  constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute, private _leen: LeenURLService) { }
+  constructor(private _ser: DuhaUrlService, private _activate: ActivatedRoute, private _leen: LeenURLService, private _router: Router) { }
 
 
   animalDetails: any
@@ -72,7 +73,6 @@ export class AdoptionFormComponent {
   }
 
   addNewAdoptionform(data: any, animalId:any ,userId:any) {
-    debugger;
     this.myform.userId = userId
     this.myform.animalId = animalId
     this.myform.address = data.address
@@ -90,9 +90,26 @@ export class AdoptionFormComponent {
   
     this._ser.postAdoptionApplication(this.myform).subscribe(
       (datas) => {
-        alert("Add successfully!");
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Adoption form submitted successfully!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this._router.navigate(["/ShowAnimals"]);
+          }
+        });
       },
       (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error submitting adoption form. Please try again later.',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
         console.error('Error submitting adoption form:', error);
       }
     );
