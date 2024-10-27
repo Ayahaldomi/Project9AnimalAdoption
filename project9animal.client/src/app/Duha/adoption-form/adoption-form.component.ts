@@ -44,7 +44,16 @@ export class AdoptionFormComponent {
   }
 
   // Fetch User Details based on the userId
-  userDetails: any;
+  userDetails = {
+    "userId": 0,
+    "fullName": "",
+    "address": "dkdsv,mnds,v",
+    "medicalStatus": "lndv,nkds",
+    "flatType": "flat",
+    "finaincalStatus": "high_income",
+    "haveKids": false,
+    "moreDetails": " a,lnwflkw",
+  }
  
   getUserDetails() {
     if (this.userId) {
@@ -72,7 +81,7 @@ export class AdoptionFormComponent {
     "moreDetails": "string"
   }
 
-  addNewAdoptionform(data: any, animalId:any ,userId:any) {
+  addNewAdoptionform(data: any, animalId: any, userId: any) {
     this.myform.userId = userId
     this.myform.animalId = animalId
     this.myform.address = data.address
@@ -80,7 +89,7 @@ export class AdoptionFormComponent {
     this.myform.flatType = data.flatType
     this.myform.financialStatus = data.finaincalStatus
     this.myform.moreDetails = data.moreDetails
-    if (data.haveKids == "yes") {
+    if (data.haveKids == "true") {
       this.myform.haveKids = true
 
     } else {
