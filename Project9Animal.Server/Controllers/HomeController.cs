@@ -74,7 +74,7 @@ namespace Project9Animal.Server.Controllers
         [HttpGet("top")]
         public async Task<ActionResult<IEnumerable<StoryDto>>> GetStories()
         {
-            var stories = await _context.SuccessStories
+            var stories = await _context.SuccessStories.Where(x => x.Status == "Published")
                 .Select(s => new StoryDto
                 {
                     StoryId = s.StoryId,
