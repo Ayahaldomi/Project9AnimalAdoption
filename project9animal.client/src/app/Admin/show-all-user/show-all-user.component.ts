@@ -18,7 +18,7 @@ import { LeenURLService } from '../../leen/leen-url.service';
 
   getAllUsers() {
     this._ser.getUsers1().subscribe((data) => {
-      this.users = data;
+      this.users = data.filter((user: any) => user.email !== 'admin@gmail.com');
     });
   }
 

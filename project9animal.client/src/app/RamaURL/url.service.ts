@@ -53,9 +53,8 @@ export class UrlService {
   rejectTestimonial(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/Home/rejectTestimonial/${id}`);
   }
-
-
-
-
+  getAnimalsByCategory(categoryId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/AnimalCategory/GetAnimalsByCategory/${categoryId}`);
+  }
 
 }

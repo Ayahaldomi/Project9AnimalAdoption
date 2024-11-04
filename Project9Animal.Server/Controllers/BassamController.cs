@@ -22,7 +22,7 @@ namespace Project9Animal.Server.Controllers
         public IActionResult GetBlog()
         {
 
-            var blog = _db.SuccessStories.ToList();
+            var blog = _db.SuccessStories.Where(x=>x.Status== "Published").ToList();
             return Ok(blog);
         }
 
@@ -79,7 +79,7 @@ namespace Project9Animal.Server.Controllers
     [HttpPost("createPost")]
 public async Task<IActionResult> createPost([FromForm] DTOsCreatePost model)
 {
-            var animalId=_db.SuccessStories.Where(x=>x.Animal.Name==model.AnimalName).Select(x=>x.Animal.AnimalId).FirstOrDefault();
+            var animalId=_db.Animals.Where(x=>x.Name==model.AnimalName).Select(x=>x.AnimalId).FirstOrDefault();
   
 
     var successStory = new SuccessStory
@@ -158,6 +158,18 @@ public async Task<IActionResult> createPost([FromForm] DTOsCreatePost model)
             var story = _db.SuccessStories.Find(id);
             return Ok(story);
         }
+        [HttpGet("getTheAnimalsName/{userId}")]
+        public IActionResult GetAnimalsName(int userId)
+        {
+            // Fetch all animal names for the specified user
+            var animalNames = _db.AdoptionApplications
+                .Where(app => app.UserId == userId&& app.IsReceived == true)
+                .Select(app => app.Animal.Name)
+                .ToList();
+
+            return Ok(animalNames);
+        }
+
 
 
     }

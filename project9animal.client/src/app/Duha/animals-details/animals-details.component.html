@@ -109,16 +109,7 @@
                   <p>No image available for image1</p>
                 </ng-template>
 
-                <div class="item" *ngIf="animalDetails.image2; else noImage2">
-                  <div class="testimon">
-                    <div class="image">
-                      <img class="animal-image" [src]="'https://localhost:7269/api/Animals1/getImages/' + animalDetails.image2" alt="{{ animalDetails.name }}" />
-                    </div>
-                  </div>
-                </div>
-                <ng-template #noImage2>
-                  <p>No image available for image2</p>
-                </ng-template>
+               
 
 
               </div>
@@ -143,11 +134,12 @@
                 <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Address:</span> {{animalDetails.shelter.address}}</li>
                 <li *ngIf="animalDetails.shelter"><i class="fas fa-paw yellow me-2"></i> <span>Shelter Phone:</span> {{animalDetails.shelter.phone}}</li>
               </ul>
-              <div class="button">
+              <div class="button" *ngIf="animalDetails.adoptionStatus != 'Adopted'">
                 <a (click)="checkUserLogin(animalDetails.animalId)" class="btn main" title="Adopt">
                   Adopt <i class="fas fa-paw"></i>
                 </a>
               </div>
+
             </div>
           </div>
 

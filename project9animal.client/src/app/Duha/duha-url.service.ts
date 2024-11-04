@@ -63,6 +63,10 @@ export class DuhaUrlService {
     return this.http.get<any[]>(`${this.staticData}/Statistics/AnimalsCountByShelter`);
   }
 
+  getAllAnimal(): Observable<any> {
+    return this.http.get(`https://localhost:7269/api/Animals1`);
+  }
+
 
 
 }

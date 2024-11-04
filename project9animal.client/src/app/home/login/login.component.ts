@@ -25,7 +25,6 @@ export class LoginComponent {
     this._ser.login(form).subscribe(
      
       (newData: any) => {
-        alert("Logged in successfully");
 
        
         console.log("User ID from response:", newData.userId);

@@ -43,6 +43,8 @@ import { StoryDetailsComponent } from './Admin/story-details/story-details.compo
 import { AdminStatsticsComponent } from './Admin/admin-statstics/admin-statstics.component';
 import { ContactUsAdminComponent } from './Admin/ayah/contact-us-admin/contact-us-admin.component';
 import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-form.component';
+import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
+import { AnimalsByCategoryComponent } from './home/animals-by-category/animals-by-category.component';
 
 
 
@@ -93,6 +95,8 @@ import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-
             AdminStatsticsComponent,
             ContactUsAdminComponent,
             ContactUsFormComponent,
+            AdminProfileComponent,
+            AnimalsByCategoryComponent,
 
     
 
@@ -123,7 +127,7 @@ import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-
       { path: "app-blog", component: BlogComponent },
       { path: "app-create-sucess-story", component: CreateSucessStoryComponent },
       { path: "myApplication", component: MyAdoptionApplicationComponent },
-
+      { path: "animals/:categoryId", component: AnimalsByCategoryComponent },
 
       //AdminDashboard
       {
@@ -153,7 +157,7 @@ import { ContactUsFormComponent } from './Admin/ayah/contact-us-form/contact-us-
           { path: "adminStatistic", component: AdminStatsticsComponent },
           { path: "contactUs", component: ContactUsAdminComponent },
           { path: "contactUsForm/:id", component: ContactUsFormComponent },
-
+          { path: "adminProfile" , component:AdminProfileComponent},
 
 
         ]

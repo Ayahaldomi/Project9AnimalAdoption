@@ -21,9 +21,12 @@
              <textarea formControlName="StoryText" placeholder="Share your story..." required></textarea>
             </div>
             <!-- Animal Name -->
-            <div class="form-group col-md-6 col-sm-12">
-              <input type="text" formControlName="AnimalName" placeholder="Animal Name" required>
-            </div>
+           <div class="form-group col-md-6 col-sm-12">
+  <select formControlName="AnimalName" required>
+    <option value="" disabled selected>Select or Enter Animal Name</option>
+    <option *ngFor="let animal of animalSuggestions" [value]="animal">{{ animal }}</option>
+  </select>
+</div>
             <!-- Description for Upload -->
             <div class="form-group col-md-12 col-sm-12">
               <p>Please upload a photo or video that showcases your story with your adopted pet.</p>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../RamaURL/url.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,11 @@ export class HomeComponent {
     this.getAllTestmonials();
     this.getTopSuccessStories();
   }
-  constructor(private _ser: UrlService) { }
-
+  constructor(private _ser: UrlService, private router: Router) { }
+  viewCategory(categoryId: number): void {
+    // Navigate to the animals page and pass the categoryId as a route parameter
+    this.router.navigate(['/animals', categoryId]);
+  }
   categories: any
   getAllCategoryAnimals() {
     
@@ -44,4 +48,5 @@ export class HomeComponent {
 
     })
   }
+
 }

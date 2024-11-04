@@ -4,7 +4,7 @@ import { UrlBassamService } from '../../Bassam/BassamUrl/url-bassam.service';
 @Component({
   selector: 'app-get-stories',
   templateUrl: './get-stories.component.html',
-  styleUrls: ['./get-stories.component.css'] // Corrected from styleUrl to styleUrls
+  styleUrls: ['./get-stories.component.css'] 
 })
 export class GetStoriesComponent implements OnInit {
   successStories: any[] = [];
@@ -31,9 +31,8 @@ export class GetStoriesComponent implements OnInit {
     this.urlBassamService.deleteStory(storyId).subscribe({
       next: () => {
         console.log(`Deleted story with ID: ${storyId}`);
-        // Reload the success stories after deletion
-        this.loadSuccessStories();
-
+        // Remove the story from the successStories array
+        this.successStories = this.successStories.filter(story => story.storyId !== storyId);
       },
       error: (err) => {
         console.error('Error deleting story:', err);
